@@ -41,4 +41,9 @@ Breakout and reproduction of the classic arcade lightgun board, manufactured by 
 |  J1  | KK Connector       | 6 vias 2.54mm|
 |  Q1  | Transistor         | 2N3994       |
 | CR1  | Diode Rectifier    | 1N4148       |
-
+  
+## Hardware implementation on the ESP32
+A proof-of-concept sketch for the ESP32 is also [available here](https://github.com/ninomegadriver/lightgun/blob/main/ESP32Lightgun/ESP32Lightgun.ino).  
+  
+[![ESP32 Lightgun Video](https://img.youtube.com/vi/4eyUXAVPKRU/0.jpg)](https://www.youtube.com/watch?v=4eyUXAVPKRU)  
+  
