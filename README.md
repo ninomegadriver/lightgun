@@ -1,6 +1,9 @@
 # Classic Arcade Lightgun PCB Breakout
 Breakout and reproduction of the classic arcade lightgun board, manufactured by many different suppliers.  
   
+## Actual Lightgun Picture
+![Actual Lightgun](https://raw.githubusercontent.com/ninomegadriver/lightgun/main/Images/Lightgun.jpg)  
+  
 ## Original PCB Pictures
 ![Original PCB Top](https://raw.githubusercontent.com/ninomegadriver/lightgun/main/Images/PCB-Top.jpg)  
 ![Original PCB Bottom](https://raw.githubusercontent.com/ninomegadriver/lightgun/main/Images/PCB-Bottom.jpg)
