@@ -32,13 +32,13 @@ uint8_t triggerHalt = 0; // Debounce variable for the trigger pin
 fabgl::VGADirectController DisplayController;
 
 // Some predefined colors
-uint8_t black, white, red, green, fired=0;
+uint8_t black, white, red, green;
 
 // Screen tracking variables
 int width, height, curLine = -1, hitLine=-1, hitX=-1, curTrackPos=0;
 
 // Optical tracking variables
-int track=0, track_pos=0, track_width=10, track_step=0, track_timeout = 0;;
+int track=0, track_pos=0, track_width=10, track_step=0, track_timeout = 0, fired=0;
 
 // Interrupt for the gun's phototransistor
 // When it detects a strong bright light, the line will
@@ -56,18 +56,18 @@ void IRAM_ATTR OpticalInterrupt() {
  * CONCEPT:
  * When the shot trigger is presset, we start painting the
  * screen white. When the light reaches the Phototransistor
- * in the Lighgun it triggers the interrupt above
+ * in the Lighgun it triggers the interrupt above.
  * 
  * So, to instantly grab the position on screen, we pass
- * internal values globally.
+ * internal values to global variables.
  * 
  * The I2S DMA buffer is filled line-by-line. So tracking the
  * "y" position on screen is easy.
  * 
- * However for the "x" coordinate it gets a little trick as we can't
+ * However, for the "x" coordinate it gets a little trick as we can't
  * track the exact position using this method.
  * 
- * So, the solution is scanning the coordinate more than on pass.
+ * So, the solution is scanning the coordinate more than one pass.
  * Each pass splits the tracking space in half, and keep doing it
  * until we reach the appropriate gun position.
  * 
@@ -90,14 +90,15 @@ void IRAM_ATTR drawScanline(void * arg, uint8_t * dest, int scanLine)
   // Register globally in witch portion of the screen we're in
   curTrackPos = track_pos;
 
-  // If we're tracking the shot, we start putting
+  // If we're tracking the shot, we start paiting the screen white
   if(track == 1){
     for(int x=0;x<width;x++){
-      // Paints 
+      // Paints a vertical white strip on screen from left to right
+      // On each pass, the strip will be cut in half..
       if(x <=track_pos+track_width && x>=track_pos) VGA_PIXELINROW(dest, x) = white;
       else VGA_PIXELINROW(dest, x) = black;
     }
-  }else{ // We're not tracking this run
+  }else{ // We're not tracking this run, just draw a normal line...
     for(int x=0;x<width;x++){
       // Paint the boundaries of the screen green
       if(scanLine == 0 || scanLine == height -1 ) VGA_PIXELINROW(dest, x) = green; 
@@ -110,9 +111,9 @@ void IRAM_ATTR drawScanline(void * arg, uint8_t * dest, int scanLine)
   }
 
   // Ok, so we're tracking the screen and have reached the last scanline
-  // on screen
+  // on screen...
   if(scanLine == height-1 && track == 1) {
-    if(hitLine >= 0){ // We've got a hit on this half of the screen, let's start over!
+    if(hitLine >= 0){ // We've got a hit on this half of the screen, let's stop and start over!
       // We'll keep splitting the area in half until we're reach a mininum
       track_width /= 2;
       if(track_width >= 5){ // Minimun limit in pixels for a search area, denotates the "precision"
@@ -145,7 +146,7 @@ void IRAM_ATTR drawScanline(void * arg, uint8_t * dest, int scanLine)
   // a timeout rules it out.
   if(track == 1){
     track_timeout++;
-    if(track_timeout > 4000){ // Abort & Reset
+    if(track_timeout > 4000){ // Abort & Reset, treat it as a miss...
       fired = 0;
       track_pos = 0;
       track = 0;
@@ -174,14 +175,14 @@ void setup(){
   DisplayController.setScanlinesPerCallBack(1);
   DisplayController.setDrawScanlineCallback(drawScanline);
   DisplayController.setResolution("\"320x240_60.00\" 6.00 320 336 360 400 240 243 247 252 -hsync -vsync");
-  // Folow the wirings available at:
+  // Follow the wirings available at:
   // https://github.com/fdivitto/FabGL
-  // This set is intended for arcade monitors, so just wire both HSync and VSync together and you'll be fine!
+  // This sketch is intended for arcade monitors, so just wire both HSync and VSync together and you'll be fine.
   
   width  = DisplayController.getScreenWidth();  // Register the screen width
   height = DisplayController.getScreenHeight(); // Register the screen height
 
-  // Some pre-defined colors
+  // Generate some pre-defined colors
   white = DisplayController.createRawPixel(RGB222(255, 255, 255));
   black = DisplayController.createRawPixel(RGB222(0, 0,0 ));
   red   = DisplayController.createRawPixel(RGB222(255, 0,0 ));
@@ -193,7 +194,6 @@ void setup(){
 
   // Attach the interrupt for the lightgun trigger
   attachInterrupt(digitalPinToInterrupt(TRIGGER_PIN), TriggerInterrupt, FALLING);
-
 
 }
 
