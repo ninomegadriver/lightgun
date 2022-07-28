@@ -21,7 +21,7 @@
 #include <fabgl.h>
 
 // IMPORTANT: The lighgun must be powered over 5v and that also means:
-//             that: YOU MUST USE A LOGIC CONVERTER OVER THESE PINS!
+//            YOU MUST USE A LOGIC CONVERTER OVER THESE PINS!
 uint8_t TRIGGER_PIN = 26; // Trigger pin from the lightgun
 uint8_t OPTICAL_PIN = 25; // Optical pin from the lightgun
 
