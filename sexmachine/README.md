@@ -23,15 +23,14 @@ However for a wider compatibility SEXMACHINE's setup is slightly different:
 - The ESP32 monitors every scanline and, in case of a hit, notifies the emulator via serial communication for it to translate the right gun shot position to the game.
 
 ## Circuit Diagram  
-[![Sexmachine Circuit's Diagram](sexmachine_circuit_diagram.jpg "Sexmachine Circuit's Diagram")](sexmachine_circuit_diagram.jpg "Sexmachine Circuit's Diagram")
+![Sexmachine Circuit's Diagram](https://raw.githubusercontent.com/ninomegadriver/lightgun/main/sexmachine/sexmachine_circuit_diagram.jpg)
 
 ## SEXMACHINE Jamma Board  
 The circuit is quite simple and can be easily build on a breadboard. Furthermore, if you have a spare generic VGA666 hat, you can also use it. Just solder some extra wires to the terminals for VSync (GPIO2), HSync (GPIO3) and the gun trigger (GPIO27), and get the CSync for the arcade monitor on the Hex Inverter pins 4 and 8.  
 
 However, I've desinged a board intended to be plug-and-play on any Jamma arcade cabinet. It was designed to ease the assembly process, by having all the components labeled in the silkscreen layer. Quite simple: order the pcb on PCBWay, order the part list and just solder everything in place until you have no holes left.
 
-![Sexmachine Jamma Board](sexmachine_board.png "Sexmachine Circuit's Diagram")  
-
+![Sexmachine Jamma Board](https://raw.githubusercontent.com/ninomegadriver/lightgun/main/Images/sexmachine_board.png)  
 
 
 ## Part List
@@ -69,10 +68,10 @@ However, I've desinged a board intended to be plug-and-play on any Jamma arcade 
 
 ## Putting It All Together and Playing  
 
-- Download a ***PI OS Bullseye lite*** image and burn it to a SDCard. There's no need to download a graphical version as, for this setup to work, you must run the emulator inside a pure text tty console. ***It wont't work inside X***;  
+- Download a [PI OS Bullseye lite](https://www.raspberrypi.com/software/) image and burn it to a SDCard. There's no need to download a graphical version as, for this setup to work, you must run the emulator inside a pure text tty console. ***It wont't work inside X***;  
 - Plug the SDCard into your Raspberry PI and finish the instalation and configuration. You can do this plugged into a LCD/LED monitor, there's no need to connect it just yet to the arcade monitor as the resolution will be really small and just make things harder;
-- Download and install the ***Sexmachine's Advance Mame*** from the ***releases section***.
-- Copy the provided ***config.txt*** to your "/boot" partition so you may boot into the right configuration for the Arcade Monitor;
+- Download and install the [Sexmachine's Advance Mame](https://github.com/ninomegadriver/lightgun/tree/main/sexmachine/sexmachine_advancemame) from the [releases section](https://github.com/ninomegadriver/lightgun/releases)
+- Copy the provided [config.txt](https://raw.githubusercontent.com/ninomegadriver/lightgun/main/sexmachine/config.txt) to your "/boot" partition so you may boot into the right configuration for the Arcade Monitor;
 - Proceed to assemble the hardware setup. Either by doing it on a breadboard or, if you have the Jamma Board, mount it on top of the RPI's GPIO;
 - Using the Arduino IDE upload the "ESPistol" sketch to your ESP32. If you're not familiar with this process, there's a [nice tutorial here](https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/);
 - Connect all needed parts, the LightGun, the Arcade Monitor and the ESP32 to the RPI via a usual USB cable; and
@@ -90,8 +89,8 @@ Live Demo:
 ## Some Games Tested So Far...
 | romset |  game | status | comments |
 |--------|:-----:|:-------:|:--------:|
-| opwolf | Operation Wold | Perfect | |
-| lethalen | Lethal Enforcers | Perfect | This whole project started on a Lethal Enforcers original arcade PCB repair |
+| opwolf | Operation Wold | perfect | |
+| lethalen | Lethal Enforcers | perfect | This whole project started on a Lethal Enforcers original arcade PCB repair |
 | lethalj | Lethal Justice | perfect | |
 | le2 | Lethal Enforcers 2 | percect | |
 | ghlpanic | Ghoul Panic | perfect | |
