@@ -65,6 +65,7 @@ However, I've desinged a board intended to be plug-and-play on any Jamma arcade 
 | Audio Jack      | 3.5mm Audio Jack                               |
 | Volume POT      | 5kΩ Potentiometer                              |
 | Terminal Block  | 2 Pin Terminal Blocks for Speakers Out         |
+| Power Out       | Female USB connector PCB mount "A" type        |
 
 ## Putting It All Together and Playing  
 
