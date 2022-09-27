@@ -44,6 +44,6 @@ Breakout and reproduction of the classic arcade lightgun board, manufactured by 
 | CR1  | Diode Rectifier    | 1N4148       |
 
 ## Hardware implementation on the ESP32
-A proof-of-concept sketch for the ESP32 is also [available here](https://github.com/ninomegadriver/lightgun/blob/main/ESP32Lightgun/ESP32Lightgun.ino).  
+A proof-of-concept sketch for the ESP32 is also [available here](https://github.com/ninomegadriver/lightgun/blob/main/lightgun/ESP32Lightgun/ESP32Lightgun.ino).  
 
 [![ESP32 Lightgun Video](https://img.youtube.com/vi/AmvQRUR2Au4/0.jpg)](https://www.youtube.com/watch?v=AmvQRUR2Au4)  
