@@ -9,9 +9,9 @@ You can find all the modifications done by doing a 'grep' in the main folder:
 [![Watch the video](https://img.youtube.com/vi/usHYl3YvgNg/maxresdefault.jpg)](https://youtu.be/usHYl3YvgNg)  
 
 ## Instructions:  
-Download and burn a PI OS bullseye ***LITE version*** image into a SDCard, boot and configure it on your Raspberry PI. For this technique to work, the emulator must have full control of the Framebuffer so ***it won't work inside X***. There's no reason to use a graphical version of PI OS as you'll need to call the emulator from a plain text shell console.  
+Download and burn a [PI OS Bullseye lite](https://www.raspberrypi.com/software/) image into a SDCard, boot and configure it on your Raspberry PI. For this technique to work, the emulator must have full control of the Framebuffer so ***it won't work inside X***. There's no reason to use a graphical version of PI OS as you'll need to call the emulator from a plain text shell console.  
 
-Follow the [***Sexmachine's circuit diagram***](https://github.com/nino/lightgun/sexmachine) for connecting the Raspberry PI to the Arcade Monitor and the lightGun. Then, use the provided [***"config.txt"***](https://github.com/nino/lightgun/sexmachine/config.txt) to boot the Pi into the correct resolution.
+Follow the [Sexmachine's instructions here](https://github.com/ninomegadriver/lightgun/tree/main/sexmachine) for connecting the Raspberry PI to the Arcade Monitor and the lightGun. Then, use the provided [config.txt](https://raw.githubusercontent.com/ninomegadriver/lightgun/main/sexmachine/config.txt) to boot the Pi into the correct resolution.
 
 Afterwards, you may install the emulator using the provided .deb package:  
 
