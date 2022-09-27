@@ -3,7 +3,7 @@ Breakout and reproduction of the classic arcade lightgun board, manufactured by 
 
 ## Actual Lightgun Picture
 ![Actual Lightgun](https://raw.githubusercontent.com/ninomegadriver/lightgun/main/Images/Lightgun.jpg)  
-An important note is that the lightgun is still an active product manufactured and available for order by SUZOHAPP. [You can order it here](https://na.suzohapp.com/products/optical_guns/96-2300-12).  
+### An important note is that the lightgun is still an active product manufactured and available for order by SUZOHAPP. [You can order it here](https://na.suzohapp.com/products/optical_guns/96-2300-12).  
 
 ## Original PCB Pictures
 ![Original PCB Top](https://raw.githubusercontent.com/ninomegadriver/lightgun/main/Images/PCB-Top.jpg)  
@@ -15,9 +15,9 @@ An important note is that the lightgun is still an active product manufactured a
 
 ## Breakout  
 
-- Custom components reading availabe on the [Readings](https://github.com/ninomegadriver/lightgun/tree/main/Readings) folder.  
-- Gerbers for the reproduced board [Here](https://github.com/ninomegadriver/lightgun/tree/main/Gerbers).  
-- [Extra pictures](https://github.com/ninomegadriver/lightgun/tree/main/Gerbers) also provided.  
+- Custom components reading availabe on the [Readings](https://github.com/ninomegadriver/lightgun/tree/main/lightgun/Readings) folder.  
+- Gerbers for the reproduced board [Here](https://github.com/ninomegadriver/lightgun/tree/main/lightgun/Gerbers).  
+- [Extra pictures](https://github.com/ninomegadriver/lightgun/tree/main/Images) also provided.  
 
 ## Bill Of Materials  
 
