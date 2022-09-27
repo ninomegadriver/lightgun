@@ -6,7 +6,8 @@ An important note is that the lightgun is still an active product manufactured a
 
 This project is divided in two parts:  
 
-- [Documentation, circuit diagram and PCB Footprints of the actual lightgun](https://github.com/ninomegadriver/lightgun/lightgun)
-- [SEXMACHINE: A playable implementation of the lightgun on Advance Mame and Raspberry PI for legacy arcade monitors](https://github.com/ninomegadriver/lightgun/sexmachine)  
+- [Documentation, circuit diagram and PCB Footprints of the actual lightgun](https://github.com/ninomegadriver/lightgun/tree/main/lightgun)
+- [SEXMACHINE: A playable implementation of the lightgun on Advance Mame and Raspberry PI for legacy arcade monitors](https://github.com/ninomegadriver/lightgun/tree/main/sexmachine)  
   
+ ********************
 All documentation, files, software, firmware and hardware are provided under the terms of the GPL v3.0 license.
