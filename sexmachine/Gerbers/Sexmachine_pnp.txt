@@ -1,0 +1,103 @@
+*Pick And Place List
+*Company=
+*Author=
+*eMail=
+*
+*Project=Sexmachine
+*Date=15:17:02
+*CreatedBy=Fritzing 0.9.6b..0.9.6
+*
+*
+*Coordinates in mm, always center of component
+*Origin 0/0=Lower left corner of PCB
+*Rotation in degree (0-360, math. pos.)
+*
+*No;Value;Package;X;Y;Rotation;Side;Name
+1;;;99.9639;-21.7908;0;Bottom;Via49
+2;;;1.27075;-6.04283;0;Bottom;Via43
+3;;;111.761;-58.1127;0;Bottom;Hole4
+4;;;108.332;-48.7147;0;Bottom;Via48
+5;;DIP (Dual Inline) [THT];54.6108;-33.7287;0;Bottom;F04
+6;;THT;6.0489;-22.5121;-90;Bottom;Volume
+7;;;63.958;-36.5735;0;Bottom;Via55
+8;8.2k;THT;24.3487;-16.4347;-90;Bottom;Red3
+9;;;20.7017;-61.1607;0;Bottom;Via54
+10;;;36.6646;-27.1199;180;Bottom;TXT17
+11;;;32.9644;-29.367;180;Bottom;TXT18
+12;;;66.8027;-59.7637;0;Bottom;Via3
+13;;;20.0336;-8.0524;-90;Bottom;TXT7
+14;4.3k;THT;26.9248;-16.5075;-90;Bottom;Red4
+15;;;43.6887;-59.6367;0;Bottom;Via14
+16;;;40.3867;-40.0787;0;Bottom;Via37
+17;;;12.9522;-13.796;0;Bottom;Via41
+18;;THT;37.6809;-43.8507;180;Bottom;L- L+1
+19;;;48.6688;-60.6347;0;Bottom;Via8
+20;;;2.41384;-58.8747;0;Bottom;Hole5
+21;;THT;56.6808;-73.3097;180;Bottom;J1
+22;;;90.2977;-59.7637;0;Bottom;Via46
+23;;;76.7087;-61.0337;0;Bottom;Via38
+24;;;38.3547;-24.9658;0;Bottom;Via22
+25;16k;THT;53.4566;-16.4144;-90;Bottom;Red2
+26;;;84.8101;-59.8541;0;Bottom;IMG14
+27;2k;THT;48.6565;-16.4144;-90;Bottom;Green5
+28;;;87.906;-38.8537;-90;Bottom;ESP32 Devkit V1
+29;;THT;10.5808;-43.8507;180;Bottom;R- R+1
+30;;;26.03;-5.46994;0;Bottom;IMG11
+31;;;31.8777;-35.7608;0;Bottom;Via5
+32;;;42.5457;-40.2057;0;Bottom;Via39
+33;;;52.8689;-60.6347;0;Bottom;Via7
+34;;;76.2007;-2.10583;0;Bottom;Via52
+35;;;60.0717;-18.6158;0;Bottom;Via51
+36;;;35.4337;-35.7608;0;Bottom;Via18
+37;2k;THT;39.0565;-16.4144;-90;Bottom;Blue5
+38;;;59.0811;-43.4315;0;Bottom;Via45
+39;;;29.713;-7.29802;-90;Bottom;TXT15
+40;1k;THT;19.549;-16.4347;-90;Bottom;Green6
+41;;THT;18.5428;-4.64573;90;Bottom;J3
+42;;THT;31.7508;-56.0807;-90;Bottom;+12v GND1
+43;;;29.6178;-6.38933;0;Bottom;IMG11
+44;8.2k;THT;34.24;-16.5075;-90;Bottom;Green3
+45;;;59.5637;-60.2717;0;Bottom;Via47
+46;;THT;85.9798;-13.0277;0;Bottom;LightGun2
+47;;;2.41375;-29.6648;0;Bottom;Via44
+48;1k;THT;36.6564;-16.4144;-90;Bottom;Blue6
+49;;4Ucon 08780 [THT];4.39166;-7.35848;0;Bottom;Audio In
+50;;;92.6283;-3.34052;180;Bottom;IMG12
+51;;;58.9596;20.9943;0;Bottom;Raspberry Pi 3/4
+52;;THT;110.491;-19.3777;0;Bottom;J10
+53;510;THT;21.949;-16.4347;-90;Bottom;Green7
+54;;;89.0355;-12.9943;-90;Bottom;TXT16
+55;;;24.2502;-44.8689;-90;Bottom;IMG1
+56;4.3k;THT;46.2565;-16.4144;-90;Bottom;Green4
+57;;;29.9727;-35.7608;0;Bottom;Via20
+58;510;THT;31.8016;-16.3551;-90;Bottom;Blue7
+59;;;25.7841;-6.14538;0;Bottom;TXT9
+60;;;50.6856;-50.5291;180;Bottom;IMG13
+61;;;4.68587;-40.4174;0;Bottom;IMG15
+62;;;63.5007;-60.6527;0;Bottom;Via4
+63;;THT;24.3208;-33.6808;-90;Bottom;RIn G LIn1
+64;16k;THT;29.4564;-16.4144;-90;Bottom;Green2
+65;;;56.6687;-60.6347;0;Bottom;Via6
+66;;;3.55684;-33.2207;0;Bottom;Hole6
+67;;;45.5937;-29.0298;0;Bottom;Via42
+68;;THT;24.2607;-37.8807;90;Bottom;J6
+69;43k;THT;43.8565;-16.4144;-90;Bottom;Blue4
+70;;THT;110.491;-7.82073;90;Bottom;J11
+71;8.2k;THT;41.4565;-16.4144;-90;Bottom;Blue3
+72;;;21.9717;-26.3628;0;Bottom;Via50
+73;;usb-a-h;110.359;-13.5519;180;Bottom;Power Out
+74;;;4.64071;-51.4444;0;Bottom;IMG15
+75;;;101.827;-13.2251;-90;Bottom;TXT16
+76;510;THT;58.2563;-16.4144;-90;Bottom;Red7
+77;;;70.2318;-15.4407;0;Bottom;Level Conv.
+78;;THT;97.7908;-13.1547;0;Bottom;LightGun1
+79;;THT;16.7507;-56.0807;-90;Bottom;SW1
+80;;;45.7207;-60.8305;0;Bottom;Via13
+81;2k;THT;51.0565;-16.4144;-90;Bottom;Red5
+82;1k;THT;55.8563;-16.4144;-90;Bottom;Red6
+83;;;18.5894;-2.14944;0;Bottom;TXT8
+84;;;24.5666;-45.263;-90;Bottom;TXT3
+85;;THT;4.31885;-45.7937;0;Bottom;J9
+86;;;33.6557;-35.7608;0;Bottom;Via19
+87;;;17.2585;-8.0572;-90;Bottom;TXT6
+88;16k;THT;17.1712;-16.3551;-90;Bottom;Blue2
