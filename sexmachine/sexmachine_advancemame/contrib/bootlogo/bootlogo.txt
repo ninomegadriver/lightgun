@@ -1,0 +1,46 @@
+PURE DOS BOOT LOGO
+------------------
+
+by Robert Palmqvist aka EmuMannen
+
+I didn't like to look at config.sys and autoexec.bat getting loaded in my
+cabinet so I wrote two small programs. They are in the DOS device driver
+format but they are not real device drivers and they do not stay resistant.
+I made them that way just to be able to execute some code from config.sys
+using the "DEVICE=" command ("INSTALL=" waits until all devices are loaded
+and I wanted to execute my code before any other device driver loads). 
+
+This is how my programs work:
+BOOTMUTE.EXE is toggling int29h "fast console output" off first time called 
+and on again next time called. It will hide the cursor and clear the screen
+when turned off and show the cursor again when turned on.
+
+All output to the console will be disabled if you put the following line
+first in config.sys:
+"DEVICE=BOOTMUTE.EXE"
+
+Put the same line in config.sys or the following line in autoexec.bat:
+"BOOTMUTE.EXE"
+To enable screen writes again.
+
+So bootmute is able to make all screen writes disagree during the boot up
+sequence.
+
+BOOTLOGO.EXE is checking if current graph mode is 13h. It will try to set
+mode 13h and show the file "BOOTLOGO.PCX" if present if it is in mode 13h.
+It will try to set mode 3 (text mode) if it is already in mode 13h.
+BOOTLOGO.PCX must be a 320*200*256c pcx file in the current directory.
+
+So I can put BOOTMUTE.EXE, BOOTLOGO.EXE and BOOTLOGO.PCX in the root of my
+boot drive and put the following lines first in config.sys:
+"DEVICE=BOOTMUTE.EXE"
+"DEVICE=BOOTLOGO.EXE"
+
+It will disable screen writes for all other programs, hide the cursor and
+show the boot logo in mode 13h. I can then put the following lines just
+before calling AdvanceMenu in autoexec.bat:
+
+"BOOTLOGO.EXE"
+"BOOTMUTE.EXE"
+
+And it will turn screen writes on, show the cursor and reset to text mode.

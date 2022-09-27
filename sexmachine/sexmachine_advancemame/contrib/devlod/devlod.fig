@@ -1,0 +1,838 @@
+Figure 1: Basic Structure of DEVLOD
+
+
+startup code (C0.ASM)
+main (DEVLOD.C)
+    Move_Loader
+        movup (MOVUP.ASM)
+    Load_Drvr
+        INT 21h Function 4B03h (Load Overlay)
+    Get_List
+        INT 21h Function 52h (Get List of Lists)
+        based on DOS version number:
+            get number of block devices
+            get value of LASTDRIVE
+            get Current Directory Structure (CDS) base
+            get pointer to NUL device
+    Init_Drvr
+        call DD init routine
+            build command packet
+            call Strategy
+            call Interrupt
+    Get_Out
+        if block device:
+            Put_Blk_Dev
+                for each unit:
+                    Next_Drive
+                        get next available drive letter
+                    INT 21h Function 32h (Get DPB)
+                    INT 21h Function 53h (Translate BPB -> DPB)
+                    poke CDS
+                    link into DPB chain
+        Fix_DOS_Chain
+            link into dev chain
+        release environment space
+        INT 21h Function 31h (TSR)
+
+
+-----------------------------------------------------------------------------
+
+Figure 2: Loading Device Drivers
+
+
+C:\UNDOC\KYLE>devlod \dos\smartdrv.sys 256 /a
+Microsoft SMARTDrive Disk Cache version 3.03
+    Cache size: 256K in Expanded Memory
+    Room for 30 tracks of 17 sectors each
+    Minimum cache size will be 0K
+
+C:\UNDOC\KYLE>devlod \dos\ramdrive.sys
+Microsoft RAMDrive version 3.04 virtual disk D:
+    Disk size: 64k
+    Sector size: 512 bytes
+    Allocation unit: 1 sectors
+    Directory entries: 64
+
+C:\UNDOC\KYLE>devlod \dos\vdisk.sys
+VDISK Version 3.2 virtual disk E:
+   Buffer size adjusted
+   Sector size adjusted
+   Directory entries adjusted
+   Buffer size:         64 KB
+   Sector size:        128
+   Directory entries:   64
+
+C:\UNDOC\KYLE>devlod \dos\ansi.sys
+
+C:\UNDOC\KYLE>mem
+Seg     Owner   Size           Env
+09F3    0008    00F4 (  3904)        config [15 2F 4B 67 ]
+0AE8    0AE9    00D3 (  3376)  0BC1  c:\dos33\command.com   [22 23 24 2E ]
+0BBC    0000    0003 (    48)        free 
+0BC0    0AE9    0019 (   400)            
+0BDA    0AE9    0004 (    64)            
+0BDF    3074    000D (   208)            
+0BED    0000    0000 (     0)        free 
+0BEE    0BEF    0367 ( 13936)  0BE0   \msc\bin\smartdrv.sys 256 /a [13 19 ]
+0F56    0F57    1059 ( 66960)  0BE0   \msc\bin\ramdrive.sys  [F1 FA ]
+1FB0    1FB1    104C ( 66752)  0BE0   \dos33\vdisk.sys  
+2FFD    2FFE    0075 (  1872)  0BE0   \dos33\ansi.sys  [1B 29 ]
+3073    3074    1218 ( 74112)  0BE0  C:\UNDOC\KYLE\MEM.EXE   [00 ]
+428C    0000    7573 (481072)        free [30 F8 ]
+
+C:\UNDOC\KYLE>dev
+NUL     
+CON     
+Block: 1 unit(s)
+Block: 1 unit(s)
+SMARTAAR
+QEMM386$
+EMMXXXX0
+CON     
+AUX     
+PRN     
+CLOCK$  
+Block: 3 unit(s)
+COM1    
+LPT1    
+LPT2    
+LPT3    
+COM2    
+COM3    
+COM4
+
+-----------------------------------------------------------------------------
+
+Sidebar
+
+Some DOS and BIOS Data Structures
+
+
+BPB     BIOS uses the BPB (Bios Parameter Block) to learn the format of a
+        block device. Normally, the BPB is part of a physical disk's boot
+        record, and contains information such as the number of bytes
+        in a sector, the number of root directory entries, the number of
+        sectors taken by the File Allocation Table (FAT), etc.
+
+CDS     The CDS (Current Directory Structure) is an undocumented array of
+        structures, sometimes also called the Drive Info Table, which
+        maintains the current state of each drive in the system. The array is
+        n elements long, where n equals LASTDRIVE.
+
+DPB     For every block device (disk drive) in the system, there is a DPB
+        (Drive Parameter Block). These 32-byte blocks contain the information
+        that DOS uses to convert cluster numbers into Logical Sector Numbers,
+        and also associate the device driver for that device with its
+        assigned drive letter.
+
+LoL     Probably the most commonly used undocumented DOS data structure,
+        the List of Lists is the DOS internal variable table, which includes,
+        amongst other things, the LASTDRIVE value, the head of the device
+        driver chain, and the CDS (Current Directory Structure). A pointer to
+        the LoL is returned in ES:BX by undocumented DOS Int 21h Function
+        52h.
+
+----------------------------------------------------------------------------
+
+Listing 1
+
+
+/********************************************************************
+ *     DEVLOD.C - Jim Kyle - 08/20/90                               *
+ *            Copyright 1990 by Jim Kyle - All Rights Reserved      *
+ *     (minor revisions by Andrew Schulman - 9/12/90                *
+ *     Dynamic loader for device drivers                            *
+ *            Requires Turbo C; see DEVLOD.MAK also for ASM helpers.*
+ ********************************************************************/
+     
+#include <stdio.h>
+#include <stdlib.h>
+#include <dos.h>
+
+typedef unsigned char BYTE;
+
+#define GETFLAGS __emit__(0x9F)     /* if any error, quit right now */
+#define FIXDS    __emit__(0x16,0x1F)/* PUSH SS, POP DS              */
+#define PUSH_BP  __emit__(0x55)
+#define POP_BP   __emit__(0x5D)
+
+unsigned _stklen = 0x200;
+unsigned _heaplen = 0;
+
+char FileName[65];  /* filename global buffer                       */
+char * dvrarg;      /* points to char after name in cmdline buffer  */
+unsigned movsize;   /* number of bytes to be moved up for driver    */
+void (far * driver)();  /* used as pointer to call driver code      */
+void far * drvptr;  /* holds pointer to device driver               */
+void far * nuldrvr; /* additional driver pointers                   */
+void far * nxtdrvr;
+BYTE far * nblkdrs; /* points to block device count in List of Lists*/
+unsigned lastdrive; /* value of LASTDRIVE in List of Lists          */
+BYTE far * CDSbase; /* base of Current Dir Structure                */
+int CDSsize;        /* size of CDS element                          */
+unsigned nulseg;    /* hold parts of ListOfLists pointer            */
+unsigned nulofs;
+unsigned LoLofs;
+
+#pragma pack(1)
+
+struct packet{      /* device driver's command packet               */
+    BYTE hdrlen;
+    BYTE unit;
+    BYTE command;       /* 0 to initialize      */
+    unsigned status;    /* 0x8000 is error      */
+    BYTE reserv[8];
+    BYTE nunits;
+    unsigned brkofs;    /* break adr on return  */
+    unsigned brkseg;    /* break seg on return  */
+    unsigned inpofs;    /* SI on input          */
+    unsigned inpseg;    /* _psp on input        */
+    BYTE NextDrv;       /* next available drive */
+  } CmdPkt;
+  
+typedef struct {    /* Current Directory Structure (CDS)            */
+    BYTE path[0x43];
+    unsigned flags;
+    void far *dpb;
+    unsigned start_cluster;
+    unsigned long ffff;
+    unsigned slash_offset;  /* offset of '\' in current path field  */
+    // next for DOS4+ only
+    BYTE unknown;
+    void far *ifs;
+    unsigned unknown2;
+    } CDS;
+
+extern unsigned _psp;       /* established by startup code in c0    */
+extern unsigned _heaptop;   /* established by startup code in c0    */
+extern BYTE _osmajor;       /* established by startup code      */
+extern BYTE _osminor;       /* established by startup code      */
+
+void _exit( int );          /* established by startup code in c0    */
+void abort( void );         /* established by startup code in c0    */
+
+void movup( char far *, char far *, int ); /* in MOVUP.ASM file     */
+void copyptr( void far *src, void far *dst ); /* in MOVUP.ASM file  */
+
+void exit(int c)            /* called by startup code's sequence    */
+{ _exit(c);}
+
+int Get_Driver_Name ( void )
+{ char *nameptr;
+  int i, j, cmdlinesz;
+
+  nameptr = (char *)0x80;   /* check command line for driver name   */
+  cmdlinesz = (unsigned)*nameptr++;
+  if (cmdlinesz < 1)        /* if nothing there, return FALSE       */
+    return 0;
+  for (i=0; i<cmdlinesz && nameptr[i]<'!'; i++) /* skip blanks      */
+    ;
+  dvrarg = (char *)&nameptr[i]; /* save to put in SI                */
+  for ( j=0; i<cmdlinesz && nameptr[i]>' '; i++)    /* copy name    */
+    FileName[j++] = nameptr[i];
+  FileName[j] = '\0';
+
+  return 1;                 /* and return TRUE to keep going        */
+}
+
+void Put_Msg ( char *msg )
+{ 
+#ifdef INT29
+    /* gratuitous use of undocumented DOS */
+    while (*msg)
+    { _AL = *msg++;             /* MOV AL,*msg  */
+      geninterrupt(0x29);       /* INT 29h */
+    }
+#else
+    _AH = 2;    /* doesn't need to be inside loop */
+    while (*msg)
+    { _DL = *msg++;            
+      geninterrupt(0x21);
+    }
+#endif
+}
+
+void Err_Halt ( char *msg )     /* print message and abort          */
+{ Put_Msg ( msg );
+  Put_Msg ( "\r\n" );           /* send CR,LF   */
+  abort();
+}
+
+void Move_Loader ( void )       /* vacate lower part of RAM         */
+{
+    unsigned movsize, destseg;
+    movsize = _heaptop - _psp; /* size of loader in paragraphs      */
+    destseg = *(unsigned far *)MK_FP( _psp, 2 ); /* end of memory   */
+    movup ( MK_FP( _psp, 0 ), MK_FP( destseg - movsize, 0 ),
+            movsize << 4);      /* move and fix segregs             */
+}
+
+void Load_Drvr ( void )         /* load driver file into RAM    */
+{ unsigned handle;
+  struct {
+    unsigned LoadSeg;
+    unsigned RelocSeg;
+  } ExecBlock;
+
+  ExecBlock.LoadSeg = _psp + 0x10;
+  ExecBlock.RelocSeg = _psp + 0x10;
+  _DX = (unsigned)&FileName[0];
+  _BX = (unsigned)&ExecBlock;
+  _ES = _SS;                    /* es:bx point to ExecBlock     */
+  _AX = 0x4B03;                 /* load overlay                 */
+  geninterrupt ( 0x21 );        /* DS is okay on this call      */
+  GETFLAGS;
+  if ( _AH & 1 )
+    Err_Halt ( "Unable to load driver file." );
+}
+
+void Get_List ( void )          /* set up pointers via List     */
+{ _AH = 0x52;                   /* find DOS List of Lists       */
+  geninterrupt ( 0x21 );
+  nulseg = _ES;                 /* DOS data segment             */
+  LoLofs = _BX;                 /* current drive table offset   */
+
+  switch( _osmajor )            /* NUL adr varies with version  */
+    {
+    case  0:
+      Err_Halt ( "Drivers not used in DOS V1." );
+    case  2:
+      nblkdrs = NULL;
+      nulofs = LoLofs + 0x17;
+      break;
+    case  3:
+      if (_osminor == 0)
+      {
+          nblkdrs = (BYTE far *) MK_FP(nulseg, LoLofs + 0x10);
+          lastdrive = *((BYTE far *) MK_FP(nulseg, LoLofs + 0x1b));
+          nulofs = LoLofs + 0x28;
+      }
+      else
+      {
+          nblkdrs = (BYTE far *) MK_FP(nulseg, LoLofs + 0x20);
+          lastdrive = *((BYTE far *) MK_FP(nulseg, LoLofs + 0x21));
+          nulofs = LoLofs + 0x22;
+      }
+      CDSbase = *(BYTE far * far *)MK_FP(nulseg, LoLofs + 0x16);
+      CDSsize = 81;
+      break;
+    case  4:
+    case  5:
+      nblkdrs = (BYTE far *) MK_FP(nulseg, LoLofs + 0x20);
+      lastdrive = *((BYTE far *) MK_FP(nulseg, LoLofs + 0x21));
+      nulofs  = LoLofs + 0x22;
+      CDSbase = *(BYTE far * far *) MK_FP(nulseg, LoLofs + 0x16);
+      CDSsize = 88;
+      break;
+    case 10:
+    case 20:
+      Err_Halt ( "OS2 DOS Box not supported." );
+    default:
+      Err_Halt ( "Unknown version of DOS!");
+    }
+}
+
+void Fix_DOS_Chain ( void )     /* patches driver into DOS chn  */
+{ unsigned i;
+
+  nuldrvr = MK_FP( nulseg, nulofs+0x0A ); /* verify the drvr    */
+  drvptr = "NUL     ";
+  for ( i=0; i<8; ++i )
+    if ( *((BYTE far *)nuldrvr+i) != *((BYTE far *)drvptr+i) )
+      Err_Halt ( "Failed to find NUL driver." );
+
+  nuldrvr = MK_FP( nulseg, nulofs );    /* point to NUL driver  */
+  drvptr  = MK_FP( _psp+0x10, 0 );      /* new driver's address */
+
+  copyptr ( nuldrvr, &nxtdrvr );        /* hold old head now    */
+  copyptr ( &drvptr, nuldrvr );         /* put new after NUL    */
+  copyptr ( &nxtdrvr, drvptr );         /* and old after new    */
+}
+
+// returns number of next free drive, -1 if none available
+int Next_Drive ( void )
+{
+#ifdef USE_BLKDEV
+  /* This incorrectly bashes SUBSTed and network drives */
+  return (nblkdrs && (*nblkdrs < lastdrive)) ? *nblkdrs : -1;
+#else
+  /* The following approach takes account of SUBSTed and
+     network-redirector drives */
+  CDS far *cds;
+  int i;
+  /* find first unused entry in CDS structure */
+  for (i=0, cds=CDSbase; i<lastdrive; i++, ((BYTE far *)cds)+=CDSsize)
+    if (! cds->flags)                /* found a free drive  */
+        break;
+  return (i == lastdrive) ? -1 : i; 
+#endif  
+}
+
+int Init_Drvr ( void )
+{ unsigned tmp;
+#define INIT 0
+  CmdPkt.command = INIT;        /* build command packet         */
+  CmdPkt.hdrlen = sizeof (struct packet);
+  CmdPkt.unit = 0;
+  CmdPkt.inpofs  = (unsigned)dvrarg;    /* points into cmd line */
+  CmdPkt.inpseg  = _psp;
+  /* can't really check for next drive here, because don't yet know
+     if this is a block driver or not */
+  CmdPkt.NextDrv = Next_Drive();
+  drvptr  = MK_FP( _psp+0x10, 0 );      /* new driver's address */
+
+  tmp = *((unsigned far *)drvptr+3);    /* STRATEGY pointer     */
+  driver = MK_FP( FP_SEG( drvptr ), tmp );
+  _ES = FP_SEG( (void far *)&CmdPkt );
+  _BX = FP_OFF( (void far *)&CmdPkt );
+  (*driver)();                  /* set up the packet address    */
+
+  tmp = *((unsigned far *)drvptr+4);    /* COMMAND pointer      */
+  driver = MK_FP( FP_SEG( drvptr ), tmp );
+  (*driver)();                  /* do the initialization        */
+  
+  /* check status code in command packet                        */
+  return (! ( CmdPkt.status & 0x8000 ));
+}
+
+int  Put_Blk_Dev ( void )   /* TRUE if Block Device failed      */
+{ int newdrv;
+  int retval = 1;           /* pre-set for failure              */
+  int unit = 0;
+  BYTE far *DPBlink;
+  CDS far *cds;
+  int i;
+
+  if ((Next_Drive() == -1) || CmdPkt.nunits == 0)
+    return retval;          /* cannot install block driver      */
+  if (CmdPkt.brkofs != 0)   /* align to next paragraph          */
+  {
+    CmdPkt.brkseg += (CmdPkt.brkofs >> 4) + 1;
+    CmdPkt.brkofs = 0;
+  }
+  while( CmdPkt.nunits-- )
+  {
+    if ((newdrv = Next_Drive()) == -1)
+        return 1;
+    (*nblkdrs)++;
+    _AH = 0x32;             /* get last DPB and set poiner      */
+    _DL = newdrv;
+    geninterrupt ( 0x21 );
+    _AX = _DS;              /* save segment to make the pointer */
+    FIXDS;
+    DPBlink = MK_FP(_AX, _BX);
+    (unsigned) DPBlink += (_osmajor < 4 ? 24 : 25 );
+    _SI = *(unsigned far *)MK_FP(CmdPkt.inpseg, CmdPkt.inpofs);
+    _ES = CmdPkt.brkseg;
+    _DS = CmdPkt.inpseg;
+    _AH = 0x53;
+    PUSH_BP;
+    _BP = 0;
+    geninterrupt ( 0x21 );    /* build the DPB for this unit    */
+    POP_BP;
+    FIXDS;
+    *(void far * far *)DPBlink = MK_FP( CmdPkt.brkseg, 0 );
+
+    /* set up the Current Directory Structure for this drive */
+    cds = (CDS far *) (CDSbase + (newdrv * CDSsize));
+    cds->flags = 1 << 14;       /* PHYSICAL DRIVE */
+    cds->dpb = MK_FP(CmdPkt.brkseg, 0);
+    cds->start_cluster = 0xFFFF;
+    cds->ffff = -1L;
+    cds->slash_offset = 2;
+    if (_osmajor > 3)
+      { cds->unknown = 0;
+        cds->ifs = (void far *) 0;
+        cds->unknown2 = 0;
+      }
+      
+    /* set up pointers for DPB, driver  */
+    DPBlink = MK_FP( CmdPkt.brkseg, 0);
+    *DPBlink = newdrv;
+    *(DPBlink+1) = unit++;
+    if (_osmajor > 3)
+      DPBlink++;          /* add one if DOS 4                 */
+    *(long far *)(DPBlink+0x12) = (long)MK_FP( _psp+0x10, 0 );
+    *(long far *)(DPBlink+0x18) = 0xFFFFFFFF;
+    CmdPkt.brkseg += 2;       /* Leave two paragraphs for DPB   */
+    CmdPkt.inpofs += 2;       /* Point to next BPB pointer      */
+  }     /* end of nunits loop   */
+  return 0;                 /* all went okay                    */
+}
+
+void Get_Out ( void )
+{ unsigned temp;
+
+  temp = *((unsigned far *)drvptr+2);   /* attribute word       */
+  if ((temp & 0x8000) == 0 )    /* if block device, set up tbls */
+    if (Put_Blk_Dev() )
+      Err_Halt( "Could not install block device" );
+
+  Fix_DOS_Chain ();             /* else patch it into DOS       */
+
+  _ES = *((unsigned *)MK_FP( _psp, 0x002C ));
+  _AH = 0x49;                   /* release environment space    */
+  geninterrupt ( 0x21 );
+
+  /* then set up regs for KEEP function, and go resident        */
+  temp = (CmdPkt.brkofs + 15);  /* normalize the offset         */
+  temp >>= 4;
+  temp += CmdPkt.brkseg;        /* add the segment address      */
+  temp -= _psp;                 /* convert to paragraph count   */
+  _AX = 0x3100;                 /* KEEP function of DOS         */
+  _DX = (unsigned)temp;         /* paragraphs to retain         */
+  geninterrupt ( 0x21 );        /* won't come back from here!   */
+}
+
+void main ( void )
+{ if (!Get_Driver_Name() )
+    Err_Halt ( "Device driver name required.");
+  Move_Loader ();               /* move code high and jump      */
+  Load_Drvr ();                 /* bring driver into freed RAM  */
+  Get_List();                   /* get DOS internal variables   */
+  if (Init_Drvr ())             /* let driver do its thing      */
+      Get_Out();                /* check init status, go TSR    */
+  else
+      Err_Halt ( "Driver initialization failed." );
+}
+
+------------------------------------------------------------------------------
+
+Listing 2
+
+
+        NAME    movup
+;[]------------------------------------------------------------[]
+;|      MOVUP.ASM -- helper code for DEVLOD.C                   |
+;|      Copyright 1990 by Jim Kyle - All Rights Reserved        |
+;[]------------------------------------------------------------[]
+
+_TEXT   SEGMENT BYTE PUBLIC 'CODE'
+_TEXT   ENDS
+
+_DATA   SEGMENT WORD PUBLIC 'DATA'
+_DATA   ENDS
+
+_BSS    SEGMENT WORD PUBLIC 'BSS'
+_BSS    ENDS
+
+DGROUP  GROUP   _TEXT, _DATA, _BSS
+
+ASSUME  CS:_TEXT, DS:DGROUP
+
+_TEXT   SEGMENT BYTE PUBLIC 'CODE'
+
+;-----------------------------------------------------------------
+;       movup( src, dst, nbytes )
+;       src and dst are far pointers. area overlap is NOT okay
+;-----------------------------------------------------------------
+        PUBLIC  _movup
+
+_movup  PROC      NEAR
+        push    bp
+        mov     bp, sp
+        push    si
+        push    di
+        lds     si,[bp+4]               ; source
+        les     di,[bp+8]               ; destination
+        mov     bx,es                   ; save dest segment
+        mov     cx,[bp+12]              ; byte count
+        cld
+        rep     movsb                   ; move everything to high ram
+        mov     ss,bx                   ; fix stack segment ASAP
+        mov     ds,bx                   ; adjust DS too
+        pop     di
+        pop     si
+        mov     sp, bp
+        pop     bp
+        pop     dx                      ; Get return address
+        push    bx                      ; Put segment up first
+        push    dx                      ; Now a far address on stack
+        retf
+_movup  ENDP
+
+;-------------------------------------------------------------------
+;       copyptr( src, dst )
+;       src and dst are far pointers.
+;       moves exactly 4 bytes from src to dst.
+;-------------------------------------------------------------------
+        PUBLIC  _copyptr
+
+_copyptr        PROC      NEAR
+        push    bp
+        mov     bp, sp
+        push    si
+        push    di
+        push    ds
+        lds     si,[bp+4]               ; source
+        les     di,[bp+8]               ; destination
+        cld
+        movsw
+        movsw
+        pop     ds
+        pop     di
+        pop     si
+        mov     sp, bp
+        pop     bp
+        ret
+_copyptr        ENDP
+
+_TEXT   ENDS
+
+        end
+
+
+
+------------------------------------------------------------------------------
+
+Listing 3
+
+
+        NAME c0
+;[]------------------------------------------------------------[] 
+;|  C0.ASM -- Start Up Code                                     | 
+;| based on Turbo-C startup code, extensively modified          |
+;[]------------------------------------------------------------[]
+
+_TEXT   SEGMENT BYTE PUBLIC 'CODE'
+_TEXT   ENDS
+
+_DATA   SEGMENT WORD PUBLIC 'DATA'
+_DATA   ENDS
+
+_BSS    SEGMENT WORD PUBLIC 'BSS'
+_BSS    ENDS
+
+DGROUP  GROUP   _TEXT, _DATA, _BSS
+
+;       External References
+
+EXTRN   _main : NEAR
+EXTRN   _exit : NEAR
+
+EXTRN   __stklen : WORD
+EXTRN   __heaplen : WORD
+
+PSPHigh         equ     00002h
+PSPEnv          equ     0002ch
+
+MINSTACK        equ     128     ; minimal stack size in words
+
+;       At the start, DS, ES, and SS are all equal to CS
+
+;/*-----------------------------------------------------*/
+;/*     Start Up Code                                   */
+;/*-----------------------------------------------------*/
+
+_TEXT   SEGMENT BYTE PUBLIC 'CODE'
+
+ASSUME  CS:_TEXT, DS:DGROUP
+
+        ORG     100h
+
+STARTX  PROC    NEAR
+
+        mov     dx, cs          ; DX = GROUP Segment address
+        mov     DGROUP@, dx
+        mov     ah, 30h         ; get DOS version
+        int     21h
+        mov     bp, ds:[PSPHigh]; BP = Highest Memory Segment Addr
+        mov     word ptr __heaptop, bp
+        mov     bx, ds:[PSPEnv] ; BX = Environment Segment address
+        mov     __version, ax   ; Keep major and minor version number
+        mov     __psp, es       ; Keep Program Segment Prefix address
+
+;       Determine the amount of memory that we need to keep
+
+        mov     dx, ds          ; DX = GROUP Segment address
+        sub     bp, dx          ; BP = remaining size in paragraphs
+        mov     di, __stklen    ; DI = Requested stack size
+;
+; Make sure that the requested stack size is at least MINSTACK words.
+;
+        cmp     di, 2*MINSTACK  ; requested stack big enough ?
+        jae     AskedStackOK    ; yes, use it
+        mov     di, 2*MINSTACK  ; no,  use minimal value
+        mov     __stklen, di    ; override requested stack size
+AskedStackOK:
+        add     di, offset DGROUP: edata
+        jb      InitFailed      ; DATA segment can NOT be > 64 Kbytes
+        add     di, __heaplen
+        jb      InitFailed      ; DATA segment can NOT be > 64 Kbytes
+        mov     cl, 4
+        shr     di, cl          ; $$$ Do not destroy CL $$$
+        inc     di              ; DI = DS size in paragraphs
+        cmp     bp, di
+        jnb     TooMuchRAM      ; Enough to run the program
+
+;       All initialization errors arrive here
+
+InitFailed:
+        jmp     near ptr _abort
+
+;       Set heap base and pointer
+
+TooMuchRAM:
+        mov     bx, di          ; BX = total paragraphs in DGROUP
+        shl     di, cl          ; $$$ CX is still equal to 4 $$$
+        add     bx, dx          ; BX = seg adr past DGROUP
+        mov     __heapbase, bx
+        mov     __brklvl, bx
+;
+;       Set the program stack down into RAM that will be kept.
+;
+        cli
+        mov     ss, dx          ; DGROUP
+        mov     sp, di          ; top of (reduced) program area
+        sti
+
+        mov     bx,__heaplen    ; set up heap top pointer
+        add     bx,15
+        shr     bx,cl           ; length in paragraphs
+        add     bx,__heapbase
+        mov     __heaptop, bx
+;
+;       Clear uninitialized data area to zeroes
+;
+        xor     ax, ax
+        mov     es, cs:DGROUP@
+        mov     di, offset DGROUP: bdata
+        mov     cx, offset DGROUP: edata
+        sub     cx, di
+        rep     stosb
+;
+;       exit(main());
+;
+        call    _main           ; the real C program
+        push    ax
+        call    _exit           ; part of the C program too
+
+;----------------------------------------------------------------
+;       _exit()
+;       Restore interrupt vector taken during startup.
+;       Exit to DOS.
+;----------------------------------------------------------------
+
+        PUBLIC  __exit
+__exit  PROC      NEAR
+        push    ss
+        pop     ds
+
+;       Exit to DOS
+
+ExitToDOS:
+        mov     bp,sp
+        mov     ah,4Ch
+        mov     al,[bp+2]
+        int     21h                     ; Exit to DOS
+
+__exit  ENDP
+
+STARTX  ENDP
+
+;[]------------------------------------------------------------[]
+;|      Miscellaneous functions                                 |
+;[]------------------------------------------------------------[]
+
+ErrorDisplay    PROC    NEAR
+                mov     ah, 040h
+                mov     bx, 2           ; stderr device
+                int     021h
+                ret
+ErrorDisplay    ENDP
+
+        PUBLIC  _abort
+_abort  PROC      NEAR
+                mov     cx, lgth_abortMSG
+                mov     dx, offset DGROUP: abortMSG
+MsgExit3        label   near
+                push    ss
+                pop     ds
+                call    ErrorDisplay
+CallExit3       label   near
+                mov     ax, 3
+                push    ax
+                call    __exit          ; _exit(3);
+_abort   ENDP
+
+;       The DGROUP@ variable is used to reload DS with DGROUP
+
+        PUBLIC  DGROUP@
+DGROUP@     dw    ?
+
+_TEXT   ENDS
+
+;[]------------------------------------------------------------[]
+;|      Start Up Data Area                                      |
+;[]------------------------------------------------------------[]
+
+_DATA   SEGMENT WORD PUBLIC 'DATA'
+
+abortMSG        db      'Quitting program...', 13, 10
+lgth_abortMSG   equ     $ - abortMSG
+
+;
+;                       Miscellaneous variables
+;
+        PUBLIC  __psp
+        PUBLIC  __version
+        PUBLIC  __osmajor
+        PUBLIC  __osminor
+
+__psp           dw      0
+__version       label   word
+__osmajor       db      0
+__osminor       db      0
+
+;       Memory management variables
+
+        PUBLIC  ___heapbase
+        PUBLIC  ___brklvl
+        PUBLIC  ___heaptop
+        PUBLIC  __heapbase
+        PUBLIC  __brklvl
+        PUBLIC  __heaptop
+
+___heapbase     dw      DGROUP:edata
+___brklvl       dw      DGROUP:edata
+___heaptop      dw      DGROUP:edata
+__heapbase      dw      0
+__brklvl        dw      0
+__heaptop       dw      0
+
+_DATA   ENDS
+
+_BSS    SEGMENT WORD PUBLIC 'BSS'
+
+bdata   label   byte
+edata   label   byte            ; mark top of used area
+
+_BSS    ENDS
+
+        END     STARTX
+
+
+------------------------------------------------------------------------------
+
+Listing 4
+
+
+# makefile for DEVLOD.COM - last revised 05/23/90 - jk
+# can substitute other assemblers for TASM
+
+c0.obj  :       c0.asm
+        tasm c0 /t/mx/la;
+
+movup.obj:      movup.asm
+        tasm movup /t/mx/la;
+
+devlod.obj:     devlod.c
+        tcc -c -ms devlod
+
+devlod.com:     devlod.obj c0.obj movup.obj
+        tlink c0 movup devlod /c/m,devlod
+        if exist devlod.com del devlod.com
+        exe2bin devlod.exe devlod.com
+        del devlod.exe
+
+

@@ -1,0 +1,12 @@
+[all]
+disable_audio_dither=1
+dtparam=audio=on
+dtoverlay=vga666
+enable_dpi_lcd=1
+display_default_lcd=1
+dpi_group=2
+dpi_mode=87
+hdmi_timings=288 1 16 32 48 224 1 11 3 25 0 0 0 59 0 6021143 1
+
+[pi4]
+arm_boost=1

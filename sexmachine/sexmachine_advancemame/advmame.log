@@ -1,0 +1,1699 @@
+emu: AdvanceMAME 3.9-50-g384e646 Aug 25 2022 00:59:55
+emu:language: select game lethalen
+emu: use configuration section 'lethalen'
+emu: use configuration section '288x224x60'
+emu: use configuration section '288x224'
+emu: use configuration section 'horizontal'
+emu: use configuration section 'lightgun'
+emu: use configuration section '2player'
+emu: use configuration section ''
+emu: *_load()
+emu:video: orientation game 0004
+emu:video: orientation user 0000
+emu:video: orientation blit 0004
+emu:video: orientation ui   0004
+advance:msg: Missing options 'device_video_clock'
+advance:msg: Missing 'device_video_format' specification
+emu:video: default format vga resolution
+advance:fileio: dir_rom /root/.advance/rom:/home/pi/advmame/share/advance/rom
+advance:fileio: dir_image /root/.advance/image:/home/pi/advmame/share/advance/image
+advance:fileio: dir_diff /root/.advance/diff
+advance:fileio: dir_sample /root/.advance/sample:/home/pi/advmame/share/advance/sample
+advance:fileio: dir_artwork /root/.advance/artwork:/home/pi/advmame/share/advance/artwork
+advance:fileio: dir_nvram /root/.advance/nvram
+advance:fileio: dir_hi /root/.advance/hi
+advance:fileio: dir_inp /root/.advance/inp
+advance:fileio: dir_sta /root/.advance/sta
+advance:fileio: dir_memcard /root/.advance/memcard
+advance:fileio: dir_snap /root/.advance/snap
+emu: os_inner_init()
+os: os_inner_init
+os: sys Linux
+os: release 5.10.92-v7l
+os: version #1 SMP Wed Aug 24 15:23:13 -03 2022
+os: machine armv7l
+os: sysconf(_SC_CLK_TCK) 100
+os: sysconf(_SC_NPROCESSORS_CONF) 4
+os: sysconf(_SC_NPROCESSORS_ONLN) 4
+os: sysconf(_SC_PHYS_PAGES) 479403
+os: sysconf(_SC_AVPHYS_PAGES) 193539
+os: sysconf(_SC_CHAR_BIT) 8
+os: sysconf(_SC_LONG_BIT) 32
+os: sysconf(_SC_WORD_BIT) 32
+os: compiler GNU 10.2.1
+os: compiled little endian system
+os: thread_id is equal at process_id. Probably NPTL threading.
+os: DISPLAY undef
+advance: measured time 0.001059 (1/944.287)
+advance: measured time 0.001059 (1/944.287)
+advance: measured time 0.001059 (1/944.287)
+advance: measured time 0.001059 (1/944.287)
+advance: measured time 0.00106 (1/943.396)
+advance: measured time 0.001061 (1/942.507)
+advance: measured time 0.001061 (1/942.507)
+advance: median time 0.001059 (1/944.287) (err 0.0944287%)
+os: sleep granularity 0.001059
+os: clock granularity 1e-06
+os: tcgetattr()
+emu: *_inner_init()
+video: adv_video_init
+video:fb: fb_init()
+video:fb: device_hdmi_pclock_low 0
+video:fb: devide_dpi_pclock_low 31250000
+video:fb: ioctl(FBIOGET_FSCREENINFO)
+video:fb: FBIOGET_VSCREENINFO
+video:fb: id BCM2708 FB
+video:fb: fix info
+video:fb: smem_start:3ebbb000h, smem_len:0003f000h
+video:fb: mmio_start:00000000h, mmio_len:00000000h
+video:fb: type:0, type_aux:0
+video:fb: visual:2 FB_VISUAL_TRUECOLOR
+video:fb: xpanstep:1, ypanstep:1, ywrapstep:0
+video:fb: line_length:1152
+video:fb: accel:0
+video:fb: variable info
+video:fb: xres:288, yres:224
+video:fb: xres_virtual:288, yres_virtual:224
+video:fb: xoffset:0, yoffset:0
+video:fb: bits_per_pixel:32, grayscale:0
+video:fb: red 8:16 green 8:8 blue 8:0 transp 8:24
+video:fb: nonstd:0, activate:0h
+video:fb: height:-1, width:-1
+video:fb: accel_flags:0
+video:fb: pixclock:0 (0 Hz), left:0, right:0, upper:0, lower:0, hsync:0, vsync:0
+video:fb: sync:0h
+video:fb: vmode:0h
+video:fb: detected Raspberry Pi/BCM2708 hardware
+video:fb: run "vcgencmd get_config sdtv_aspect set 1"
+video:fb: vcgencmd result "sdtv_aspect=1"
+video:vc: tv info
+video:vc: state 00400000: LCD_ATTACHED_DEFAULT
+video:vc: LCD state 00000000
+video:vc: 288x224
+video:vc: framerate 60
+video:vc: scanmode progressive
+video:vc: dump 00000000: 000040000000000020010000e0000000
+video:vc: dump 00000010: 3c000000000000000000000000000000
+video:vc: dump 00000020: 00000000000000000000000000000000
+video:vc: dump 00000030: 00000000
+video:fb: size 288x224
+video:fb: aspect 0x0
+video: select driver fb
+emu:video: suggested debugger size 640x480
+josytickb:event: joystickb_event_init(id:-1)
+joystickb:event: opening joystick from 0 to 32
+event: open device /dev/input/event0
+event: driver:1.0.1
+event: device vendor:0x239a product:0x80f4 version:0x0111 bus:0x0003 (usb)
+event: name:"Raspberry Pi Pico Keyboard"
+event: physical_location:"usb-0000:01:00.0-1.1/input3"
+event: EV_SYN: SYN_REPORT SYN_CONFIG 0x4
+event: EV_KEY: KEY_ESC KEY_1 KEY_2 KEY_3 KEY_4 KEY_5 KEY_6 KEY_7 KEY_8 KEY_9 KEY_0 KEY_MINUS KEY_EQUAL KEY_BACKSPACE KEY_TAB KEY_Q KEY_W KEY_E KEY_R KEY_T KEY_Y KEY_U KEY_I KEY_O KEY_P KEY_LEFTBRACE KEY_RIGHTBRACE KEY_ENTER KEY_LEFTCTRL KEY_A KEY_S KEY_D KEY_F KEY_G KEY_H KEY_J KEY_K KEY_L KEY_SEMICOLON KEY_APOSTROPHE KEY_GRAVE KEY_LEFTSHIFT KEY_BACKSLASH KEY_Z KEY_X KEY_C KEY_V KEY_B KEY_N KEY_M KEY_COMMA KEY_DOT KEY_SLASH KEY_RIGHTSHIFT KEY_KPASTERISK KEY_LEFTALT KEY_SPACE KEY_CAPSLOCK KEY_F1 KEY_F2 KEY_F3 KEY_F4 KEY_F5 KEY_F6 KEY_F7 KEY_F8 KEY_F9 KEY_F10 KEY_NUMLOCK KEY_SCROLLLOCK KEY_KP7 KEY_KP8 KEY_KP9 KEY_KPMINUS KEY_KP4 KEY_KP5 KEY_KP6 KEY_KPPLUS KEY_KP1 KEY_KP2 KEY_KP3 KEY_KP0 KEY_KPDOT 0x55 KEY_102ND KEY_F11 KEY_F12 0x59 0x5a 0x5b 0x5c 0x5d 0x5e 0x5f KEY_KPENTER KEY_RIGHTCTRL KEY_KPSLASH KEY_SYSRQ KEY_RIGHTALT KEY_HOME KEY_UP KEY_PAGEUP KEY_LEFT KEY_RIGHT KEY_END KEY_DOWN KEY_PAGEDOWN KEY_INSERT KEY_DELETE KEY_MUTE KEY_VOLUMEDOWN KEY_VOLUMEUP KEY_POWER KEY_KPEQUAL KEY_PAUSE KEY_KPCOMMA 0x7a 0x7b 0x7c KEY_LEFTMETA KEY_RIGHTMETA KEY_COMPOSE KEY_STOP KEY_AGAIN KEY_PROPS KEY_UNDO KEY_FRONT KEY_COPY KEY_OPEN KEY_PASTE KEY_FIND KEY_CUT KEY_HELP KEY_CALC KEY_SLEEP KEY_WWW KEY_COFFEE KEY_BACK KEY_FORWARD KEY_EJECTCD KEY_NEXTSONG KEY_PLAYPAUSE KEY_PREVIOUSSONG KEY_STOPCD KEY_REFRESH KEY_EDIT KEY_SCROLLUP KEY_SCROLLDOWN KEY_KPLEFTPAREN KEY_KPRIGHTPAREN KEY_F13 KEY_F14 KEY_F15 KEY_F16 KEY_F17 KEY_F18 KEY_F19 KEY_F20 KEY_F21 KEY_F22 KEY_F23 KEY_F24 KEY_UNKNOWN [163]
+event: EV_MSC: MSC_SCAN
+event: EV_LED: LED_NUML LED_CAPSL LED_SCROLLL LED_COMPOSE LED_KANA
+event: error in ioctl(EVIOCGBIT(EV_REP,1))
+event: desc:"Raspberry Pi Pico Keyboard"
+event: open device /dev/input/event1
+event: driver:1.0.1
+event: device vendor:0x239a product:0x80f4 version:0x0111 bus:0x0003 (usb)
+event: name:"Raspberry Pi Pico Mouse"
+event: physical_location:"usb-0000:01:00.0-1.1/input3"
+event: EV_SYN: SYN_REPORT SYN_CONFIG SYN_MT_REPORT 0x4
+event: EV_KEY: BTN_LEFT BTN_RIGHT BTN_MIDDLE BTN_SIDE BTN_EXTRA [5]
+event: EV_REL: REL_X REL_Y REL_WHEEL 0xb
+event: EV_MSC: MSC_SCAN
+event: desc:"Raspberry Pi Pico Mouse"
+event: open device /dev/input/event2
+event: driver:1.0.1
+event: device vendor:0x239a product:0x80f4 version:0x0111 bus:0x0003 (usb)
+event: name:"Raspberry Pi Pico Consumer Control"
+event: physical_location:"usb-0000:01:00.0-1.1/input3"
+event: EV_SYN: SYN_REPORT SYN_CONFIG SYN_MT_REPORT SYN_DROPPED 0x4
+event: EV_KEY: KEY_ESC KEY_ENTER KEY_KPMINUS KEY_KPPLUS KEY_UP KEY_LEFT KEY_RIGHT KEY_DOWN KEY_INSERT KEY_DELETE KEY_MUTE KEY_VOLUMEDOWN KEY_VOLUMEUP KEY_POWER KEY_PAUSE KEY_STOP KEY_PROPS KEY_UNDO KEY_COPY KEY_OPEN KEY_PASTE KEY_FIND KEY_CUT KEY_HELP KEY_MENU KEY_CALC KEY_SLEEP KEY_FILE KEY_WWW KEY_COFFEE KEY_MAIL KEY_BOOKMARKS KEY_BACK KEY_FORWARD KEY_EJECTCD KEY_NEXTSONG KEY_PLAYPAUSE KEY_PREVIOUSSONG KEY_STOPCD KEY_RECORD KEY_REWIND KEY_PHONE KEY_CONFIG KEY_HOMEPAGE KEY_REFRESH KEY_EXIT KEY_EDIT KEY_SCROLLUP KEY_SCROLLDOWN 0xb5 0xb6 KEY_CLOSE 0xcf 0xd0 0xd1 0xd2 0xd4 0xd8 0xd9 0xdb 0xdf KEY_BRIGHTNESSDOWN KEY_BRIGHTNESSUP 0xe4 0xe5 0xe6 0xe7 0xe8 0xe9 0xea 0xeb KEY_UNKNOWN 0xf1 0xf4 BTN_0 0x161 0x162 0x166 0x16a 0x16e 0x172 0x174 0x176 0x177 0x178 0x179 0x17a 0x17b 0x17c 0x17d 0x17f 0x180 0x182 0x183 0x185 0x188 0x189 0x18c 0x18d 0x18e 0x18f 0x190 0x191 0x192 0x193 0x195 0x197 0x198 0x199 0x19a 0x19c 0x1a0 0x1a1 0x1a2 0x1a3 0x1a4 0x1a5 0x1a6 0x1a7 0x1a8 0x1a9 0x1aa 0x1ab 0x1ac 0x1ad 0x1ae 0x1af 0x1b0 0x1b1 0x1b7 0x1ba 0x240 0x241 0x242 0x243 0x244 0x245 0x246 0x247 0x249 0x250 0x251 [142]
+event: EV_REL: REL_HWHEEL 0xc
+event: EV_ABS: 0x20[val:0,min:1,max:652,fuzz:0,flat:0]
+event: EV_MSC: MSC_SCAN
+event: desc:"Raspberry Pi Pico Consumer Control"
+event: open device /dev/input/event3
+event: driver:1.0.1
+event: device vendor:0x046d product:0xc31c version:0x0110 bus:0x0003 (usb)
+event: name:"Logitech USB Keyboard"
+event: physical_location:"usb-0000:01:00.0-1.3/input0"
+event: EV_SYN: SYN_REPORT SYN_CONFIG 0x4
+event: EV_KEY: KEY_ESC KEY_1 KEY_2 KEY_3 KEY_4 KEY_5 KEY_6 KEY_7 KEY_8 KEY_9 KEY_0 KEY_MINUS KEY_EQUAL KEY_BACKSPACE KEY_TAB KEY_Q KEY_W KEY_E KEY_R KEY_T KEY_Y KEY_U KEY_I KEY_O KEY_P KEY_LEFTBRACE KEY_RIGHTBRACE KEY_ENTER KEY_LEFTCTRL KEY_A KEY_S KEY_D KEY_F KEY_G KEY_H KEY_J KEY_K KEY_L KEY_SEMICOLON KEY_APOSTROPHE KEY_GRAVE KEY_LEFTSHIFT KEY_BACKSLASH KEY_Z KEY_X KEY_C KEY_V KEY_B KEY_N KEY_M KEY_COMMA KEY_DOT KEY_SLASH KEY_RIGHTSHIFT KEY_KPASTERISK KEY_LEFTALT KEY_SPACE KEY_CAPSLOCK KEY_F1 KEY_F2 KEY_F3 KEY_F4 KEY_F5 KEY_F6 KEY_F7 KEY_F8 KEY_F9 KEY_F10 KEY_NUMLOCK KEY_SCROLLLOCK KEY_KP7 KEY_KP8 KEY_KP9 KEY_KPMINUS KEY_KP4 KEY_KP5 KEY_KP6 KEY_KPPLUS KEY_KP1 KEY_KP2 KEY_KP3 KEY_KP0 KEY_KPDOT 0x55 KEY_102ND KEY_F11 KEY_F12 0x59 0x5a 0x5b 0x5c 0x5d 0x5e 0x5f KEY_KPENTER KEY_RIGHTCTRL KEY_KPSLASH KEY_SYSRQ KEY_RIGHTALT KEY_HOME KEY_UP KEY_PAGEUP KEY_LEFT KEY_RIGHT KEY_END KEY_DOWN KEY_PAGEDOWN KEY_INSERT KEY_DELETE KEY_MUTE KEY_VOLUMEDOWN KEY_VOLUMEUP KEY_POWER KEY_KPEQUAL KEY_PAUSE KEY_KPCOMMA 0x7a 0x7b 0x7c KEY_LEFTMETA KEY_RIGHTMETA KEY_COMPOSE KEY_STOP KEY_AGAIN KEY_PROPS KEY_UNDO KEY_FRONT KEY_COPY KEY_OPEN KEY_PASTE KEY_FIND KEY_CUT KEY_HELP KEY_CALC KEY_SLEEP KEY_WWW KEY_COFFEE KEY_BACK KEY_FORWARD KEY_EJECTCD KEY_NEXTSONG KEY_PLAYPAUSE KEY_PREVIOUSSONG KEY_STOPCD KEY_REFRESH KEY_EDIT KEY_SCROLLUP KEY_SCROLLDOWN KEY_KPLEFTPAREN KEY_KPRIGHTPAREN KEY_F13 KEY_F14 KEY_F15 KEY_F16 KEY_F17 KEY_F18 KEY_F19 KEY_F20 KEY_F21 KEY_F22 KEY_F23 KEY_F24 KEY_UNKNOWN [163]
+event: EV_MSC: MSC_SCAN
+event: EV_LED: LED_NUML LED_CAPSL LED_SCROLLL LED_COMPOSE LED_KANA
+event: error in ioctl(EVIOCGBIT(EV_REP,1))
+event: desc:"Logitech USB Keyboard"
+event: open device /dev/input/event4
+event: driver:1.0.1
+event: device vendor:0x046d product:0xc31c version:0x0110 bus:0x0003 (usb)
+event: name:"Logitech USB Keyboard Consumer Control"
+event: physical_location:"usb-0000:01:00.0-1.3/input1"
+event: EV_SYN: SYN_REPORT SYN_CONFIG SYN_DROPPED 0x4
+event: EV_KEY: KEY_MUTE KEY_VOLUMEDOWN KEY_VOLUMEUP KEY_STOP KEY_CALC KEY_FILE KEY_MAIL KEY_BOOKMARKS KEY_BACK KEY_FORWARD KEY_EJECTCD KEY_NEXTSONG KEY_PLAYPAUSE KEY_PREVIOUSSONG KEY_STOPCD KEY_REWIND KEY_CONFIG KEY_HOMEPAGE KEY_REFRESH 0xd0 0xd9 [21]
+event: EV_ABS: 0x20[val:0,min:-24,max:24,fuzz:0,flat:0]
+event: EV_MSC: MSC_SCAN
+event: desc:"Logitech USB Keyboard Consumer Control"
+event: open device /dev/input/event5
+event: driver:1.0.1
+event: device vendor:0x046d product:0xc31c version:0x0110 bus:0x0003 (usb)
+event: name:"Logitech USB Keyboard System Control"
+event: physical_location:"usb-0000:01:00.0-1.3/input1"
+event: EV_SYN: SYN_REPORT SYN_CONFIG 0x4
+event: EV_KEY: KEY_POWER KEY_SLEEP KEY_WAKEUP [3]
+event: EV_MSC: MSC_SCAN
+event: desc:"Logitech USB Keyboard System Control"
+event: error opening device /dev/input/event6, errno 2 (No such file or directory)
+event: error opening device /dev/input/event7, errno 2 (No such file or directory)
+event: error opening device /dev/input/event8, errno 2 (No such file or directory)
+event: error opening device /dev/input/event9, errno 2 (No such file or directory)
+event: error opening device /dev/input/event10, errno 2 (No such file or directory)
+event: error opening device /dev/input/event11, errno 2 (No such file or directory)
+event: error opening device /dev/input/event12, errno 2 (No such file or directory)
+event: error opening device /dev/input/event13, errno 2 (No such file or directory)
+event: error opening device /dev/input/event14, errno 2 (No such file or directory)
+event: error opening device /dev/input/event15, errno 2 (No such file or directory)
+event: error opening device /dev/input/event16, errno 2 (No such file or directory)
+event: error opening device /dev/input/event17, errno 2 (No such file or directory)
+event: error opening device /dev/input/event18, errno 2 (No such file or directory)
+event: error opening device /dev/input/event19, errno 2 (No such file or directory)
+event: error opening device /dev/input/event20, errno 2 (No such file or directory)
+event: error opening device /dev/input/event21, errno 2 (No such file or directory)
+event: error opening device /dev/input/event22, errno 2 (No such file or directory)
+event: error opening device /dev/input/event23, errno 2 (No such file or directory)
+event: error opening device /dev/input/event24, errno 2 (No such file or directory)
+event: error opening device /dev/input/event25, errno 2 (No such file or directory)
+event: error opening device /dev/input/event26, errno 2 (No such file or directory)
+event: error opening device /dev/input/event27, errno 2 (No such file or directory)
+event: error opening device /dev/input/event28, errno 2 (No such file or directory)
+event: error opening device /dev/input/event29, errno 2 (No such file or directory)
+event: error opening device /dev/input/event30, errno 2 (No such file or directory)
+event: error opening device /dev/input/event31, errno 2 (No such file or directory)
+event: open device /dev/input/event3
+joystickb:event: not a joystick on device /dev/input/event3
+event: open device /dev/input/event4
+joystickb:event: not a joystick on device /dev/input/event4
+event: open device /dev/input/event5
+joystickb:event: not a joystick on device /dev/input/event5
+event: open device /dev/input/event0
+joystickb:event: not a joystick on device /dev/input/event0
+event: open device /dev/input/event1
+joystickb:event: not a joystick on device /dev/input/event1
+event: open device /dev/input/event2
+joystickb:event: not a joystick on device /dev/input/event2
+advance:msg:event: No joystick found.
+josytickb:raw: joystickb_raw_init(id:-1)
+joystickb:raw: opening joystick from 0 to 4
+joystickb:raw: error opening device /dev/js0, errno 2 (No such file or directory)
+joystickb:raw: error opening device /dev/input/js0, errno 2 (No such file or directory)
+joystickb:raw: error opening device /dev/js1, errno 2 (No such file or directory)
+joystickb:raw: error opening device /dev/input/js1, errno 2 (No such file or directory)
+joystickb:raw: error opening device /dev/js2, errno 2 (No such file or directory)
+joystickb:raw: error opening device /dev/input/js2, errno 2 (No such file or directory)
+joystickb:raw: error opening device /dev/js3, errno 2 (No such file or directory)
+joystickb:raw: error opening device /dev/input/js3, errno 2 (No such file or directory)
+advance:msg:raw: No joystick found.
+joystickb:none: joystickb_none_init(id:-1)
+joystickb: select driver none
+mouseb:event: mouseb_event_init(id:-1)
+mouseb:event: opening mouse from 0 to 32
+event: open device /dev/input/event0
+event: driver:1.0.1
+event: device vendor:0x239a product:0x80f4 version:0x0111 bus:0x0003 (usb)
+event: name:"Raspberry Pi Pico Keyboard"
+event: physical_location:"usb-0000:01:00.0-1.1/input3"
+event: EV_SYN: SYN_REPORT SYN_CONFIG 0x4
+event: EV_KEY: KEY_ESC KEY_1 KEY_2 KEY_3 KEY_4 KEY_5 KEY_6 KEY_7 KEY_8 KEY_9 KEY_0 KEY_MINUS KEY_EQUAL KEY_BACKSPACE KEY_TAB KEY_Q KEY_W KEY_E KEY_R KEY_T KEY_Y KEY_U KEY_I KEY_O KEY_P KEY_LEFTBRACE KEY_RIGHTBRACE KEY_ENTER KEY_LEFTCTRL KEY_A KEY_S KEY_D KEY_F KEY_G KEY_H KEY_J KEY_K KEY_L KEY_SEMICOLON KEY_APOSTROPHE KEY_GRAVE KEY_LEFTSHIFT KEY_BACKSLASH KEY_Z KEY_X KEY_C KEY_V KEY_B KEY_N KEY_M KEY_COMMA KEY_DOT KEY_SLASH KEY_RIGHTSHIFT KEY_KPASTERISK KEY_LEFTALT KEY_SPACE KEY_CAPSLOCK KEY_F1 KEY_F2 KEY_F3 KEY_F4 KEY_F5 KEY_F6 KEY_F7 KEY_F8 KEY_F9 KEY_F10 KEY_NUMLOCK KEY_SCROLLLOCK KEY_KP7 KEY_KP8 KEY_KP9 KEY_KPMINUS KEY_KP4 KEY_KP5 KEY_KP6 KEY_KPPLUS KEY_KP1 KEY_KP2 KEY_KP3 KEY_KP0 KEY_KPDOT 0x55 KEY_102ND KEY_F11 KEY_F12 0x59 0x5a 0x5b 0x5c 0x5d 0x5e 0x5f KEY_KPENTER KEY_RIGHTCTRL KEY_KPSLASH KEY_SYSRQ KEY_RIGHTALT KEY_HOME KEY_UP KEY_PAGEUP KEY_LEFT KEY_RIGHT KEY_END KEY_DOWN KEY_PAGEDOWN KEY_INSERT KEY_DELETE KEY_MUTE KEY_VOLUMEDOWN KEY_VOLUMEUP KEY_POWER KEY_KPEQUAL KEY_PAUSE KEY_KPCOMMA 0x7a 0x7b 0x7c KEY_LEFTMETA KEY_RIGHTMETA KEY_COMPOSE KEY_STOP KEY_AGAIN KEY_PROPS KEY_UNDO KEY_FRONT KEY_COPY KEY_OPEN KEY_PASTE KEY_FIND KEY_CUT KEY_HELP KEY_CALC KEY_SLEEP KEY_WWW KEY_COFFEE KEY_BACK KEY_FORWARD KEY_EJECTCD KEY_NEXTSONG KEY_PLAYPAUSE KEY_PREVIOUSSONG KEY_STOPCD KEY_REFRESH KEY_EDIT KEY_SCROLLUP KEY_SCROLLDOWN KEY_KPLEFTPAREN KEY_KPRIGHTPAREN KEY_F13 KEY_F14 KEY_F15 KEY_F16 KEY_F17 KEY_F18 KEY_F19 KEY_F20 KEY_F21 KEY_F22 KEY_F23 KEY_F24 KEY_UNKNOWN [163]
+event: EV_MSC: MSC_SCAN
+event: EV_LED: LED_NUML LED_CAPSL LED_SCROLLL LED_COMPOSE LED_KANA
+event: error in ioctl(EVIOCGBIT(EV_REP,1))
+event: desc:"Raspberry Pi Pico Keyboard"
+event: open device /dev/input/event1
+event: driver:1.0.1
+event: device vendor:0x239a product:0x80f4 version:0x0111 bus:0x0003 (usb)
+event: name:"Raspberry Pi Pico Mouse"
+event: physical_location:"usb-0000:01:00.0-1.1/input3"
+event: EV_SYN: SYN_REPORT SYN_CONFIG SYN_MT_REPORT 0x4
+event: EV_KEY: BTN_LEFT BTN_RIGHT BTN_MIDDLE BTN_SIDE BTN_EXTRA [5]
+event: EV_REL: REL_X REL_Y REL_WHEEL 0xb
+event: EV_MSC: MSC_SCAN
+event: desc:"Raspberry Pi Pico Mouse"
+event: open device /dev/input/event2
+event: driver:1.0.1
+event: device vendor:0x239a product:0x80f4 version:0x0111 bus:0x0003 (usb)
+event: name:"Raspberry Pi Pico Consumer Control"
+event: physical_location:"usb-0000:01:00.0-1.1/input3"
+event: EV_SYN: SYN_REPORT SYN_CONFIG SYN_MT_REPORT SYN_DROPPED 0x4
+event: EV_KEY: KEY_ESC KEY_ENTER KEY_KPMINUS KEY_KPPLUS KEY_UP KEY_LEFT KEY_RIGHT KEY_DOWN KEY_INSERT KEY_DELETE KEY_MUTE KEY_VOLUMEDOWN KEY_VOLUMEUP KEY_POWER KEY_PAUSE KEY_STOP KEY_PROPS KEY_UNDO KEY_COPY KEY_OPEN KEY_PASTE KEY_FIND KEY_CUT KEY_HELP KEY_MENU KEY_CALC KEY_SLEEP KEY_FILE KEY_WWW KEY_COFFEE KEY_MAIL KEY_BOOKMARKS KEY_BACK KEY_FORWARD KEY_EJECTCD KEY_NEXTSONG KEY_PLAYPAUSE KEY_PREVIOUSSONG KEY_STOPCD KEY_RECORD KEY_REWIND KEY_PHONE KEY_CONFIG KEY_HOMEPAGE KEY_REFRESH KEY_EXIT KEY_EDIT KEY_SCROLLUP KEY_SCROLLDOWN 0xb5 0xb6 KEY_CLOSE 0xcf 0xd0 0xd1 0xd2 0xd4 0xd8 0xd9 0xdb 0xdf KEY_BRIGHTNESSDOWN KEY_BRIGHTNESSUP 0xe4 0xe5 0xe6 0xe7 0xe8 0xe9 0xea 0xeb KEY_UNKNOWN 0xf1 0xf4 BTN_0 0x161 0x162 0x166 0x16a 0x16e 0x172 0x174 0x176 0x177 0x178 0x179 0x17a 0x17b 0x17c 0x17d 0x17f 0x180 0x182 0x183 0x185 0x188 0x189 0x18c 0x18d 0x18e 0x18f 0x190 0x191 0x192 0x193 0x195 0x197 0x198 0x199 0x19a 0x19c 0x1a0 0x1a1 0x1a2 0x1a3 0x1a4 0x1a5 0x1a6 0x1a7 0x1a8 0x1a9 0x1aa 0x1ab 0x1ac 0x1ad 0x1ae 0x1af 0x1b0 0x1b1 0x1b7 0x1ba 0x240 0x241 0x242 0x243 0x244 0x245 0x246 0x247 0x249 0x250 0x251 [142]
+event: EV_REL: REL_HWHEEL 0xc
+event: EV_ABS: 0x20[val:0,min:1,max:652,fuzz:0,flat:0]
+event: EV_MSC: MSC_SCAN
+event: desc:"Raspberry Pi Pico Consumer Control"
+event: open device /dev/input/event3
+event: driver:1.0.1
+event: device vendor:0x046d product:0xc31c version:0x0110 bus:0x0003 (usb)
+event: name:"Logitech USB Keyboard"
+event: physical_location:"usb-0000:01:00.0-1.3/input0"
+event: EV_SYN: SYN_REPORT SYN_CONFIG 0x4
+event: EV_KEY: KEY_ESC KEY_1 KEY_2 KEY_3 KEY_4 KEY_5 KEY_6 KEY_7 KEY_8 KEY_9 KEY_0 KEY_MINUS KEY_EQUAL KEY_BACKSPACE KEY_TAB KEY_Q KEY_W KEY_E KEY_R KEY_T KEY_Y KEY_U KEY_I KEY_O KEY_P KEY_LEFTBRACE KEY_RIGHTBRACE KEY_ENTER KEY_LEFTCTRL KEY_A KEY_S KEY_D KEY_F KEY_G KEY_H KEY_J KEY_K KEY_L KEY_SEMICOLON KEY_APOSTROPHE KEY_GRAVE KEY_LEFTSHIFT KEY_BACKSLASH KEY_Z KEY_X KEY_C KEY_V KEY_B KEY_N KEY_M KEY_COMMA KEY_DOT KEY_SLASH KEY_RIGHTSHIFT KEY_KPASTERISK KEY_LEFTALT KEY_SPACE KEY_CAPSLOCK KEY_F1 KEY_F2 KEY_F3 KEY_F4 KEY_F5 KEY_F6 KEY_F7 KEY_F8 KEY_F9 KEY_F10 KEY_NUMLOCK KEY_SCROLLLOCK KEY_KP7 KEY_KP8 KEY_KP9 KEY_KPMINUS KEY_KP4 KEY_KP5 KEY_KP6 KEY_KPPLUS KEY_KP1 KEY_KP2 KEY_KP3 KEY_KP0 KEY_KPDOT 0x55 KEY_102ND KEY_F11 KEY_F12 0x59 0x5a 0x5b 0x5c 0x5d 0x5e 0x5f KEY_KPENTER KEY_RIGHTCTRL KEY_KPSLASH KEY_SYSRQ KEY_RIGHTALT KEY_HOME KEY_UP KEY_PAGEUP KEY_LEFT KEY_RIGHT KEY_END KEY_DOWN KEY_PAGEDOWN KEY_INSERT KEY_DELETE KEY_MUTE KEY_VOLUMEDOWN KEY_VOLUMEUP KEY_POWER KEY_KPEQUAL KEY_PAUSE KEY_KPCOMMA 0x7a 0x7b 0x7c KEY_LEFTMETA KEY_RIGHTMETA KEY_COMPOSE KEY_STOP KEY_AGAIN KEY_PROPS KEY_UNDO KEY_FRONT KEY_COPY KEY_OPEN KEY_PASTE KEY_FIND KEY_CUT KEY_HELP KEY_CALC KEY_SLEEP KEY_WWW KEY_COFFEE KEY_BACK KEY_FORWARD KEY_EJECTCD KEY_NEXTSONG KEY_PLAYPAUSE KEY_PREVIOUSSONG KEY_STOPCD KEY_REFRESH KEY_EDIT KEY_SCROLLUP KEY_SCROLLDOWN KEY_KPLEFTPAREN KEY_KPRIGHTPAREN KEY_F13 KEY_F14 KEY_F15 KEY_F16 KEY_F17 KEY_F18 KEY_F19 KEY_F20 KEY_F21 KEY_F22 KEY_F23 KEY_F24 KEY_UNKNOWN [163]
+event: EV_MSC: MSC_SCAN
+event: EV_LED: LED_NUML LED_CAPSL LED_SCROLLL LED_COMPOSE LED_KANA
+event: error in ioctl(EVIOCGBIT(EV_REP,1))
+event: desc:"Logitech USB Keyboard"
+event: open device /dev/input/event4
+event: driver:1.0.1
+event: device vendor:0x046d product:0xc31c version:0x0110 bus:0x0003 (usb)
+event: name:"Logitech USB Keyboard Consumer Control"
+event: physical_location:"usb-0000:01:00.0-1.3/input1"
+event: EV_SYN: SYN_REPORT SYN_CONFIG SYN_DROPPED 0x4
+event: EV_KEY: KEY_MUTE KEY_VOLUMEDOWN KEY_VOLUMEUP KEY_STOP KEY_CALC KEY_FILE KEY_MAIL KEY_BOOKMARKS KEY_BACK KEY_FORWARD KEY_EJECTCD KEY_NEXTSONG KEY_PLAYPAUSE KEY_PREVIOUSSONG KEY_STOPCD KEY_REWIND KEY_CONFIG KEY_HOMEPAGE KEY_REFRESH 0xd0 0xd9 [21]
+event: EV_ABS: 0x20[val:0,min:-24,max:24,fuzz:0,flat:0]
+event: EV_MSC: MSC_SCAN
+event: desc:"Logitech USB Keyboard Consumer Control"
+event: open device /dev/input/event5
+event: driver:1.0.1
+event: device vendor:0x046d product:0xc31c version:0x0110 bus:0x0003 (usb)
+event: name:"Logitech USB Keyboard System Control"
+event: physical_location:"usb-0000:01:00.0-1.3/input1"
+event: EV_SYN: SYN_REPORT SYN_CONFIG 0x4
+event: EV_KEY: KEY_POWER KEY_SLEEP KEY_WAKEUP [3]
+event: EV_MSC: MSC_SCAN
+event: desc:"Logitech USB Keyboard System Control"
+event: error opening device /dev/input/event6, errno 2 (No such file or directory)
+event: error opening device /dev/input/event7, errno 2 (No such file or directory)
+event: error opening device /dev/input/event8, errno 2 (No such file or directory)
+event: error opening device /dev/input/event9, errno 2 (No such file or directory)
+event: error opening device /dev/input/event10, errno 2 (No such file or directory)
+event: error opening device /dev/input/event11, errno 2 (No such file or directory)
+event: error opening device /dev/input/event12, errno 2 (No such file or directory)
+event: error opening device /dev/input/event13, errno 2 (No such file or directory)
+event: error opening device /dev/input/event14, errno 2 (No such file or directory)
+event: error opening device /dev/input/event15, errno 2 (No such file or directory)
+event: error opening device /dev/input/event16, errno 2 (No such file or directory)
+event: error opening device /dev/input/event17, errno 2 (No such file or directory)
+event: error opening device /dev/input/event18, errno 2 (No such file or directory)
+event: error opening device /dev/input/event19, errno 2 (No such file or directory)
+event: error opening device /dev/input/event20, errno 2 (No such file or directory)
+event: error opening device /dev/input/event21, errno 2 (No such file or directory)
+event: error opening device /dev/input/event22, errno 2 (No such file or directory)
+event: error opening device /dev/input/event23, errno 2 (No such file or directory)
+event: error opening device /dev/input/event24, errno 2 (No such file or directory)
+event: error opening device /dev/input/event25, errno 2 (No such file or directory)
+event: error opening device /dev/input/event26, errno 2 (No such file or directory)
+event: error opening device /dev/input/event27, errno 2 (No such file or directory)
+event: error opening device /dev/input/event28, errno 2 (No such file or directory)
+event: error opening device /dev/input/event29, errno 2 (No such file or directory)
+event: error opening device /dev/input/event30, errno 2 (No such file or directory)
+event: error opening device /dev/input/event31, errno 2 (No such file or directory)
+event: open device /dev/input/event3
+mouseb:event: not a mouse on device /dev/input/event3
+event: open device /dev/input/event4
+mouseb:event: not a mouse on device /dev/input/event4
+event: open device /dev/input/event5
+mouseb:event: not a mouse on device /dev/input/event5
+event: open device /dev/input/event0
+mouseb:event: not a mouse on device /dev/input/event0
+event: open device /dev/input/event1
+event: open device /dev/input/event2
+mouseb: select driver event
+mouseb: identifier 0 '239a_80f4'
+mouseb: identifier 1 '239a_80f4_2'
+keyb:event: keyb_event_init(id:-1, disable_special:0)
+event: open device /dev/input/event0
+event: driver:1.0.1
+event: device vendor:0x239a product:0x80f4 version:0x0111 bus:0x0003 (usb)
+event: name:"Raspberry Pi Pico Keyboard"
+event: physical_location:"usb-0000:01:00.0-1.1/input3"
+event: EV_SYN: SYN_REPORT SYN_CONFIG 0x4
+event: EV_KEY: KEY_ESC KEY_1 KEY_2 KEY_3 KEY_4 KEY_5 KEY_6 KEY_7 KEY_8 KEY_9 KEY_0 KEY_MINUS KEY_EQUAL KEY_BACKSPACE KEY_TAB KEY_Q KEY_W KEY_E KEY_R KEY_T KEY_Y KEY_U KEY_I KEY_O KEY_P KEY_LEFTBRACE KEY_RIGHTBRACE KEY_ENTER KEY_LEFTCTRL KEY_A KEY_S KEY_D KEY_F KEY_G KEY_H KEY_J KEY_K KEY_L KEY_SEMICOLON KEY_APOSTROPHE KEY_GRAVE KEY_LEFTSHIFT KEY_BACKSLASH KEY_Z KEY_X KEY_C KEY_V KEY_B KEY_N KEY_M KEY_COMMA KEY_DOT KEY_SLASH KEY_RIGHTSHIFT KEY_KPASTERISK KEY_LEFTALT KEY_SPACE KEY_CAPSLOCK KEY_F1 KEY_F2 KEY_F3 KEY_F4 KEY_F5 KEY_F6 KEY_F7 KEY_F8 KEY_F9 KEY_F10 KEY_NUMLOCK KEY_SCROLLLOCK KEY_KP7 KEY_KP8 KEY_KP9 KEY_KPMINUS KEY_KP4 KEY_KP5 KEY_KP6 KEY_KPPLUS KEY_KP1 KEY_KP2 KEY_KP3 KEY_KP0 KEY_KPDOT 0x55 KEY_102ND KEY_F11 KEY_F12 0x59 0x5a 0x5b 0x5c 0x5d 0x5e 0x5f KEY_KPENTER KEY_RIGHTCTRL KEY_KPSLASH KEY_SYSRQ KEY_RIGHTALT KEY_HOME KEY_UP KEY_PAGEUP KEY_LEFT KEY_RIGHT KEY_END KEY_DOWN KEY_PAGEDOWN KEY_INSERT KEY_DELETE KEY_MUTE KEY_VOLUMEDOWN KEY_VOLUMEUP KEY_POWER KEY_KPEQUAL KEY_PAUSE KEY_KPCOMMA 0x7a 0x7b 0x7c KEY_LEFTMETA KEY_RIGHTMETA KEY_COMPOSE KEY_STOP KEY_AGAIN KEY_PROPS KEY_UNDO KEY_FRONT KEY_COPY KEY_OPEN KEY_PASTE KEY_FIND KEY_CUT KEY_HELP KEY_CALC KEY_SLEEP KEY_WWW KEY_COFFEE KEY_BACK KEY_FORWARD KEY_EJECTCD KEY_NEXTSONG KEY_PLAYPAUSE KEY_PREVIOUSSONG KEY_STOPCD KEY_REFRESH KEY_EDIT KEY_SCROLLUP KEY_SCROLLDOWN KEY_KPLEFTPAREN KEY_KPRIGHTPAREN KEY_F13 KEY_F14 KEY_F15 KEY_F16 KEY_F17 KEY_F18 KEY_F19 KEY_F20 KEY_F21 KEY_F22 KEY_F23 KEY_F24 KEY_UNKNOWN [163]
+event: EV_MSC: MSC_SCAN
+event: EV_LED: LED_NUML LED_CAPSL LED_SCROLLL LED_COMPOSE LED_KANA
+event: error in ioctl(EVIOCGBIT(EV_REP,1))
+event: desc:"Raspberry Pi Pico Keyboard"
+event: open device /dev/input/event1
+event: driver:1.0.1
+event: device vendor:0x239a product:0x80f4 version:0x0111 bus:0x0003 (usb)
+event: name:"Raspberry Pi Pico Mouse"
+event: physical_location:"usb-0000:01:00.0-1.1/input3"
+event: EV_SYN: SYN_REPORT SYN_CONFIG SYN_MT_REPORT 0x4
+event: EV_KEY: BTN_LEFT BTN_RIGHT BTN_MIDDLE BTN_SIDE BTN_EXTRA [5]
+event: EV_REL: REL_X REL_Y REL_WHEEL 0xb
+event: EV_MSC: MSC_SCAN
+event: desc:"Raspberry Pi Pico Mouse"
+event: open device /dev/input/event2
+event: driver:1.0.1
+event: device vendor:0x239a product:0x80f4 version:0x0111 bus:0x0003 (usb)
+event: name:"Raspberry Pi Pico Consumer Control"
+event: physical_location:"usb-0000:01:00.0-1.1/input3"
+event: EV_SYN: SYN_REPORT SYN_CONFIG SYN_MT_REPORT SYN_DROPPED 0x4
+event: EV_KEY: KEY_ESC KEY_ENTER KEY_KPMINUS KEY_KPPLUS KEY_UP KEY_LEFT KEY_RIGHT KEY_DOWN KEY_INSERT KEY_DELETE KEY_MUTE KEY_VOLUMEDOWN KEY_VOLUMEUP KEY_POWER KEY_PAUSE KEY_STOP KEY_PROPS KEY_UNDO KEY_COPY KEY_OPEN KEY_PASTE KEY_FIND KEY_CUT KEY_HELP KEY_MENU KEY_CALC KEY_SLEEP KEY_FILE KEY_WWW KEY_COFFEE KEY_MAIL KEY_BOOKMARKS KEY_BACK KEY_FORWARD KEY_EJECTCD KEY_NEXTSONG KEY_PLAYPAUSE KEY_PREVIOUSSONG KEY_STOPCD KEY_RECORD KEY_REWIND KEY_PHONE KEY_CONFIG KEY_HOMEPAGE KEY_REFRESH KEY_EXIT KEY_EDIT KEY_SCROLLUP KEY_SCROLLDOWN 0xb5 0xb6 KEY_CLOSE 0xcf 0xd0 0xd1 0xd2 0xd4 0xd8 0xd9 0xdb 0xdf KEY_BRIGHTNESSDOWN KEY_BRIGHTNESSUP 0xe4 0xe5 0xe6 0xe7 0xe8 0xe9 0xea 0xeb KEY_UNKNOWN 0xf1 0xf4 BTN_0 0x161 0x162 0x166 0x16a 0x16e 0x172 0x174 0x176 0x177 0x178 0x179 0x17a 0x17b 0x17c 0x17d 0x17f 0x180 0x182 0x183 0x185 0x188 0x189 0x18c 0x18d 0x18e 0x18f 0x190 0x191 0x192 0x193 0x195 0x197 0x198 0x199 0x19a 0x19c 0x1a0 0x1a1 0x1a2 0x1a3 0x1a4 0x1a5 0x1a6 0x1a7 0x1a8 0x1a9 0x1aa 0x1ab 0x1ac 0x1ad 0x1ae 0x1af 0x1b0 0x1b1 0x1b7 0x1ba 0x240 0x241 0x242 0x243 0x244 0x245 0x246 0x247 0x249 0x250 0x251 [142]
+event: EV_REL: REL_HWHEEL 0xc
+event: EV_ABS: 0x20[val:0,min:1,max:652,fuzz:0,flat:0]
+event: EV_MSC: MSC_SCAN
+event: desc:"Raspberry Pi Pico Consumer Control"
+event: open device /dev/input/event3
+event: driver:1.0.1
+event: device vendor:0x046d product:0xc31c version:0x0110 bus:0x0003 (usb)
+event: name:"Logitech USB Keyboard"
+event: physical_location:"usb-0000:01:00.0-1.3/input0"
+event: EV_SYN: SYN_REPORT SYN_CONFIG 0x4
+event: EV_KEY: KEY_ESC KEY_1 KEY_2 KEY_3 KEY_4 KEY_5 KEY_6 KEY_7 KEY_8 KEY_9 KEY_0 KEY_MINUS KEY_EQUAL KEY_BACKSPACE KEY_TAB KEY_Q KEY_W KEY_E KEY_R KEY_T KEY_Y KEY_U KEY_I KEY_O KEY_P KEY_LEFTBRACE KEY_RIGHTBRACE KEY_ENTER KEY_LEFTCTRL KEY_A KEY_S KEY_D KEY_F KEY_G KEY_H KEY_J KEY_K KEY_L KEY_SEMICOLON KEY_APOSTROPHE KEY_GRAVE KEY_LEFTSHIFT KEY_BACKSLASH KEY_Z KEY_X KEY_C KEY_V KEY_B KEY_N KEY_M KEY_COMMA KEY_DOT KEY_SLASH KEY_RIGHTSHIFT KEY_KPASTERISK KEY_LEFTALT KEY_SPACE KEY_CAPSLOCK KEY_F1 KEY_F2 KEY_F3 KEY_F4 KEY_F5 KEY_F6 KEY_F7 KEY_F8 KEY_F9 KEY_F10 KEY_NUMLOCK KEY_SCROLLLOCK KEY_KP7 KEY_KP8 KEY_KP9 KEY_KPMINUS KEY_KP4 KEY_KP5 KEY_KP6 KEY_KPPLUS KEY_KP1 KEY_KP2 KEY_KP3 KEY_KP0 KEY_KPDOT 0x55 KEY_102ND KEY_F11 KEY_F12 0x59 0x5a 0x5b 0x5c 0x5d 0x5e 0x5f KEY_KPENTER KEY_RIGHTCTRL KEY_KPSLASH KEY_SYSRQ KEY_RIGHTALT KEY_HOME KEY_UP KEY_PAGEUP KEY_LEFT KEY_RIGHT KEY_END KEY_DOWN KEY_PAGEDOWN KEY_INSERT KEY_DELETE KEY_MUTE KEY_VOLUMEDOWN KEY_VOLUMEUP KEY_POWER KEY_KPEQUAL KEY_PAUSE KEY_KPCOMMA 0x7a 0x7b 0x7c KEY_LEFTMETA KEY_RIGHTMETA KEY_COMPOSE KEY_STOP KEY_AGAIN KEY_PROPS KEY_UNDO KEY_FRONT KEY_COPY KEY_OPEN KEY_PASTE KEY_FIND KEY_CUT KEY_HELP KEY_CALC KEY_SLEEP KEY_WWW KEY_COFFEE KEY_BACK KEY_FORWARD KEY_EJECTCD KEY_NEXTSONG KEY_PLAYPAUSE KEY_PREVIOUSSONG KEY_STOPCD KEY_REFRESH KEY_EDIT KEY_SCROLLUP KEY_SCROLLDOWN KEY_KPLEFTPAREN KEY_KPRIGHTPAREN KEY_F13 KEY_F14 KEY_F15 KEY_F16 KEY_F17 KEY_F18 KEY_F19 KEY_F20 KEY_F21 KEY_F22 KEY_F23 KEY_F24 KEY_UNKNOWN [163]
+event: EV_MSC: MSC_SCAN
+event: EV_LED: LED_NUML LED_CAPSL LED_SCROLLL LED_COMPOSE LED_KANA
+event: error in ioctl(EVIOCGBIT(EV_REP,1))
+event: desc:"Logitech USB Keyboard"
+event: open device /dev/input/event4
+event: driver:1.0.1
+event: device vendor:0x046d product:0xc31c version:0x0110 bus:0x0003 (usb)
+event: name:"Logitech USB Keyboard Consumer Control"
+event: physical_location:"usb-0000:01:00.0-1.3/input1"
+event: EV_SYN: SYN_REPORT SYN_CONFIG SYN_DROPPED 0x4
+event: EV_KEY: KEY_MUTE KEY_VOLUMEDOWN KEY_VOLUMEUP KEY_STOP KEY_CALC KEY_FILE KEY_MAIL KEY_BOOKMARKS KEY_BACK KEY_FORWARD KEY_EJECTCD KEY_NEXTSONG KEY_PLAYPAUSE KEY_PREVIOUSSONG KEY_STOPCD KEY_REWIND KEY_CONFIG KEY_HOMEPAGE KEY_REFRESH 0xd0 0xd9 [21]
+event: EV_ABS: 0x20[val:0,min:-24,max:24,fuzz:0,flat:0]
+event: EV_MSC: MSC_SCAN
+event: desc:"Logitech USB Keyboard Consumer Control"
+event: open device /dev/input/event5
+event: driver:1.0.1
+event: device vendor:0x046d product:0xc31c version:0x0110 bus:0x0003 (usb)
+event: name:"Logitech USB Keyboard System Control"
+event: physical_location:"usb-0000:01:00.0-1.3/input1"
+event: EV_SYN: SYN_REPORT SYN_CONFIG 0x4
+event: EV_KEY: KEY_POWER KEY_SLEEP KEY_WAKEUP [3]
+event: EV_MSC: MSC_SCAN
+event: desc:"Logitech USB Keyboard System Control"
+event: error opening device /dev/input/event6, errno 2 (No such file or directory)
+event: error opening device /dev/input/event7, errno 2 (No such file or directory)
+event: error opening device /dev/input/event8, errno 2 (No such file or directory)
+event: error opening device /dev/input/event9, errno 2 (No such file or directory)
+event: error opening device /dev/input/event10, errno 2 (No such file or directory)
+event: error opening device /dev/input/event11, errno 2 (No such file or directory)
+event: error opening device /dev/input/event12, errno 2 (No such file or directory)
+event: error opening device /dev/input/event13, errno 2 (No such file or directory)
+event: error opening device /dev/input/event14, errno 2 (No such file or directory)
+event: error opening device /dev/input/event15, errno 2 (No such file or directory)
+event: error opening device /dev/input/event16, errno 2 (No such file or directory)
+event: error opening device /dev/input/event17, errno 2 (No such file or directory)
+event: error opening device /dev/input/event18, errno 2 (No such file or directory)
+event: error opening device /dev/input/event19, errno 2 (No such file or directory)
+event: error opening device /dev/input/event20, errno 2 (No such file or directory)
+event: error opening device /dev/input/event21, errno 2 (No such file or directory)
+event: error opening device /dev/input/event22, errno 2 (No such file or directory)
+event: error opening device /dev/input/event23, errno 2 (No such file or directory)
+event: error opening device /dev/input/event24, errno 2 (No such file or directory)
+event: error opening device /dev/input/event25, errno 2 (No such file or directory)
+event: error opening device /dev/input/event26, errno 2 (No such file or directory)
+event: error opening device /dev/input/event27, errno 2 (No such file or directory)
+event: error opening device /dev/input/event28, errno 2 (No such file or directory)
+event: error opening device /dev/input/event29, errno 2 (No such file or directory)
+event: error opening device /dev/input/event30, errno 2 (No such file or directory)
+event: error opening device /dev/input/event31, errno 2 (No such file or directory)
+event: open device /dev/input/event3
+event: open device /dev/input/event4
+event: open device /dev/input/event5
+event: open device /dev/input/event0
+event: open device /dev/input/event1
+keyb:event: not a keyboard on device /dev/input/event1
+event: open device /dev/input/event2
+keyb: select driver event
+keyb: identifier 0 '046d_c31c'
+keyb: identifier 1 '239a_80f4'
+keyb: identifier 2 '239a_80f4_2'
+keyb: identifier 3 '046d_c31c_3'
+keyb: identifier 4 '046d_c31c_2'
+emu:input: input code vector 7168
+emu:input: input devices
+Driver event, keyboards 5
+keyboard 0 '046d_c31c'
+	keys a b c d e f g h i j k l m n o p q r s t u v w x y z 0 1 2 3 4 5 6 7 8 9 0_pad 1_pad 2_pad 3_pad 4_pad 5_pad 6_pad 7_pad 8_pad 9_pad f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12 esc backquote minus equals backspace tab openbrace closebrace enter semicolon quote less comma period slash space insert del home end pgup pgdn left right down slash_pad asterisk_pad minus_pad plus_pad period_pad enter_pad prtscr pause lshift rshift lcontrol rcontrol lalt ralt lwin rwin menu numlock capslock stop again props undo front copy open paste find cut help calc sleep www coffee back forward ejectcd nextsong playpause previoussong stopcd refresh edit scrollup scrolldown leftparen_pad rightparen_pad f17
+keyboard 1 '239a_80f4'
+	keys a b c d e f g h i j k l m n o p q r s t u v w x y z 0 1 2 3 4 5 6 7 8 9 0_pad 1_pad 2_pad 3_pad 4_pad 5_pad 6_pad 7_pad 8_pad 9_pad f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12 esc backquote minus equals backspace tab openbrace closebrace enter semicolon quote less comma period slash space insert del home end pgup pgdn left right down slash_pad asterisk_pad minus_pad plus_pad period_pad enter_pad prtscr pause lshift rshift lcontrol rcontrol lalt ralt lwin rwin menu numlock capslock stop again props undo front copy open paste find cut help calc sleep www coffee back forward ejectcd nextsong playpause previoussong stopcd refresh edit scrollup scrolldown leftparen_pad rightparen_pad f17
+keyboard 2 '239a_80f4_2'
+	keys numlock capslock stop calc file mail bookmarks back forward ejectcd nextsong playpause previoussong stopcd rewind config homepage refresh
+keyboard 3 '046d_c31c_3'
+	keys sleep wakeup
+keyboard 4 '046d_c31c_2'
+	keys a 1 slash home lshift lcontrol rcontrol ralt rwin menu numlock capslock stop props undo copy open paste find cut help calc sleep file www coffee mail bookmarks back forward ejectcd nextsong playpause previoussong stopcd record rewind phone config homepage refresh exit edit scrollup scrolldown close brightnessdown brightnessup macro mute volumedown volumeup power compose f17 f18 f21
+Driver event, mouses 2
+mouse 0 '239a_80f4', axes 3, buttons 5
+	axe 0 [x]
+	axe 1 [y]
+	axe 2 [wheel]
+	button 0 [left]
+	button 1 [right]
+	button 2 [middle]
+	button 3 [side]
+	button 4 [extra]
+mouse 1 '239a_80f4_2', axes 1, buttons 0
+	axe 0 [hwheel]
+Driver none, joysticks 0
+emu:input: input analog mapping player:0 control:paddlex : mouse[0,0]
+emu:input: input analog mapping player:0 control:paddley : mouse[0,1]
+emu:input: input analog mapping player:0 control:stickx : mouse[0,0]
+emu:input: input analog mapping player:0 control:sticky : mouse[0,1]
+emu:input: input analog mapping player:0 control:stickz : <none>
+emu:input: input analog mapping player:0 control:lightgunx : mouse[0,0]
+emu:input: input analog mapping player:0 control:lightguny : mouse[0,1]
+emu:input: input analog mapping player:0 control:pedalgas : <none>
+emu:input: input analog mapping player:0 control:pedalbrake : <none>
+emu:input: input analog mapping player:0 control:pedalother : <none>
+emu:input: input analog mapping player:0 control:dialx : mouse[0,0]
+emu:input: input analog mapping player:0 control:dialy : mouse[0,1]
+emu:input: input analog mapping player:0 control:trackballx : mouse[0,0]
+emu:input: input analog mapping player:0 control:trackbally : mouse[0,1]
+emu:input: input analog mapping player:0 control:mousex : mouse[0,0]
+emu:input: input analog mapping player:0 control:mousey : mouse[0,1]
+emu:input: input analog mapping player:1 control:paddlex : <none>
+emu:input: input analog mapping player:1 control:paddley : <none>
+emu:input: input analog mapping player:1 control:stickx : <none>
+emu:input: input analog mapping player:1 control:sticky : <none>
+emu:input: input analog mapping player:1 control:stickz : <none>
+emu:input: input analog mapping player:1 control:lightgunx : <none>
+emu:input: input analog mapping player:1 control:lightguny : <none>
+emu:input: input analog mapping player:1 control:pedalgas : <none>
+emu:input: input analog mapping player:1 control:pedalbrake : <none>
+emu:input: input analog mapping player:1 control:pedalother : <none>
+emu:input: input analog mapping player:1 control:dialx : <none>
+emu:input: input analog mapping player:1 control:dialy : <none>
+emu:input: input analog mapping player:1 control:trackballx : <none>
+emu:input: input analog mapping player:1 control:trackbally : <none>
+emu:input: input analog mapping player:1 control:mousex : <none>
+emu:input: input analog mapping player:1 control:mousey : <none>
+emu:input: input analog mapping player:2 control:paddlex : <none>
+emu:input: input analog mapping player:2 control:paddley : <none>
+emu:input: input analog mapping player:2 control:stickx : <none>
+emu:input: input analog mapping player:2 control:sticky : <none>
+emu:input: input analog mapping player:2 control:stickz : <none>
+emu:input: input analog mapping player:2 control:lightgunx : <none>
+emu:input: input analog mapping player:2 control:lightguny : <none>
+emu:input: input analog mapping player:2 control:pedalgas : <none>
+emu:input: input analog mapping player:2 control:pedalbrake : <none>
+emu:input: input analog mapping player:2 control:pedalother : <none>
+emu:input: input analog mapping player:2 control:dialx : <none>
+emu:input: input analog mapping player:2 control:dialy : <none>
+emu:input: input analog mapping player:2 control:trackballx : <none>
+emu:input: input analog mapping player:2 control:trackbally : <none>
+emu:input: input analog mapping player:2 control:mousex : <none>
+emu:input: input analog mapping player:2 control:mousey : <none>
+emu:input: input analog mapping player:3 control:paddlex : <none>
+emu:input: input analog mapping player:3 control:paddley : <none>
+emu:input: input analog mapping player:3 control:stickx : <none>
+emu:input: input analog mapping player:3 control:sticky : <none>
+emu:input: input analog mapping player:3 control:stickz : <none>
+emu:input: input analog mapping player:3 control:lightgunx : <none>
+emu:input: input analog mapping player:3 control:lightguny : <none>
+emu:input: input analog mapping player:3 control:pedalgas : <none>
+emu:input: input analog mapping player:3 control:pedalbrake : <none>
+emu:input: input analog mapping player:3 control:pedalother : <none>
+emu:input: input analog mapping player:3 control:dialx : <none>
+emu:input: input analog mapping player:3 control:dialy : <none>
+emu:input: input analog mapping player:3 control:trackballx : <none>
+emu:input: input analog mapping player:3 control:trackbally : <none>
+emu:input: input analog mapping player:3 control:mousex : <none>
+emu:input: input analog mapping player:3 control:mousey : <none>
+emu:input: input analog mapping player:4 control:paddlex : <none>
+emu:input: input analog mapping player:4 control:paddley : <none>
+emu:input: input analog mapping player:4 control:stickx : <none>
+emu:input: input analog mapping player:4 control:sticky : <none>
+emu:input: input analog mapping player:4 control:stickz : <none>
+emu:input: input analog mapping player:4 control:lightgunx : <none>
+emu:input: input analog mapping player:4 control:lightguny : <none>
+emu:input: input analog mapping player:4 control:pedalgas : <none>
+emu:input: input analog mapping player:4 control:pedalbrake : <none>
+emu:input: input analog mapping player:4 control:pedalother : <none>
+emu:input: input analog mapping player:4 control:dialx : <none>
+emu:input: input analog mapping player:4 control:dialy : <none>
+emu:input: input analog mapping player:4 control:trackballx : <none>
+emu:input: input analog mapping player:4 control:trackbally : <none>
+emu:input: input analog mapping player:4 control:mousex : <none>
+emu:input: input analog mapping player:4 control:mousey : <none>
+emu:input: input analog mapping player:5 control:paddlex : <none>
+emu:input: input analog mapping player:5 control:paddley : <none>
+emu:input: input analog mapping player:5 control:stickx : <none>
+emu:input: input analog mapping player:5 control:sticky : <none>
+emu:input: input analog mapping player:5 control:stickz : <none>
+emu:input: input analog mapping player:5 control:lightgunx : <none>
+emu:input: input analog mapping player:5 control:lightguny : <none>
+emu:input: input analog mapping player:5 control:pedalgas : <none>
+emu:input: input analog mapping player:5 control:pedalbrake : <none>
+emu:input: input analog mapping player:5 control:pedalother : <none>
+emu:input: input analog mapping player:5 control:dialx : <none>
+emu:input: input analog mapping player:5 control:dialy : <none>
+emu:input: input analog mapping player:5 control:trackballx : <none>
+emu:input: input analog mapping player:5 control:trackbally : <none>
+emu:input: input analog mapping player:5 control:mousex : <none>
+emu:input: input analog mapping player:5 control:mousey : <none>
+emu:input: input analog mapping player:6 control:paddlex : <none>
+emu:input: input analog mapping player:6 control:paddley : <none>
+emu:input: input analog mapping player:6 control:stickx : <none>
+emu:input: input analog mapping player:6 control:sticky : <none>
+emu:input: input analog mapping player:6 control:stickz : <none>
+emu:input: input analog mapping player:6 control:lightgunx : <none>
+emu:input: input analog mapping player:6 control:lightguny : <none>
+emu:input: input analog mapping player:6 control:pedalgas : <none>
+emu:input: input analog mapping player:6 control:pedalbrake : <none>
+emu:input: input analog mapping player:6 control:pedalother : <none>
+emu:input: input analog mapping player:6 control:dialx : <none>
+emu:input: input analog mapping player:6 control:dialy : <none>
+emu:input: input analog mapping player:6 control:trackballx : <none>
+emu:input: input analog mapping player:6 control:trackbally : <none>
+emu:input: input analog mapping player:6 control:mousex : <none>
+emu:input: input analog mapping player:6 control:mousey : <none>
+emu:input: input analog mapping player:7 control:paddlex : <none>
+emu:input: input analog mapping player:7 control:paddley : <none>
+emu:input: input analog mapping player:7 control:stickx : <none>
+emu:input: input analog mapping player:7 control:sticky : <none>
+emu:input: input analog mapping player:7 control:stickz : <none>
+emu:input: input analog mapping player:7 control:lightgunx : <none>
+emu:input: input analog mapping player:7 control:lightguny : <none>
+emu:input: input analog mapping player:7 control:pedalgas : <none>
+emu:input: input analog mapping player:7 control:pedalbrake : <none>
+emu:input: input analog mapping player:7 control:pedalother : <none>
+emu:input: input analog mapping player:7 control:dialx : <none>
+emu:input: input analog mapping player:7 control:dialy : <none>
+emu:input: input analog mapping player:7 control:trackballx : <none>
+emu:input: input analog mapping player:7 control:trackbally : <none>
+emu:input: input analog mapping player:7 control:mousex : <none>
+emu:input: input analog mapping player:7 control:mousey : <none>
+emu:input: input_name start
+emu:ui: helpimage auto
+emu:ui: helptag auto
+emu:ui: helptag 'keyboard[0,esc] 6 5 12 12'
+emu:ui: helptag 'keyboard[0,f1] 26 5 12 12'
+emu:ui: helptag 'keyboard[0,f2] 38 5 12 12'
+emu:ui: helptag 'keyboard[0,f3] 50 5 12 12'
+emu:ui: helptag 'keyboard[0,f4] 62 5 12 12'
+emu:ui: helptag 'keyboard[0,f5] 81 5 12 12'
+emu:ui: helptag 'keyboard[0,f6] 93 5 12 12'
+emu:ui: helptag 'keyboard[0,f7] 105 5 12 12'
+emu:ui: helptag 'keyboard[0,f8] 117 5 12 12'
+emu:ui: helptag 'keyboard[0,f9] 137 5 12 12'
+emu:ui: helptag 'keyboard[0,f10] 149 5 12 12'
+emu:ui: helptag 'keyboard[0,f11] 161 5 12 12'
+emu:ui: helptag 'keyboard[0,f12] 173 5 12 12'
+emu:ui: helptag 'keyboard[0,backquote] 6 24 12 12'
+emu:ui: helptag 'keyboard[0,1] 18 24 12 12'
+emu:ui: helptag 'keyboard[0,2] 30 24 12 12'
+emu:ui: helptag 'keyboard[0,3] 42 24 12 12'
+emu:ui: helptag 'keyboard[0,4] 54 24 12 12'
+emu:ui: helptag 'keyboard[0,5] 66 24 12 12'
+emu:ui: helptag 'keyboard[0,6] 78 24 12 12'
+emu:ui: helptag 'keyboard[0,7] 90 24 12 12'
+emu:ui: helptag 'keyboard[0,8] 102 24 12 12'
+emu:ui: helptag 'keyboard[0,9] 114 24 12 12'
+emu:ui: helptag 'keyboard[0,0] 126 24 12 12'
+emu:ui: helptag 'keyboard[0,minus] 138 24 12 12'
+emu:ui: helptag 'keyboard[0,equals] 150 24 12 12'
+emu:ui: helptag 'keyboard[0,backspace] 162 24 24 12'
+emu:ui: helptag 'keyboard[0,tab] 6 36 18 12'
+emu:ui: helptag 'keyboard[0,q] 24 36 12 12'
+emu:ui: helptag 'keyboard[0,w] 36 36 12 12'
+emu:ui: helptag 'keyboard[0,e] 48 36 12 12'
+emu:ui: helptag 'keyboard[0,r] 60 36 12 12'
+emu:ui: helptag 'keyboard[0,t] 72 36 12 12'
+emu:ui: helptag 'keyboard[0,y] 84 36 12 12'
+emu:ui: helptag 'keyboard[0,u] 96 36 12 12'
+emu:ui: helptag 'keyboard[0,i] 108 36 12 12'
+emu:ui: helptag 'keyboard[0,o] 120 36 12 12'
+emu:ui: helptag 'keyboard[0,p] 132 36 12 12'
+emu:ui: helptag 'keyboard[0,openbrace] 144 36 12 12'
+emu:ui: helptag 'keyboard[0,closebrace] 156 36 12 12'
+emu:ui: helptag 'keyboard[0,enter] 168 36 18 12'
+emu:ui: helptag 'keyboard[0,capslock] 6 48 21 12'
+emu:ui: helptag 'keyboard[0,a] 27 48 12 12'
+emu:ui: helptag 'keyboard[0,s] 39 48 12 12'
+emu:ui: helptag 'keyboard[0,d] 51 48 12 12'
+emu:ui: helptag 'keyboard[0,f] 63 48 12 12'
+emu:ui: helptag 'keyboard[0,g] 75 48 12 12'
+emu:ui: helptag 'keyboard[0,h] 87 48 12 12'
+emu:ui: helptag 'keyboard[0,j] 99 48 12 12'
+emu:ui: helptag 'keyboard[0,k] 111 48 12 12'
+emu:ui: helptag 'keyboard[0,l] 123 48 12 12'
+emu:ui: helptag 'keyboard[0,semicolon] 135 48 12 12'
+emu:ui: helptag 'keyboard[0,quote] 147 48 12 12'
+emu:ui: helptag 'keyboard[0,backslash] 159 48 12 12'
+emu:ui: helptag 'keyboard[0,enter] 171 48 15 12'
+emu:ui: helptag 'keyboard[0,lshift] 6 60 14 12'
+emu:ui: helptag 'keyboard[0,less] 20 60 12 12'
+emu:ui: helptag 'keyboard[0,z] 32 60 12 12'
+emu:ui: helptag 'keyboard[0,x] 44 60 12 12'
+emu:ui: helptag 'keyboard[0,c] 56 60 12 12'
+emu:ui: helptag 'keyboard[0,v] 68 60 12 12'
+emu:ui: helptag 'keyboard[0,b] 80 60 12 12'
+emu:ui: helptag 'keyboard[0,n] 92 60 12 12'
+emu:ui: helptag 'keyboard[0,m] 104 60 12 12'
+emu:ui: helptag 'keyboard[0,comma] 116 60 12 12'
+emu:ui: helptag 'keyboard[0,period] 128 60 12 12'
+emu:ui: helptag 'keyboard[0,slash] 140 60 12 12'
+emu:ui: helptag 'keyboard[0,rshift] 152 60 34 12'
+emu:ui: helptag 'keyboard[0,lcontrol] 6 72 14 12'
+emu:ui: helptag 'keyboard[0,lwin] 20 72 14 12'
+emu:ui: helptag 'keyboard[0,lalt] 34 72 14 12'
+emu:ui: helptag 'keyboard[0,space] 48 72 82 12'
+emu:ui: helptag 'keyboard[0,ralt] 130 72 14 12'
+emu:ui: helptag 'keyboard[0,rwin] 144 72 14 12'
+emu:ui: helptag 'keyboard[0,menu] 158 72 14 12'
+emu:ui: helptag 'keyboard[0,rcontrol] 172 72 14 12'
+emu:ui: helptag 'keyboard[0,prtscr] 195 5 12 12'
+emu:ui: helptag 'keyboard[0,scrlock] 207 5 12 12'
+emu:ui: helptag 'keyboard[0,pause] 219 5 12 12'
+emu:ui: helptag 'keyboard[0,insert] 195 24 12 12'
+emu:ui: helptag 'keyboard[0,home] 207 24 12 12'
+emu:ui: helptag 'keyboard[0,pgup] 219 24 12 12'
+emu:ui: helptag 'keyboard[0,del] 195 36 12 12'
+emu:ui: helptag 'keyboard[0,end] 207 36 12 12'
+emu:ui: helptag 'keyboard[0,pgdn] 219 36 12 12'
+emu:ui: helptag 'keyboard[0,up] 207 60 12 12'
+emu:ui: helptag 'keyboard[0,left] 195 72 12 12'
+emu:ui: helptag 'keyboard[0,down] 207 72 12 12'
+emu:ui: helptag 'keyboard[0,right] 219 72 12 12'
+emu:ui: helptag 'keyboard[0,numlock] 240 24 12 12'
+emu:ui: helptag 'keyboard[0,slash_pad] 252 24 12 12'
+emu:ui: helptag 'keyboard[0,asterisk_pad] 264 24 12 12'
+emu:ui: helptag 'keyboard[0,minus_pad] 276 24 12 12'
+emu:ui: helptag 'keyboard[0,7_pad] 240 36 12 12'
+emu:ui: helptag 'keyboard[0,8_pad] 252 36 12 12'
+emu:ui: helptag 'keyboard[0,9_pad] 264 36 12 12'
+emu:ui: helptag 'keyboard[0,plus_pad] 276 36 12 12'
+emu:ui: helptag 'keyboard[0,4_pad] 240 48 12 12'
+emu:ui: helptag 'keyboard[0,5_pad] 252 48 12 12'
+emu:ui: helptag 'keyboard[0,6_pad] 264 48 12 12'
+emu:ui: helptag 'keyboard[0,plus_pad] 276 48 12 12'
+emu:ui: helptag 'keyboard[0,1_pad] 240 60 12 12'
+emu:ui: helptag 'keyboard[0,2_pad] 252 60 12 12'
+emu:ui: helptag 'keyboard[0,3_pad] 264 60 12 12'
+emu:ui: helptag 'keyboard[0,enter_pad] 276 60 12 12'
+emu:ui: helptag 'keyboard[0,0_pad] 240 72 24 12'
+emu:ui: helptag 'keyboard[0,period_pad] 264 72 12 12'
+emu:ui: helptag 'keyboard[0,enter_pad] 276 72 12 12'
+event: event file '/root/.advance/event.dat' not found
+emu: mame_game_run()
+osd: osd_get_path_count(pathtype:17)
+osd: osd_fopen(pathtype:17,pathindex:0,filename:english.lng,mode:rb)
+osd: osd_fopen() try file /root/.advance/english.lng
+osd: fzopen() failed, No such file or directory
+osd: osd_fopen() -> return (nil)
+osd: osd_get_path_info(pathtype:17,pathindex:0,filename:.zip)
+osd: osd_get_path_info() try /root/.advance/.zip
+osd: osd_get_path_info() -> failed
+osd: osd_fopen(pathtype:17,pathindex:1,filename:english.lng,mode:rb)
+osd: osd_fopen() try file /home/pi/advmame/share/advance/english.lng
+osd: fzopen() failed, No such file or directory
+osd: osd_fopen() -> return (nil)
+osd: osd_get_path_info(pathtype:17,pathindex:1,filename:.zip)
+osd: osd_get_path_info() try /home/pi/advmame/share/advance/.zip
+osd: osd_get_path_info() -> failed
+emu:global: osd_customize_inputport_list()
+osd: osd_display_loading_rom_message(name:191uae01.u4)
+osd: osd_get_path_count(pathtype:1)
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen
+osd: osd_get_path_info() -> failed
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen.zip)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen.zip
+osd: osd_get_path_info() -> file
+osd: osd_fopen(pathtype:1,pathindex:0,filename:lethalen.zip,mode:rb)
+osd: osd_fopen() try file /root/.advance/rom/lethalen.zip
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fseek(0x3303ab8, offset:0, whence:2)-> 0
+osd: osd_ftell(0x3303ab8) -> 5570393
+osd: osd_fseek(0x3303ab8, offset:5569369, whence:0)-> 0
+osd: osd_fseek(0x3303ab8, offset:5569762, whence:0)-> 0
+osd: osd_fseek(0x3303ab8, offset:5407197, whence:0)-> 0
+osd: osd_fseek(0x3303ab8, offset:5407238, whence:0)-> 0
+osd: osd_fclose(0x3303ab8)
+osd: osd_display_loading_rom_message(name:191a02.f4)
+osd: osd_get_path_count(pathtype:1)
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen
+osd: osd_get_path_info() -> failed
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen.zip)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen.zip
+osd: osd_get_path_info() -> file
+osd: osd_fopen(pathtype:1,pathindex:0,filename:lethalen.zip,mode:rb)
+osd: osd_fopen() try file /root/.advance/rom/lethalen.zip
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fseek(0x3303ab8, offset:0, whence:0)-> 0
+osd: osd_fseek(0x3303ab8, offset:39, whence:0)-> 0
+osd: osd_fclose(0x3303ab8)
+osd: osd_display_loading_rom_message(name:191a08)
+osd: osd_get_path_count(pathtype:1)
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen
+osd: osd_get_path_info() -> failed
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen.zip)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen.zip
+osd: osd_get_path_info() -> file
+osd: osd_fopen(pathtype:1,pathindex:0,filename:lethalen.zip,mode:rb)
+osd: osd_fopen() try file /root/.advance/rom/lethalen.zip
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fseek(0x3303ab8, offset:3699495, whence:0)-> 0
+osd: osd_fseek(0x3303ab8, offset:3699531, whence:0)-> 0
+osd: osd_fclose(0x3303ab8)
+osd: osd_display_loading_rom_message(name:191a10)
+osd: osd_get_path_count(pathtype:1)
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen
+osd: osd_get_path_info() -> failed
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen.zip)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen.zip
+osd: osd_get_path_info() -> file
+osd: osd_fopen(pathtype:1,pathindex:0,filename:lethalen.zip,mode:rb)
+osd: osd_fopen() try file /root/.advance/rom/lethalen.zip
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fseek(0x3303ab8, offset:4822498, whence:0)-> 0
+osd: osd_fseek(0x3303ab8, offset:4822534, whence:0)-> 0
+osd: osd_fclose(0x3303ab8)
+osd: osd_display_loading_rom_message(name:191a07)
+osd: osd_get_path_count(pathtype:1)
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen
+osd: osd_get_path_info() -> failed
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen.zip)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen.zip
+osd: osd_get_path_info() -> file
+osd: osd_fopen(pathtype:1,pathindex:0,filename:lethalen.zip,mode:rb)
+osd: osd_fopen() try file /root/.advance/rom/lethalen.zip
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fseek(0x3303ab8, offset:3160843, whence:0)-> 0
+osd: osd_fseek(0x3303ab8, offset:3160879, whence:0)-> 0
+osd: osd_fclose(0x3303ab8)
+osd: osd_display_loading_rom_message(name:191a09)
+osd: osd_get_path_count(pathtype:1)
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen
+osd: osd_get_path_info() -> failed
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen.zip)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen.zip
+osd: osd_get_path_info() -> file
+osd: osd_fopen(pathtype:1,pathindex:0,filename:lethalen.zip,mode:rb)
+osd: osd_fopen() try file /root/.advance/rom/lethalen.zip
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fseek(0x3303ab8, offset:4278739, whence:0)-> 0
+osd: osd_fseek(0x3303ab8, offset:4278775, whence:0)-> 0
+osd: osd_fclose(0x3303ab8)
+osd: osd_display_loading_rom_message(name:191a04)
+osd: osd_get_path_count(pathtype:1)
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen
+osd: osd_get_path_info() -> failed
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen.zip)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen.zip
+osd: osd_get_path_info() -> file
+osd: osd_fopen(pathtype:1,pathindex:0,filename:lethalen.zip,mode:rb)
+osd: osd_fopen() try file /root/.advance/rom/lethalen.zip
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fseek(0x3303ab8, offset:1695068, whence:0)-> 0
+osd: osd_fseek(0x3303ab8, offset:1695104, whence:0)-> 0
+osd: osd_fclose(0x3303ab8)
+osd: osd_display_loading_rom_message(name:191a05)
+osd: osd_get_path_count(pathtype:1)
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen
+osd: osd_get_path_info() -> failed
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen.zip)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen.zip
+osd: osd_get_path_info() -> file
+osd: osd_fopen(pathtype:1,pathindex:0,filename:lethalen.zip,mode:rb)
+osd: osd_fopen() try file /root/.advance/rom/lethalen.zip
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fseek(0x3303ab8, offset:2231529, whence:0)-> 0
+osd: osd_fseek(0x3303ab8, offset:2231565, whence:0)-> 0
+osd: osd_fclose(0x3303ab8)
+osd: osd_display_loading_rom_message(name:191a06)
+osd: osd_get_path_count(pathtype:1)
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen
+osd: osd_get_path_info() -> failed
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen.zip)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen.zip
+osd: osd_get_path_info() -> file
+osd: osd_fopen(pathtype:1,pathindex:0,filename:lethalen.zip,mode:rb)
+osd: osd_fopen() try file /root/.advance/rom/lethalen.zip
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fseek(0x3303ab8, offset:2816795, whence:0)-> 0
+osd: osd_fseek(0x3303ab8, offset:2816831, whence:0)-> 0
+osd: osd_fclose(0x3303ab8)
+osd: osd_display_loading_rom_message(name:191a03)
+osd: osd_get_path_count(pathtype:1)
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen
+osd: osd_get_path_info() -> failed
+osd: osd_get_path_info(pathtype:1,pathindex:0,filename:lethalen.zip)
+osd: osd_get_path_info() try /root/.advance/rom/lethalen.zip
+osd: osd_get_path_info() -> file
+osd: osd_fopen(pathtype:1,pathindex:0,filename:lethalen.zip,mode:rb)
+osd: osd_fopen() try file /root/.advance/rom/lethalen.zip
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fseek(0x3303ab8, offset:21891, whence:0)-> 0
+osd: osd_fseek(0x3303ab8, offset:21927, whence:0)-> 0
+osd: osd_fclose(0x3303ab8)
+osd: osd_display_loading_rom_message(name:(null))
+osd: osd_get_path_count(pathtype:8)
+osd: osd_fopen(pathtype:8,pathindex:0,filename:hiscore.dat,mode:rb)
+osd: osd_fopen() try file /root/.advance/hiscore.dat
+osd: fzopen() failed, No such file or directory
+osd: osd_fopen() -> return (nil)
+osd: osd_get_path_info(pathtype:8,pathindex:0,filename:.zip)
+osd: osd_get_path_info() try /root/.advance/.zip
+osd: osd_get_path_info() -> failed
+osd: osd_fopen(pathtype:8,pathindex:1,filename:hiscore.dat,mode:rb)
+osd: osd_fopen() try file /home/pi/advmame/share/advance/hiscore.dat
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fclose(0x3303ab8)
+osd: osd_start_audio_stream(sample_rate:44100, stereo_flag:1)
+osd: osd2_sound_init(sample_rate:44100, stereo_flag:1)
+sound:alsa: soundb_alsa_init(id:-1, rate:44100, stereo:1, buffer_time:0.3)
+sound:alsa: device_alsa_device default
+sound:alsa: device_alsa_mixed channel
+sound:alsa: using device default
+sound:alsa: selected rate 44100
+sound:alsa: request period_size of 413 samples
+sound:alsa: set_period_size_near() -> 444
+sound:alsa: request min_buffer_size of 14208 samples
+sound:alsa: set_buffer_size_min() -> 14208
+sound:alsa: request buffer_size of 13230 samples
+sound:alsa: set_buffer_size_near() -> 14208
+sound:alsa: hw period_time 10068 [us], dir 1
+sound:alsa: hw period_size 444, dir 0
+sound:alsa: hw periods 32, dir 0
+sound:alsa: hw buffer_time 322176 [us], dir 1
+sound:alsa: hw buffer_size 14208
+sound: select driver alsa
+emu:sound: dft sample 1024, size 1024
+sound:alsa: soundb_alsa_start(silence_time:0.05)
+sound:alsa: writing 8820 bytes, 2205 sample of silence
+osd: osd2_thread_init
+advance:thread: create
+osd: osd_start_audio_stream return 44100 rate
+glue: sound samples for frame 735
+advance:thread: start
+osd: osd_get_path_count(pathtype:5)
+osd: osd_get_path_info(pathtype:5,pathindex:0,filename:lethalen)
+osd: osd_get_path_info() try /root/.advance/artwork/lethalen
+osd: osd_get_path_info() -> failed
+osd: osd_get_path_info(pathtype:5,pathindex:0,filename:lethalen.zip)
+osd: osd_get_path_info() try /root/.advance/artwork/lethalen.zip
+osd: osd_get_path_info() -> failed
+osd: osd_get_path_info(pathtype:5,pathindex:1,filename:lethalen)
+osd: osd_get_path_info() try /home/pi/advmame/share/advance/artwork/lethalen
+osd: osd_get_path_info() -> failed
+osd: osd_get_path_info(pathtype:5,pathindex:1,filename:lethalen.zip)
+osd: osd_get_path_info() try /home/pi/advmame/share/advance/artwork/lethalen.zip
+osd: osd_get_path_info() -> failed
+osd: osd_create_display(width:288, height:224, aspect_x:4, aspect_y:3, depth:16, colors:14340, fps:60, attributes:24)
+osd: osd2_video_init
+osd: area_size_x 288, area_size_y 224
+osd: used_size_x 288, used_size_y 224, used_pos_x 0, used_pos_y 0
+osd: aspect_x 4, aspect_y 3
+osd: bits_per_pixel 16, rgb_flag 0, colors 14340
+osd: vector_flag 0
+osd: fps 60
+emu:video: generating video modes
+emu:video: best aspect factor 9x7 (expansion 1.25)
+advance:generate: fake "generate 0 288 288 288 288 224 224 224 224 +hsync +vsync"
+advance:generate: fake "generate-double 0 576 576 576 576 448 448 448 448 +hsync +vsync"
+advance:generate: fake "generate-triple 0 864 864 864 864 672 672 672 672 +hsync +vsync"
+advance:generate: fake "generate-quad 0 1152 1152 1152 1152 896 896 896 896 +hsync +vsync"
+emu:video: best mode 288x224, mode2x 576x448, mode3x 864x672, bits_per_pixel 16, vclock 60
+emu:video: game_area_size_x 288
+emu:video: game_area_size_y 224
+emu:video: game_used_pos_x 0
+emu:video: game_used_pos_y 0
+emu:video: game_used_size_x 288
+emu:video: game_used_size_y 224
+emu:video: game_aspect_x 1
+emu:video: game_aspect_y 1
+emu:video: video mode selection
+emu:video: accepted modeline:"generate-quad 0 1152 1152 1152 1152 896 896 896 896 +hsync +vsync"
+emu:video: accepted modeline:"generate-triple 0 864 864 864 864 672 672 672 672 +hsync +vsync"
+emu:video: accepted modeline:"generate-double 0 576 576 576 576 448 448 448 448 +hsync +vsync"
+emu:video: accepted modeline:"generate 0 288 288 288 288 224 224 224 224 +hsync +vsync"
+emu:video: 4 video modes
+emu:video: compare size integer multiplier
+emu:video: compare generate-quad/generate-triple, second is better
+emu:video: compare size integer multiplier
+emu:video: compare generate-double/generate, second is better
+emu:video: compare size integer multiplier
+emu:video: compare generate-triple/generate, second is better
+emu:video: compare size integer multiplier
+emu:video: compare generate-triple/generate-double, second is better
+emu:video: sorted list of video modes
+emu:video:   0 modeline:"generate 0 288 288 288 288 224 224 224 224 +hsync +vsync"
+emu:video:   1 modeline:"generate-double 0 576 576 576 576 448 448 448 448 +hsync +vsync"
+emu:video:   2 modeline:"generate-triple 0 864 864 864 864 672 672 672 672 +hsync +vsync"
+emu:video:   3 modeline:"generate-quad 0 1152 1152 1152 1152 896 896 896 896 +hsync +vsync"
+advance:selected: modeline:"generate 0 288 288 288 288 224 224 224 224 +hsync +vsync"
+emu:ui: font computation: screen 288x224, aspect 288x224
+emu:ui: font pixel size 7x7
+font: init freetype2 library 2.10.4
+font: init freetype2 library 2.10.4
+emu:video: palette_total 14340
+emu:video: palette_dirty_total 449
+emu:video: palette_dirty_mask 0000000f
+emu:video: game_visible_pos_x 0
+emu:video: game_visible_pos_y 0
+emu:video: game_visible_size_x 288
+emu:video: game_visible_size_y 224
+emu:video: mame_ui_area_set(min_x:0, min_y:0, max_x:287, max_y:223)
+video: mode_set generate 288x224 bgr32 0.00/0.00
+video:fb: fb_mode_set(288x224 bgr32, fake)
+video:fb: get old
+video:fb: FBIOGET_VSCREENINFO
+video:fb: variable info
+video:fb: xres:288, yres:224
+video:fb: xres_virtual:288, yres_virtual:224
+video:fb: xoffset:0, yoffset:0
+video:fb: bits_per_pixel:32, grayscale:0
+video:fb: red 8:16 green 8:8 blue 8:0 transp 8:24
+video:fb: nonstd:0, activate:0h
+video:fb: height:-1, width:-1
+video:fb: accel_flags:0
+video:fb: pixclock:0 (0 Hz), left:0, right:0, upper:0, lower:0, hsync:0, vsync:0
+video:fb: sync:0h
+video:fb: vmode:0h
+video:fb: set new
+video:fb: variable info
+video:fb: xres:288, yres:224
+video:fb: xres_virtual:288, yres_virtual:224
+video:fb: xoffset:0, yoffset:0
+video:fb: bits_per_pixel:32, grayscale:0
+video:fb: red 8:16 green 8:8 blue 8:0 transp 0:0
+video:fb: nonstd:0, activate:0h
+video:fb: height:0, width:0
+video:fb: accel_flags:0
+video:fb: pixclock:0 (0 Hz), left:0, right:0, upper:0, lower:0, hsync:0, vsync:0
+video:fb: sync:3h phsync pvsync
+video:fb: vmode:0h
+video:fb: ioctl(FBIOPUT_VSCREENINFO) 288x224 32 bits
+video:fb: get new
+video:fb: ioctl(FBIOGET_FSCREENINFO)
+video:fb: FBIOGET_VSCREENINFO
+video:fb: frequency 0
+video:fb: fix info
+video:fb: smem_start:3ebbb000h, smem_len:0003f000h
+video:fb: mmio_start:00000000h, mmio_len:00000000h
+video:fb: type:0, type_aux:0
+video:fb: visual:2 FB_VISUAL_TRUECOLOR
+video:fb: xpanstep:1, ypanstep:1, ywrapstep:0
+video:fb: line_length:1152
+video:fb: accel:0
+video:fb: variable info
+video:fb: xres:288, yres:224
+video:fb: xres_virtual:288, yres_virtual:224
+video:fb: xoffset:0, yoffset:0
+video:fb: bits_per_pixel:32, grayscale:0
+video:fb: red 8:16 green 8:8 blue 8:0 transp 8:24
+video:fb: nonstd:0, activate:0h
+video:fb: height:0, width:0
+video:fb: accel_flags:0
+video:fb: pixclock:0 (0 Hz), left:0, right:0, upper:0, lower:0, hsync:0, vsync:0
+video:fb: sync:3h phsync pvsync
+video:fb: vmode:0h
+advance: measured time 0.016658 (1/60.0312)
+advance: measured time 0.016678 (1/59.9592)
+advance: measured time 0.016771 (1/59.6267)
+advance: measured time 0.016772 (1/59.6232)
+advance: measured time 0.016772 (1/59.6232)
+advance: measured time 0.016774 (1/59.6161)
+advance: measured time 0.016774 (1/59.6161)
+advance: measured time 0.016775 (1/59.6125)
+advance: measured time 0.016775 (1/59.6125)
+advance: measured time 0.016776 (1/59.609)
+advance: measured time 0.016889 (1/59.2101)
+advance: median time 0.016774 (1/59.6161) (err 0.0119232%)
+video: measured vsync 59.6161
+video: measured/expected vert clock: 59.62/0.00 = 0 (err 0%)
+emu:video: color rgb 32-8/16,8/8,8/0, bytes_per_pixel 4
+emu:video: using 1 hardware video buffers
+emu:video: clear 0x0 288x224
+emu:video: clear 0x0 288x224
+emu:video: mode generate, size 288x224, bits_per_pixel 32, bytes_per_scanline 1152, pages 1
+keyb:event: keyb_event_enable(graphics:1)
+keyb:event: tcsetattr(/dev/tty, TCSAFLUSH, ICANON ~ECHO ISIG)
+keyb:event: tcsetattr(/dev/tty0, TCSAFLUSH, ~ICANON ~ECHO ~ISIG)
+keyb:event: ioctl(/dev/tty0, KDSETMODE, KD_GRAPHICS)
+emu:global: osd_config_load_default()
+emu:global: osd_config_load()
+emu:global: difficulty dip switch not found
+osd: osd_get_path_count(pathtype:6)
+osd: osd_fopen(pathtype:6,pathindex:0,filename:lethalen.nv,mode:rb)
+osd: osd_fopen() try file /root/.advance/nvram/lethalen.nv
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fclose(0x3303ab8)
+osd: osd2_area(216, 16, 503, 239)
+emu:video: game_visible_pos_x 0
+emu:video: game_visible_pos_y 0
+emu:video: game_visible_size_x 288
+emu:video: game_visible_size_y 224
+emu:video: mame_ui_area_set(min_x:216, min_y:16, max_x:503, max_y:239)
+advance:thread: realloc sample buffer 0 samples -> 1470 samples, 5880 bytes
+Soft reset
+osd: osd_reset()
+cpu #0 (PC=00008116): unmapped program memory byte write to 000040C0 = 00
+Warning: sound latch 0 written before being read. Previous: 00, new: fe
+cpu #0 (PC=00008190): unmapped program memory byte write to 00004090 = FE
+ERROR:sound:alsa: snd_pcm_avail() failed: Broken pipe. Increase the latency with -sound_latency.
+emu:video: pipeline scale from 288x224 to 288x224
+emu:video: pipeline_video 0
+emu:video: (1) vstretch
+emu:video: (2) palette 16>32, p 2
+emu:video: (3) hcopy, p 4
+emu:video: pipeline_video 1
+emu:video: (1) vstretch
+emu:video: (2) palette 16>32, p 2
+emu:video: pipeline_buffer
+emu:video: (1) vstretch
+emu:video: (2) palette 16>32, p 2
+ERROR:sound:alsa: snd_pcm_writei() failed: Broken pipe. Increase the latency with -sound_latency.
+Warning: sound latch 0 written before being read. Previous: fe, new: 97
+WARNING:emu:video: audio/video syncronization correction of -295 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -315 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -315 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -331 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -331 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -331 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -331 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -331 samples. Try increasing the 'sound_latency' option.
+log: last message repeated 5 times
+WARNING:emu:video: audio/video syncronization correction of -315 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -315 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -301 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -295 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -262 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -220 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -71 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -22 samples. Try increasing the 'sound_latency' option.
+advance: measured time 0.000207 (1/4830.92)
+advance: measured time 0.000208 (1/4807.69)
+advance: measured time 0.000233 (1/4291.85)
+advance: measured time 0.000236 (1/4237.29)
+advance: measured time 0.000237 (1/4219.41)
+advance: measured time 0.000288 (1/3472.22)
+advance: measured time 0.000317 (1/3154.57)
+advance: measured time 0.000328 (1/3048.78)
+advance: measured time 0.000358 (1/2793.3)
+advance: measured time 0.000365 (1/2739.73)
+advance: measured time 0.000368 (1/2717.39)
+advance: measured time 0.000382 (1/2617.8)
+advance: measured time 0.000417 (1/2398.08)
+advance: median time 0.000317 (1/3154.57) (err 12.6183%)
+emu:video: pipeline 0 -> time 0.000317
+advance: measured time 0.000223 (1/4484.3)
+advance: measured time 0.000231 (1/4329)
+advance: measured time 0.000249 (1/4016.06)
+advance: measured time 0.000257 (1/3891.05)
+advance: measured time 0.000274 (1/3649.64)
+advance: measured time 0.000286 (1/3496.5)
+advance: measured time 0.000316 (1/3164.56)
+advance: measured time 0.000408 (1/2450.98)
+advance: measured time 0.000427 (1/2341.92)
+advance: measured time 0.000428 (1/2336.45)
+advance: measured time 0.000429 (1/2331)
+advance: measured time 0.000436 (1/2293.58)
+advance: measured time 0.000444 (1/2252.25)
+advance: median time 0.000316 (1/3164.56) (err 38.6076%)
+emu:video: pipeline 1 -> time 0.000316
+emu:video: best is 0
+emu:video: audio/video syncronization correction of -13 samples
+osd:sound: normalize factor dB 6
+emu:video: audio/video syncronization correction of -4 samples
+emu:video: audio/video syncronization correction of 9 samples
+emu:video: audio/video syncronization correction of 12 samples
+emu:video: audio/video syncronization correction of 14 samples
+WARNING:emu:video: audio/video syncronization correction of 142 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 177 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 207 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 283 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 286 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 286 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 286 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 286 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 286 samples. Try increasing the 'sound_latency' option.
+log: last message repeated 7 times
+WARNING:emu:video: audio/video syncronization correction of 283 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 281 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 222 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 195 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 116 samples. Try increasing the 'sound_latency' option.
+emu:video: audio/video syncronization correction of 15 samples
+emu:video: audio/video syncronization correction of 15 samples
+emu:video: audio/video syncronization correction of 9 samples
+emu:video: audio/video syncronization correction of 3 samples
+emu:video: audio/video syncronization correction of -3 samples
+emu:video: audio/video syncronization correction of -3 samples
+emu:video: audio/video syncronization correction of -9 samples
+emu:video: audio/video syncronization correction of -15 samples
+cpu #0 (PC=00008596): unmapped program memory byte write to 00004080 = 00
+cpu #0 (PC=00008599): unmapped program memory byte write to 000040C0 = 00
+EEPROM read 0000 from address 02
+EEPROM read 0000 from address 03
+EEPROM read 0039 from address 04
+EEPROM read 0031 from address 05
+EEPROM read 0039 from address 06
+EEPROM read 0031 from address 07
+EEPROM read 0055 from address 08
+EEPROM read 0045 from address 09
+EEPROM read 0077 from address 0a
+EEPROM read 0000 from address 0b
+EEPROM read 0000 from address 0c
+EEPROM read 0000 from address 0d
+EEPROM read 0000 from address 0e
+EEPROM read 0001 from address 0f
+EEPROM read 0002 from address 10
+EEPROM read 0001 from address 11
+EEPROM read 0000 from address 12
+EEPROM read 0003 from address 13
+EEPROM read 0005 from address 14
+EEPROM read 0001 from address 15
+EEPROM read 0001 from address 16
+EEPROM read 0002 from address 17
+EEPROM read 0028 from address 18
+EEPROM read 0000 from address 19
+EEPROM read 0001 from address 1a
+EEPROM read 0000 from address 1b
+EEPROM read 0000 from address 1c
+EEPROM read 0000 from address 1d
+EEPROM read 0000 from address 1e
+EEPROM read 0000 from address 1f
+EEPROM read 0000 from address 20
+EEPROM read 0000 from address 21
+EEPROM read 0000 from address 22
+EEPROM read 0000 from address 23
+EEPROM read 0000 from address 24
+EEPROM read 0000 from address 25
+EEPROM read 0000 from address 26
+EEPROM read 0000 from address 27
+EEPROM read 0002 from address 00
+EEPROM read 001e from address 01
+EEPROM read 0077 from address 0a
+EEPROM read 0000 from address 02
+EEPROM read 0000 from address 03
+EEPROM read 0039 from address 04
+EEPROM read 0031 from address 05
+EEPROM read 0039 from address 06
+EEPROM read 0031 from address 07
+EEPROM read 0055 from address 08
+EEPROM read 0045 from address 09
+EEPROM read 0077 from address 0a
+EEPROM read 0000 from address 0b
+EEPROM read 0000 from address 0c
+EEPROM read 0000 from address 0d
+emu:video: audio/video syncronization correction of -15 samples
+EEPROM read 0000 from address 0e
+EEPROM read 0001 from address 0f
+EEPROM read 0002 from address 10
+EEPROM read 0001 from address 11
+EEPROM read 0000 from address 12
+EEPROM read 0003 from address 13
+EEPROM read 0005 from address 14
+EEPROM read 0001 from address 15
+EEPROM read 0001 from address 16
+EEPROM read 0002 from address 17
+EEPROM read 0028 from address 18
+EEPROM read 0000 from address 19
+EEPROM read 0001 from address 1a
+EEPROM read 0000 from address 1b
+EEPROM read 0000 from address 1c
+EEPROM read 0000 from address 1d
+EEPROM read 0000 from address 1e
+EEPROM read 0000 from address 1f
+EEPROM read 0000 from address 20
+EEPROM read 0000 from address 21
+EEPROM read 0000 from address 22
+EEPROM read 0000 from address 23
+EEPROM read 0000 from address 24
+EEPROM read 0000 from address 25
+EEPROM read 0000 from address 26
+EEPROM read 0000 from address 27
+WARNING:emu:video: audio/video syncronization correction of -114 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -187 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -206 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -218 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -220 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -225 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -225 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -225 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -225 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -225 samples. Try increasing the 'sound_latency' option.
+log: last message repeated 6 times
+WARNING:emu:video: audio/video syncronization correction of -220 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -218 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -139 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -120 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of -107 samples. Try increasing the 'sound_latency' option.
+emu:video: audio/video syncronization correction of -14 samples
+emu:video: audio/video syncronization correction of -12 samples
+emu:video: audio/video syncronization correction of -11 samples
+emu:video: audio/video syncronization correction of -4 samples
+emu:video: audio/video syncronization correction of 6 samples
+emu:video: audio/video syncronization correction of 7 samples
+emu:video: audio/video syncronization correction of 8 samples
+emu:video: audio/video syncronization correction of 9 samples
+emu:video: audio/video syncronization correction of 14 samples
+emu:video: audio/video syncronization correction of 15 samples
+emu:video: audio/video syncronization correction of 15 samples
+emu:video: audio/video syncronization correction of 15 samples
+emu:video: audio/video syncronization correction of 15 samples
+emu:video: audio/video syncronization correction of 15 samples
+log: last message repeated 5 times
+WARNING:emu:video: audio/video syncronization correction of 24 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 24 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 24 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 29 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 29 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 24 samples. Try increasing the 'sound_latency' option.
+WARNING:emu:video: audio/video syncronization correction of 24 samples. Try increasing the 'sound_latency' option.
+Unknown LE 48xx register write: 0 to 47 (PC=86c4)
+WARNING:emu:video: audio/video syncronization correction of 24 samples. Try increasing the 'sound_latency' option.
+emu:video: audio/video syncronization correction of 15 samples
+emu:video: audio/video syncronization correction of 15 samples
+emu:video: audio/video syncronization correction of 15 samples
+emu:video: audio/video syncronization correction of 15 samples
+emu:video: audio/video syncronization correction of 14 samples
+emu:video: audio/video syncronization correction of 14 samples
+emu:video: audio/video syncronization correction of 14 samples
+emu:video: audio/video syncronization correction of 14 samples
+osd:sound: normalize factor dB 7
+emu:video: audio/video syncronization correction of 13 samples
+emu:video: audio/video syncronization correction of 13 samples
+emu:video: audio/video syncronization correction of 13 samples
+emu:video: audio/video syncronization correction of 12 samples
+emu:video: audio/video syncronization correction of 11 samples
+emu:video: audio/video syncronization correction of 11 samples
+emu:video: audio/video syncronization correction of 11 samples
+emu:video: audio/video syncronization correction of 10 samples
+emu:video: audio/video syncronization correction of 10 samples
+emu:video: audio/video syncronization correction of 9 samples
+emu:video: audio/video syncronization correction of 9 samples
+emu:video: audio/video syncronization correction of 9 samples
+emu:video: audio/video syncronization correction of 8 samples
+emu:video: audio/video syncronization correction of 8 samples
+emu:video: audio/video syncronization correction of 7 samples
+emu:video: audio/video syncronization correction of 7 samples
+emu:video: audio/video syncronization correction of 7 samples
+emu:video: audio/video syncronization correction of 7 samples
+emu:video: audio/video syncronization correction of 7 samples
+log: last message repeated 5 times
+emu:video: audio/video syncronization correction of 6 samples
+emu:video: audio/video syncronization correction of 6 samples
+Unknown LE 48xx register write: 0 to c0 (PC=87a1)
+Unknown LE 48xx register write: 0 to c1 (PC=87a4)
+Unknown LE 48xx register write: 0 to c2 (PC=87a7)
+Unknown LE 48xx register write: 1 to c3 (PC=87b3)
+Unknown LE 48xx register write: 1 to c3 (PC=87b3)
+Unknown LE 48xx register write: 1 to c3 (PC=87b3)
+Unknown LE 48xx register write: 1 to c3 (PC=87b3)
+Unknown LE 48xx register write: 1 to c3 (PC=87b3)
+log: last message repeated 39 times
+Unknown LE 48xx register write: 4a to c4 (PC=87c1)
+Unknown LE 48xx register write: 3 to c0 (PC=87c7)
+cpu #0 (PC=000087CD): unmapped program memory byte write to 00004090 = 00
+osd: osd_get_path_count(pathtype:7)
+osd: osd_fopen(pathtype:7,pathindex:0,filename:lethalen.hi,mode:rb)
+osd: osd_fopen() try file /root/.advance/hi/lethalen.hi
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fclose(0x3303ab8)
+emu:video: audio/video syncronization correction of 6 samples
+Warning: sound latch 0 written before being read. Previous: 00, new: fb
+emu:video: audio/video syncronization correction of 6 samples
+emu:video: audio/video syncronization correction of 6 samples
+emu:video: audio/video syncronization correction of 6 samples
+emu:video: audio/video syncronization correction of 6 samples
+emu:video: audio/video syncronization correction of 5 samples
+emu:video: audio/video syncronization correction of 5 samples
+emu:video: audio/video syncronization correction of 5 samples
+emu:video: audio/video syncronization correction of 5 samples
+emu:video: audio/video syncronization correction of 5 samples
+log: last message repeated 5 times
+emu:video: audio/video syncronization correction of 4 samples
+emu:video: audio/video syncronization correction of 4 samples
+emu:video: audio/video syncronization correction of 4 samples
+emu:video: audio/video syncronization correction of 3 samples
+emu:video: audio/video syncronization correction of 3 samples
+emu:video: audio/video syncronization correction of 3 samples
+emu:video: audio/video syncronization correction of 3 samples
+emu:video: audio/video syncronization correction of 3 samples
+log: last message repeated 5 times
+osd: osd2_video_pause(paused:1)
+emu:video: audio/video syncronization correction of -4 samples
+emu:video: audio/video syncronization correction of -4 samples
+emu:video: audio/video syncronization correction of -4 samples
+emu:video: audio/video syncronization correction of -4 samples
+emu:video: audio/video syncronization correction of -4 samples
+log: last message repeated 12 times
+emu:video: audio/video syncronization correction of -3 samples
+emu:video: audio/video syncronization correction of -4 samples
+emu:video: audio/video syncronization correction of -3 samples
+emu:video: audio/video syncronization correction of -3 samples
+emu:video: audio/video syncronization correction of -3 samples
+emu:video: audio/video syncronization correction of -3 samples
+emu:video: audio/video syncronization correction of -3 samples
+osd: osd2_video_pause(paused:0)
+emu:video: audio/video syncronization correction of -3 samples
+osd: osd_get_path_count(pathtype:6)
+osd: osd_fopen(pathtype:6,pathindex:0,filename:lethalen.nv,mode:wb)
+osd: osd_fopen() try file /root/.advance/nvram/lethalen.nv
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fclose(0x3303ab8)
+WARNING:glue: unable to convert MAME code 113 JOYCODE_1_BUTTON2
+WARNING:glue: unable to convert MAME code 113 JOYCODE_1_BUTTON2
+WARNING:glue: unable to convert MAME code 114 JOYCODE_1_BUTTON3
+WARNING:glue: unable to convert MAME code 114 JOYCODE_1_BUTTON3
+WARNING:glue: unable to convert MAME code 112 JOYCODE_1_BUTTON1
+WARNING:glue: unable to convert MAME code 112 JOYCODE_1_BUTTON1
+WARNING:glue: unable to convert MAME code 115 JOYCODE_1_BUTTON4
+WARNING:glue: unable to convert MAME code 115 JOYCODE_1_BUTTON4
+WARNING:glue: unable to convert MAME code 112 JOYCODE_1_BUTTON1
+WARNING:glue: unable to convert MAME code 112 JOYCODE_1_BUTTON1
+WARNING:glue: unable to convert MAME code 113 JOYCODE_1_BUTTON2
+WARNING:glue: unable to convert MAME code 113 JOYCODE_1_BUTTON2
+WARNING:glue: unable to convert MAME code 114 JOYCODE_1_BUTTON3
+WARNING:glue: unable to convert MAME code 114 JOYCODE_1_BUTTON3
+WARNING:glue: unable to convert MAME code 115 JOYCODE_1_BUTTON4
+WARNING:glue: unable to convert MAME code 115 JOYCODE_1_BUTTON4
+WARNING:glue: unable to convert MAME code 116 JOYCODE_1_BUTTON5
+WARNING:glue: unable to convert MAME code 116 JOYCODE_1_BUTTON5
+WARNING:glue: unable to convert MAME code 117 JOYCODE_1_BUTTON6
+WARNING:glue: unable to convert MAME code 117 JOYCODE_1_BUTTON6
+WARNING:glue: unable to convert MAME code 118 JOYCODE_1_BUTTON7
+WARNING:glue: unable to convert MAME code 118 JOYCODE_1_BUTTON7
+WARNING:glue: unable to convert MAME code 119 JOYCODE_1_BUTTON8
+WARNING:glue: unable to convert MAME code 119 JOYCODE_1_BUTTON8
+WARNING:glue: unable to convert MAME code 120 JOYCODE_1_BUTTON9
+WARNING:glue: unable to convert MAME code 120 JOYCODE_1_BUTTON9
+WARNING:glue: unable to convert MAME code 121 JOYCODE_1_BUTTON10
+WARNING:glue: unable to convert MAME code 121 JOYCODE_1_BUTTON10
+WARNING:glue: unable to convert MAME code 128 JOYCODE_1_START
+WARNING:glue: unable to convert MAME code 128 JOYCODE_1_START
+WARNING:glue: unable to convert MAME code 129 JOYCODE_1_SELECT
+WARNING:glue: unable to convert MAME code 129 JOYCODE_1_SELECT
+WARNING:glue: unable to convert MAME code 134 JOYCODE_2_BUTTON1
+WARNING:glue: unable to convert MAME code 134 JOYCODE_2_BUTTON1
+WARNING:glue: unable to convert MAME code 135 JOYCODE_2_BUTTON2
+WARNING:glue: unable to convert MAME code 135 JOYCODE_2_BUTTON2
+WARNING:glue: unable to convert MAME code 136 JOYCODE_2_BUTTON3
+WARNING:glue: unable to convert MAME code 136 JOYCODE_2_BUTTON3
+WARNING:glue: unable to convert MAME code 137 JOYCODE_2_BUTTON4
+WARNING:glue: unable to convert MAME code 137 JOYCODE_2_BUTTON4
+WARNING:glue: unable to convert MAME code 138 JOYCODE_2_BUTTON5
+WARNING:glue: unable to convert MAME code 138 JOYCODE_2_BUTTON5
+WARNING:glue: unable to convert MAME code 139 JOYCODE_2_BUTTON6
+WARNING:glue: unable to convert MAME code 139 JOYCODE_2_BUTTON6
+WARNING:glue: unable to convert MAME code 140 JOYCODE_2_BUTTON7
+WARNING:glue: unable to convert MAME code 140 JOYCODE_2_BUTTON7
+WARNING:glue: unable to convert MAME code 141 JOYCODE_2_BUTTON8
+WARNING:glue: unable to convert MAME code 141 JOYCODE_2_BUTTON8
+WARNING:glue: unable to convert MAME code 142 JOYCODE_2_BUTTON9
+WARNING:glue: unable to convert MAME code 142 JOYCODE_2_BUTTON9
+WARNING:glue: unable to convert MAME code 143 JOYCODE_2_BUTTON10
+WARNING:glue: unable to convert MAME code 143 JOYCODE_2_BUTTON10
+WARNING:glue: unable to convert MAME code 150 JOYCODE_2_START
+WARNING:glue: unable to convert MAME code 150 JOYCODE_2_START
+WARNING:glue: unable to convert MAME code 151 JOYCODE_2_SELECT
+WARNING:glue: unable to convert MAME code 151 JOYCODE_2_SELECT
+WARNING:glue: unable to convert MAME code 156 JOYCODE_3_BUTTON1
+WARNING:glue: unable to convert MAME code 156 JOYCODE_3_BUTTON1
+WARNING:glue: unable to convert MAME code 157 JOYCODE_3_BUTTON2
+WARNING:glue: unable to convert MAME code 157 JOYCODE_3_BUTTON2
+WARNING:glue: unable to convert MAME code 158 JOYCODE_3_BUTTON3
+WARNING:glue: unable to convert MAME code 158 JOYCODE_3_BUTTON3
+WARNING:glue: unable to convert MAME code 159 JOYCODE_3_BUTTON4
+WARNING:glue: unable to convert MAME code 159 JOYCODE_3_BUTTON4
+WARNING:glue: unable to convert MAME code 160 JOYCODE_3_BUTTON5
+WARNING:glue: unable to convert MAME code 160 JOYCODE_3_BUTTON5
+WARNING:glue: unable to convert MAME code 161 JOYCODE_3_BUTTON6
+WARNING:glue: unable to convert MAME code 161 JOYCODE_3_BUTTON6
+WARNING:glue: unable to convert MAME code 162 JOYCODE_3_BUTTON7
+WARNING:glue: unable to convert MAME code 162 JOYCODE_3_BUTTON7
+WARNING:glue: unable to convert MAME code 163 JOYCODE_3_BUTTON8
+WARNING:glue: unable to convert MAME code 163 JOYCODE_3_BUTTON8
+WARNING:glue: unable to convert MAME code 164 JOYCODE_3_BUTTON9
+WARNING:glue: unable to convert MAME code 164 JOYCODE_3_BUTTON9
+WARNING:glue: unable to convert MAME code 165 JOYCODE_3_BUTTON10
+WARNING:glue: unable to convert MAME code 165 JOYCODE_3_BUTTON10
+WARNING:glue: unable to convert MAME code 172 JOYCODE_3_START
+WARNING:glue: unable to convert MAME code 172 JOYCODE_3_START
+WARNING:glue: unable to convert MAME code 173 JOYCODE_3_SELECT
+WARNING:glue: unable to convert MAME code 173 JOYCODE_3_SELECT
+WARNING:glue: unable to convert MAME code 178 JOYCODE_4_BUTTON1
+WARNING:glue: unable to convert MAME code 178 JOYCODE_4_BUTTON1
+WARNING:glue: unable to convert MAME code 179 JOYCODE_4_BUTTON2
+WARNING:glue: unable to convert MAME code 179 JOYCODE_4_BUTTON2
+WARNING:glue: unable to convert MAME code 180 JOYCODE_4_BUTTON3
+WARNING:glue: unable to convert MAME code 180 JOYCODE_4_BUTTON3
+WARNING:glue: unable to convert MAME code 181 JOYCODE_4_BUTTON4
+WARNING:glue: unable to convert MAME code 181 JOYCODE_4_BUTTON4
+WARNING:glue: unable to convert MAME code 182 JOYCODE_4_BUTTON5
+WARNING:glue: unable to convert MAME code 182 JOYCODE_4_BUTTON5
+WARNING:glue: unable to convert MAME code 183 JOYCODE_4_BUTTON6
+WARNING:glue: unable to convert MAME code 183 JOYCODE_4_BUTTON6
+WARNING:glue: unable to convert MAME code 184 JOYCODE_4_BUTTON7
+WARNING:glue: unable to convert MAME code 184 JOYCODE_4_BUTTON7
+WARNING:glue: unable to convert MAME code 185 JOYCODE_4_BUTTON8
+WARNING:glue: unable to convert MAME code 185 JOYCODE_4_BUTTON8
+WARNING:glue: unable to convert MAME code 186 JOYCODE_4_BUTTON9
+WARNING:glue: unable to convert MAME code 186 JOYCODE_4_BUTTON9
+WARNING:glue: unable to convert MAME code 187 JOYCODE_4_BUTTON10
+WARNING:glue: unable to convert MAME code 187 JOYCODE_4_BUTTON10
+WARNING:glue: unable to convert MAME code 194 JOYCODE_4_START
+WARNING:glue: unable to convert MAME code 194 JOYCODE_4_START
+WARNING:glue: unable to convert MAME code 195 JOYCODE_4_SELECT
+WARNING:glue: unable to convert MAME code 195 JOYCODE_4_SELECT
+WARNING:glue: unable to convert MAME code 200 JOYCODE_5_BUTTON1
+WARNING:glue: unable to convert MAME code 200 JOYCODE_5_BUTTON1
+WARNING:glue: unable to convert MAME code 201 JOYCODE_5_BUTTON2
+WARNING:glue: unable to convert MAME code 201 JOYCODE_5_BUTTON2
+WARNING:glue: unable to convert MAME code 202 JOYCODE_5_BUTTON3
+WARNING:glue: unable to convert MAME code 202 JOYCODE_5_BUTTON3
+WARNING:glue: unable to convert MAME code 203 JOYCODE_5_BUTTON4
+WARNING:glue: unable to convert MAME code 203 JOYCODE_5_BUTTON4
+WARNING:glue: unable to convert MAME code 204 JOYCODE_5_BUTTON5
+WARNING:glue: unable to convert MAME code 204 JOYCODE_5_BUTTON5
+WARNING:glue: unable to convert MAME code 205 JOYCODE_5_BUTTON6
+WARNING:glue: unable to convert MAME code 205 JOYCODE_5_BUTTON6
+WARNING:glue: unable to convert MAME code 206 JOYCODE_5_BUTTON7
+WARNING:glue: unable to convert MAME code 206 JOYCODE_5_BUTTON7
+WARNING:glue: unable to convert MAME code 207 JOYCODE_5_BUTTON8
+WARNING:glue: unable to convert MAME code 207 JOYCODE_5_BUTTON8
+WARNING:glue: unable to convert MAME code 208 JOYCODE_5_BUTTON9
+WARNING:glue: unable to convert MAME code 208 JOYCODE_5_BUTTON9
+WARNING:glue: unable to convert MAME code 209 JOYCODE_5_BUTTON10
+WARNING:glue: unable to convert MAME code 209 JOYCODE_5_BUTTON10
+WARNING:glue: unable to convert MAME code 222 JOYCODE_6_BUTTON1
+WARNING:glue: unable to convert MAME code 222 JOYCODE_6_BUTTON1
+WARNING:glue: unable to convert MAME code 223 JOYCODE_6_BUTTON2
+WARNING:glue: unable to convert MAME code 223 JOYCODE_6_BUTTON2
+WARNING:glue: unable to convert MAME code 224 JOYCODE_6_BUTTON3
+WARNING:glue: unable to convert MAME code 224 JOYCODE_6_BUTTON3
+WARNING:glue: unable to convert MAME code 225 JOYCODE_6_BUTTON4
+WARNING:glue: unable to convert MAME code 225 JOYCODE_6_BUTTON4
+WARNING:glue: unable to convert MAME code 226 JOYCODE_6_BUTTON5
+WARNING:glue: unable to convert MAME code 226 JOYCODE_6_BUTTON5
+WARNING:glue: unable to convert MAME code 227 JOYCODE_6_BUTTON6
+WARNING:glue: unable to convert MAME code 227 JOYCODE_6_BUTTON6
+WARNING:glue: unable to convert MAME code 228 JOYCODE_6_BUTTON7
+WARNING:glue: unable to convert MAME code 228 JOYCODE_6_BUTTON7
+WARNING:glue: unable to convert MAME code 229 JOYCODE_6_BUTTON8
+WARNING:glue: unable to convert MAME code 229 JOYCODE_6_BUTTON8
+WARNING:glue: unable to convert MAME code 230 JOYCODE_6_BUTTON9
+WARNING:glue: unable to convert MAME code 230 JOYCODE_6_BUTTON9
+WARNING:glue: unable to convert MAME code 231 JOYCODE_6_BUTTON10
+WARNING:glue: unable to convert MAME code 231 JOYCODE_6_BUTTON10
+WARNING:glue: unable to convert MAME code 244 JOYCODE_7_BUTTON1
+WARNING:glue: unable to convert MAME code 244 JOYCODE_7_BUTTON1
+WARNING:glue: unable to convert MAME code 245 JOYCODE_7_BUTTON2
+WARNING:glue: unable to convert MAME code 245 JOYCODE_7_BUTTON2
+WARNING:glue: unable to convert MAME code 246 JOYCODE_7_BUTTON3
+WARNING:glue: unable to convert MAME code 246 JOYCODE_7_BUTTON3
+WARNING:glue: unable to convert MAME code 247 JOYCODE_7_BUTTON4
+WARNING:glue: unable to convert MAME code 247 JOYCODE_7_BUTTON4
+WARNING:glue: unable to convert MAME code 248 JOYCODE_7_BUTTON5
+WARNING:glue: unable to convert MAME code 248 JOYCODE_7_BUTTON5
+WARNING:glue: unable to convert MAME code 249 JOYCODE_7_BUTTON6
+WARNING:glue: unable to convert MAME code 249 JOYCODE_7_BUTTON6
+WARNING:glue: unable to convert MAME code 250 JOYCODE_7_BUTTON7
+WARNING:glue: unable to convert MAME code 250 JOYCODE_7_BUTTON7
+WARNING:glue: unable to convert MAME code 251 JOYCODE_7_BUTTON8
+WARNING:glue: unable to convert MAME code 251 JOYCODE_7_BUTTON8
+WARNING:glue: unable to convert MAME code 252 JOYCODE_7_BUTTON9
+WARNING:glue: unable to convert MAME code 252 JOYCODE_7_BUTTON9
+WARNING:glue: unable to convert MAME code 253 JOYCODE_7_BUTTON10
+WARNING:glue: unable to convert MAME code 253 JOYCODE_7_BUTTON10
+WARNING:glue: unable to convert MAME code 266 JOYCODE_8_BUTTON1
+WARNING:glue: unable to convert MAME code 266 JOYCODE_8_BUTTON1
+WARNING:glue: unable to convert MAME code 267 JOYCODE_8_BUTTON2
+WARNING:glue: unable to convert MAME code 267 JOYCODE_8_BUTTON2
+WARNING:glue: unable to convert MAME code 268 JOYCODE_8_BUTTON3
+WARNING:glue: unable to convert MAME code 268 JOYCODE_8_BUTTON3
+WARNING:glue: unable to convert MAME code 269 JOYCODE_8_BUTTON4
+WARNING:glue: unable to convert MAME code 269 JOYCODE_8_BUTTON4
+WARNING:glue: unable to convert MAME code 270 JOYCODE_8_BUTTON5
+WARNING:glue: unable to convert MAME code 270 JOYCODE_8_BUTTON5
+WARNING:glue: unable to convert MAME code 271 JOYCODE_8_BUTTON6
+WARNING:glue: unable to convert MAME code 271 JOYCODE_8_BUTTON6
+WARNING:glue: unable to convert MAME code 272 JOYCODE_8_BUTTON7
+WARNING:glue: unable to convert MAME code 272 JOYCODE_8_BUTTON7
+WARNING:glue: unable to convert MAME code 273 JOYCODE_8_BUTTON8
+WARNING:glue: unable to convert MAME code 273 JOYCODE_8_BUTTON8
+WARNING:glue: unable to convert MAME code 274 JOYCODE_8_BUTTON9
+WARNING:glue: unable to convert MAME code 274 JOYCODE_8_BUTTON9
+WARNING:glue: unable to convert MAME code 275 JOYCODE_8_BUTTON10
+WARNING:glue: unable to convert MAME code 275 JOYCODE_8_BUTTON10
+WARNING:glue: unable to convert MAME code 128 JOYCODE_1_START
+WARNING:glue: unable to convert MAME code 128 JOYCODE_1_START
+WARNING:glue: unable to convert MAME code 150 JOYCODE_2_START
+WARNING:glue: unable to convert MAME code 150 JOYCODE_2_START
+WARNING:glue: unable to convert MAME code 172 JOYCODE_3_START
+WARNING:glue: unable to convert MAME code 172 JOYCODE_3_START
+WARNING:glue: unable to convert MAME code 194 JOYCODE_4_START
+WARNING:glue: unable to convert MAME code 194 JOYCODE_4_START
+WARNING:glue: unable to convert MAME code 129 JOYCODE_1_SELECT
+WARNING:glue: unable to convert MAME code 129 JOYCODE_1_SELECT
+WARNING:glue: unable to convert MAME code 151 JOYCODE_2_SELECT
+WARNING:glue: unable to convert MAME code 151 JOYCODE_2_SELECT
+WARNING:glue: unable to convert MAME code 173 JOYCODE_3_SELECT
+WARNING:glue: unable to convert MAME code 173 JOYCODE_3_SELECT
+WARNING:glue: unable to convert MAME code 195 JOYCODE_4_SELECT
+WARNING:glue: unable to convert MAME code 195 JOYCODE_4_SELECT
+WARNING:glue: unable to convert MAME code 112 JOYCODE_1_BUTTON1
+WARNING:glue: unable to convert MAME code 112 JOYCODE_1_BUTTON1
+WARNING:glue: unable to convert MAME code 134 JOYCODE_2_BUTTON1
+WARNING:glue: unable to convert MAME code 134 JOYCODE_2_BUTTON1
+WARNING:glue: unable to convert MAME code 156 JOYCODE_3_BUTTON1
+WARNING:glue: unable to convert MAME code 156 JOYCODE_3_BUTTON1
+WARNING:glue: unable to convert MAME code 178 JOYCODE_4_BUTTON1
+WARNING:glue: unable to convert MAME code 178 JOYCODE_4_BUTTON1
+WARNING:glue: unable to convert MAME code 200 JOYCODE_5_BUTTON1
+WARNING:glue: unable to convert MAME code 200 JOYCODE_5_BUTTON1
+WARNING:glue: unable to convert MAME code 222 JOYCODE_6_BUTTON1
+WARNING:glue: unable to convert MAME code 222 JOYCODE_6_BUTTON1
+WARNING:glue: unable to convert MAME code 244 JOYCODE_7_BUTTON1
+WARNING:glue: unable to convert MAME code 244 JOYCODE_7_BUTTON1
+WARNING:glue: unable to convert MAME code 266 JOYCODE_8_BUTTON1
+WARNING:glue: unable to convert MAME code 266 JOYCODE_8_BUTTON1
+WARNING:glue: unable to convert MAME code 113 JOYCODE_1_BUTTON2
+WARNING:glue: unable to convert MAME code 113 JOYCODE_1_BUTTON2
+WARNING:glue: unable to convert MAME code 135 JOYCODE_2_BUTTON2
+WARNING:glue: unable to convert MAME code 135 JOYCODE_2_BUTTON2
+WARNING:glue: unable to convert MAME code 157 JOYCODE_3_BUTTON2
+WARNING:glue: unable to convert MAME code 157 JOYCODE_3_BUTTON2
+WARNING:glue: unable to convert MAME code 179 JOYCODE_4_BUTTON2
+WARNING:glue: unable to convert MAME code 179 JOYCODE_4_BUTTON2
+WARNING:glue: unable to convert MAME code 201 JOYCODE_5_BUTTON2
+WARNING:glue: unable to convert MAME code 201 JOYCODE_5_BUTTON2
+WARNING:glue: unable to convert MAME code 223 JOYCODE_6_BUTTON2
+WARNING:glue: unable to convert MAME code 223 JOYCODE_6_BUTTON2
+WARNING:glue: unable to convert MAME code 245 JOYCODE_7_BUTTON2
+WARNING:glue: unable to convert MAME code 245 JOYCODE_7_BUTTON2
+WARNING:glue: unable to convert MAME code 267 JOYCODE_8_BUTTON2
+WARNING:glue: unable to convert MAME code 267 JOYCODE_8_BUTTON2
+WARNING:glue: unable to convert MAME code 114 JOYCODE_1_BUTTON3
+WARNING:glue: unable to convert MAME code 114 JOYCODE_1_BUTTON3
+WARNING:glue: unable to convert MAME code 136 JOYCODE_2_BUTTON3
+WARNING:glue: unable to convert MAME code 136 JOYCODE_2_BUTTON3
+WARNING:glue: unable to convert MAME code 158 JOYCODE_3_BUTTON3
+WARNING:glue: unable to convert MAME code 158 JOYCODE_3_BUTTON3
+WARNING:glue: unable to convert MAME code 180 JOYCODE_4_BUTTON3
+WARNING:glue: unable to convert MAME code 180 JOYCODE_4_BUTTON3
+WARNING:glue: unable to convert MAME code 202 JOYCODE_5_BUTTON3
+WARNING:glue: unable to convert MAME code 202 JOYCODE_5_BUTTON3
+WARNING:glue: unable to convert MAME code 224 JOYCODE_6_BUTTON3
+WARNING:glue: unable to convert MAME code 224 JOYCODE_6_BUTTON3
+WARNING:glue: unable to convert MAME code 246 JOYCODE_7_BUTTON3
+WARNING:glue: unable to convert MAME code 246 JOYCODE_7_BUTTON3
+WARNING:glue: unable to convert MAME code 268 JOYCODE_8_BUTTON3
+WARNING:glue: unable to convert MAME code 268 JOYCODE_8_BUTTON3
+WARNING:glue: unable to convert MAME code 112 JOYCODE_1_BUTTON1
+WARNING:glue: unable to convert MAME code 112 JOYCODE_1_BUTTON1
+WARNING:glue: unable to convert MAME code 129 JOYCODE_1_SELECT
+global: setup port coin1
+WARNING:glue: unable to convert MAME code 151 JOYCODE_2_SELECT
+global: setup port coin2
+global: setup port service_coin1
+global: setup port service
+WARNING:glue: unable to convert MAME code 112 JOYCODE_1_BUTTON1
+global: setup port p1_button1
+WARNING:glue: unable to convert MAME code 135 JOYCODE_2_BUTTON2
+global: setup port p2_button2
+WARNING:glue: unable to convert MAME code 128 JOYCODE_1_START
+global: setup port start1
+WARNING:glue: unable to convert MAME code 150 JOYCODE_2_START
+global: setup port start2
+global: setup port p1_lightgun_left
+global: setup port p1_lightgun_right
+global: setup port p1_lightgun_up
+global: setup port p1_lightgun_down
+global: setup port p2_lightgun_left
+global: setup port p2_lightgun_right
+global: setup port p2_lightgun_up
+global: setup port p2_lightgun_down
+osd: osd_close_display()
+osd: osd2_video_done
+keyb:event: keyb_event_disable()
+keyb:event: ioctl(/dev/tty0, KDSETMODE, KD_TEXT)
+keyb:event: ioctl(/dev/tty0, KDSKBMODE, K_UNICODE)
+keyb:event: tcsetattr(/dev/tty, TCSAFLUSH, ICANON ECHO ISIG)
+keyb:event: tcsetattr(/dev/tty0, TCSAFLUSH, ~ICANON ~ECHO ISIG)
+emu:video: clear 0x0 288x224
+emu:video: clear 0x0 288x224
+video: video_mode_restore
+video:fb: fb_mode_done()
+video:fb: restore old
+video:fb: variable info
+video:fb: xres:288, yres:224
+video:fb: xres_virtual:288, yres_virtual:224
+video:fb: xoffset:0, yoffset:0
+video:fb: bits_per_pixel:32, grayscale:0
+video:fb: red 8:16 green 8:8 blue 8:0 transp 8:24
+video:fb: nonstd:0, activate:0h
+video:fb: height:-1, width:-1
+video:fb: accel_flags:0
+video:fb: pixclock:0 (0 Hz), left:0, right:0, upper:0, lower:0, hsync:0, vsync:0
+video:fb: sync:0h
+video:fb: vmode:0h
+video:fb: set retry 1
+video:fb: wait for vc event
+WARNING:linux: vc event NOT recevied for TIMEOUT after 500128 [us]
+video:fb: ioctl(FBIOPUT_VSCREENINFO) 288x224 16 bits
+video:fb: ioctl(FBIOPUT_VSCREENINFO) 288x224 32 bits
+video:vc: vc_tv_get_display_state()
+video:vc: tv info
+video:vc: state 00400000: LCD_ATTACHED_DEFAULT
+video:vc: LCD state 00000000
+video:vc: 288x224
+video:vc: framerate 60
+video:vc: scanmode progressive
+video:vc: dump 00000000: 000040000000000020010000e0000000
+video:vc: dump 00000010: 3c000000000000000000000000000000
+video:vc: dump 00000020: 00000000000000000000000000000000
+video:vc: dump 00000030: 00000000
+video: mode_reset
+osd: osd_stop_audio_stream()
+osd: osd2_thread_done
+advance:thread: exit signal
+advance:thread: join
+advance:thread: exit
+advance:thread: done
+osd: osd2_sound_done()
+sound:alsa: soundb_alsa_stop()
+sound:alsa: soundb_alsa_done()
+osd: osd_get_path_count(pathtype:7)
+osd: osd_fopen(pathtype:7,pathindex:0,filename:lethalen.hi,mode:wb)
+osd: osd_fopen() try file /root/.advance/hi/lethalen.hi
+osd: osd_fopen() -> return 0x3303ab8
+osd: osd_fclose(0x3303ab8)
+emu: *_inner_done()
+keyb:event: keyb_event_done()
+mouseb:event: mouseb_event_done()
+joystickb:none: joystickb_none_done()
+video: adv_video_done
+video:fb: fb_done()
+emu: os_inner_done()
+os: os_inner_done
+os: tcsetattr(TCSAFLUSH, ICANON ECHO)
+os: os_inner_done completed
+emu: *_done()
+emu: os_done()
+emu: conf_save()
+emu: conf_done()

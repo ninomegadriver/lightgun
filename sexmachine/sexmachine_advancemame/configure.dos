@@ -1,0 +1,2 @@
+./configure --host=i586-pc-msdosdjgpp --build=`./config.guess` $@
+
