@@ -32,9 +32,9 @@ long vsyncStart=0, hsyncStart = 0, hit = 0, deBounce = 0, lineDuration, lastRefr
 
 int line       =0;           // Holds the current scanline being drawn
 int hitLine    = -1;         // Holds the scanline number when the optical hit ocurred
+int hsyncPin   = 25;         // Hsync Pin
 int vsyncPin   = 26;         // VSync Pin
-int hsyncPin   = 27;         // Hsync Pin
-int gunPin     = 25;         // Optical Sensor from lighGun
+int gunPin     = 27;         // Optical Sensor from lighGun
 int refresh    = 1000;       // Refresh interval in miliseconds
 
 // Triggered when a VSync pulse occurs
