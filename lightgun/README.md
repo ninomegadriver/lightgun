@@ -40,7 +40,7 @@ Breakout and reproduction of the classic arcade lightgun board, manufactured by 
 |  R6  | Resistor           | 4.6K 5%      |
 |  R7  | Resistor           | 4.6K 5%      |
 |  J1  | KK Connector       | 6 vias 2.54mm|
-|  Q1  | Transistor         | 2N3994       |
+|  Q1  | Transistor         | 2N3904       |
 | CR1  | Diode Rectifier    | 1N4148       |
 
 ## Hardware implementation on the ESP32
