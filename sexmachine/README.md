@@ -28,11 +28,11 @@ However for a wider compatibility SEXMACHINE's setup is slightly different:
 ## SEXMACHINE Jamma Board  
 The circuit is quite simple and can be easily build on a breadboard. Furthermore, if you have a spare generic VGA666 hat, you can also use it. Just solder some extra wires to the terminals for VSync (GPIO2), HSync (GPIO3) and the gun trigger (GPIO27), and get the CSync for the arcade monitor on the Hex Inverter pins 4 and 8.  
 
-However, I've desinged a board intended to be plug-and-play on any Jamma arcade cabinet. It was designed to ease the assembly process, by having all the components labeled in the silkscreen layer. Quite simple: order the pcb on PCBWay, order the part list and just solder everything in place until you have no holes left.
+However, I've desinged a board intended to be plug-and-play on any Jamma arcade cabinet. It was designed to ease the assembly process, by having all the components labeled in the silkscreen layer. Quite simple: [order the pcb on PCBWay](https://www.pcbway.com/project/shareproject/Sexmachine_4b82eb69.html), order the part list and just solder everything in place until you have no holes left.
 
-![Sexmachine Jamma Board](https://raw.githubusercontent.com/ninomegadriver/lightgun/main/Images/sexmachine_board.png)  
-
-
+[![Sexmachine Jamma Board](https://raw.githubusercontent.com/ninomegadriver/lightgun/main/Images/sexmachine_board.png)](https://www.pcbway.com/project/shareproject/Sexmachine_4b82eb69.html)
+  
+  
 ## Part List
 
 |     Label       |                       Item                     |
