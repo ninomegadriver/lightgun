@@ -31,7 +31,7 @@ Breakout and reproduction of the classic arcade lightgun board, manufactured by 
 |  C6  | Capacitor          | 100nf        |
 |  IC1 | Voltage Comparator | LM311N       |
 |  S1  | Phototransistor    | bpw24r       |
-|  L1  | Inductor           | 52R 5.8mH    |
+|  L1  | Inductor           | 5.6mH 10%    |
 |  R1  | Resistor           | 68k 5%       |
 |  R2  | Resistor           | 50k 5%       |
 |  R3  | Resistor           | 1k 5%        |
