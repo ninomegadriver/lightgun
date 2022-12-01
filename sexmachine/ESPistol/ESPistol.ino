@@ -89,12 +89,5 @@ void setup() {
 }
 
 void loop() {
-  // On a time basis, update the scanline duration in case
-  // a resolution change happened  
-  /*
-  if(millis() - lastRefresh > refresh){
-    lastRefresh  = millis();
-    lineDuration = pulseIn(hsyncPin, HIGH) + pulseIn(hsyncPin, LOW);
-  }
-  */
+  // Do nothing, everything is based on interrupts
 }
