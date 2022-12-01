@@ -32,9 +32,9 @@ long vsyncStart=0, hsyncStart = 0, hit = 0, deBounce = 0, lineDuration, lastRefr
 
 int line       =0;           // Holds the current scanline being drawn
 int hitLine    = -1;         // Holds the scanline number when the optical hit ocurred
-int hsyncPin   = 25;         // Hsync Pin
-int vsyncPin   = 26;         // VSync Pin
-int gunPin     = 27;         // Optical Sensor from lighGun
+int hsyncPin   = 26;         // Hsync Pin
+int vsyncPin   = 27;         // VSync Pin
+int gunPin     = 25;         // Optical Sensor from lighGun
 int refresh    = 1000;       // Refresh interval in miliseconds
 
 // Triggered when a VSync pulse occurs
@@ -77,6 +77,12 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(hsyncPin), HSYNC, FALLING);
   attachInterrupt(digitalPinToInterrupt(gunPin), GUN, FALLING);
 
+  // If we're powering up the whole system at once
+  // wait a little for the video to start on the
+  // host PI/PC - Adjust this according to your
+  // boot time
+  delay(1000);
+  
   // Calculate the duration of a scanline
   lineDuration = pulseIn(hsyncPin, HIGH) + pulseIn(hsyncPin, LOW);
   
@@ -85,8 +91,10 @@ void setup() {
 void loop() {
   // On a time basis, update the scanline duration in case
   // a resolution change happened  
+  /*
   if(millis() - lastRefresh > refresh){
     lastRefresh  = millis();
     lineDuration = pulseIn(hsyncPin, HIGH) + pulseIn(hsyncPin, LOW);
-  } 
+  }
+  */
 }
