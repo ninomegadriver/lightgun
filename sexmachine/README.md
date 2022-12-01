@@ -101,7 +101,6 @@ Live Demo:
 
 ## Current Status And Limitations  
 - Although the Jamma Board is already mapped to use the test/service, coins, start and buttons 1-3, I haven't coded the inputs just yet on the ESP32 and the Sexmachine's Advance Mame.
-- The same goes for the player 2 LightGun. It's already mapped on the board, but I haven't coded it just yet.
 
 I'll do so and plus test and fine tune more games in the near future...
 

@@ -1,4 +1,7 @@
+extern int sexmachine_debug;
+
 int getSerialData(int verbose);
+int setSerialGun(int num);
 long MAP(long x, long in_min, long in_max, long out_min, long out_max);
 
 extern char serial_buffer[100];

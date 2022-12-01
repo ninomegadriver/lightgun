@@ -1203,7 +1203,9 @@ static void keyb_event_process(unsigned keyboard, unsigned code)
 	}
 }
 
-int lastTrigger;
+int lastTrigger1;
+int lastTrigger2;
+int activeGun = 0;
 int keyb_event_poll(void)
 {
 	unsigned i;
@@ -1213,23 +1215,41 @@ int keyb_event_poll(void)
 	log_debug(("keyb:event: keyb_event_poll()\n"));
 
 	// [SEXMACHINE] Gun Trigger processing
+
+
 	int actualTrigger = digitalRead(27);
-	if(actualTrigger != lastTrigger){
-		lastTrigger = actualTrigger;
+	if(actualTrigger != lastTrigger1){
+		lastTrigger1 = actualTrigger;
 		if(actualTrigger == LOW){
-			printf("*******************************************************************\n");
-			printf("[SEXMACHINE] Gun triggered!\n");
+			if(sexmachine_debug) printf("*******************************************************************\n");
+			if(sexmachine_debug) printf("[SEXMACHINE] Gun1 triggered!\n");
 			gunTriggered = 1;
+			activeGun = 1;
+			setSerialGun(0x01);
+		}
+	}
+
+	actualTrigger = digitalRead(22);
+	if(actualTrigger != lastTrigger2){
+		lastTrigger2 = actualTrigger;
+		if(actualTrigger == LOW){
+			if(sexmachine_debug) printf("*******************************************************************\n");
+			if(sexmachine_debug) printf("[SEXMACHINE] Gun2 triggered!\n");
+			gunTriggered = 1;
+			activeGun = 2;
+			setSerialGun(0x02);
 		}
 	}
 
 	if(gunShot == 1){
-		event_state.map[0].state[KEY_LEFTCTRL] = 1;
+		if(activeGun == 1) event_state.map[0].state[KEY_LEFTCTRL] = 1;
+		if(activeGun == 2) event_state.map[0].state[KEY_S] = 1;
 		gunShot = 2;
 	}else if(gunShot > 1 && gunShot < 10){
 		gunShot++;
 	}else if(gunShot == 10){
-		event_state.map[0].state[KEY_LEFTCTRL] = 0;
+		if(activeGun == 1) event_state.map[0].state[KEY_LEFTCTRL] = 0;
+		if(activeGun == 2) event_state.map[0].state[KEY_S] = 0;
 		gunShot = 0;
 	}
 

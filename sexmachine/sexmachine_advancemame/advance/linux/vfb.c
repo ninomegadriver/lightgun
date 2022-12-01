@@ -1635,7 +1635,7 @@ adv_error fb_mode_set(const fb_video_mode* mode)
 	xres = fb_state.varinfo.xres;
 	yres = fb_state.varinfo.yres;
 	bytes_per_scanline = fb_state.bytes_per_scanline;
-	printf("[SEXMACHINE] Resolution:\t\t%dx%d\n", xres, yres);
+	if(sexmachine_debug) printf("[SEXMACHINE] Resolution:\t\t%dx%d\n", xres, yres);
 
 	char* opt;
 	char cmd[256];
@@ -1661,16 +1661,16 @@ adv_error fb_mode_set(const fb_video_mode* mode)
 	  &hdmi_timings.interlaced,
 	  &hdmi_timings.pixel_freq,
 	  &hdmi_timings.aspect_ratio);
-		printf("[SEXMACHINE] H Active Pixels:\t\t%d\n",hdmi_timings.h_active_pixels);
-		printf("[SEXMACHINE] H Front Porch:\t\t%d\n",hdmi_timings.h_front_porch);
-		printf("[SEXMACHINE] V Front Porch:\t\t%d\n",hdmi_timings.v_front_porch);
-		printf("[SEXMACHINE] V Active Lines:\t\t%d\n",hdmi_timings.v_active_lines);
+		if(sexmachine_debug) printf("[SEXMACHINE] H Active Pixels:\t\t%d\n",hdmi_timings.h_active_pixels);
+		if(sexmachine_debug) printf("[SEXMACHINE] H Front Porch:\t\t%d\n",hdmi_timings.h_front_porch);
+		if(sexmachine_debug) printf("[SEXMACHINE] V Front Porch:\t\t%d\n",hdmi_timings.v_front_porch);
+		if(sexmachine_debug) printf("[SEXMACHINE] V Active Lines:\t\t%d\n",hdmi_timings.v_active_lines);
 	}else{
-		printf("[SEXMACHINE] Can't execute vcgencmd, is it missing?\n");
+		if(sexmachine_debug) printf("[SEXMACHINE] Can't execute vcgencmd, is it missing?\n");
 		exit(1);
 	}
 	free(opt);
-	printf("*******************************************************************\n");
+	if(sexmachine_debug) printf("*******************************************************************\n");
 	// [SEXMACHINE] Passing framebuffer to globals vars END
 
 	return 0;
@@ -1949,29 +1949,28 @@ adv_error fb_scroll(unsigned offset, adv_bool waitvsync)
 
 	// [SEXMACHINE] Process gun trigger
 	if(gunTriggered == 1) {
-		printf("[SEXMACHINE] Flushing serial...\n");
-		r = getSerialData(0);
-		while(r > 0) r = getSerialData(0);
+		if(sexmachine_debug) printf("[SEXMACHINE] Flushing serial...\n");
+		r = getSerialData(1);
+		while(r > 0) r = getSerialData(1);
 		fb_wait_vsync();
 		memset (fb_ptr, 0xff, fb_data_size);
 		fb_wait_vsync();
-		r = getSerialData(1);
+		r = getSerialData(sexmachine_debug);
 		if(r > 0){
 			sscanf(serial_buffer, "%010ld|%010ld|%010ld", &duration, &hit, &gunY);
-			//gunX = MAP(hit,hdmi_timings.h_front_porch,duration,0,game_xres);
 			gunX = MAP(hit,hdmi_timings.h_front_porch,duration,0,hdmi_timings.h_active_pixels);
 			gunY -= hdmi_timings.h_front_porch;
 			gunX += tune_x;
 			gunY += tune_y;
-			printf("[SEXMACHINE] Gunt Hit at:\t\t%dx%d\n",gunX,gunY);
+			if(sexmachine_debug) printf("[SEXMACHINE] Gunt Hit at:\t\t%dx%d\n",gunX,gunY);
 		}else{
-			printf("[SEXMACHINE] No hit...\n");
+			if(sexmachine_debug) printf("[SEXMACHINE] No hit...\n");
 			gunX = -1;
 			gunY = -1;
 		}
 		gunTriggered = 0;
 		gunShot = 1;
-		printf("*******************************************************************\n");
+		if(sexmachine_debug) printf("*******************************************************************\n");
 	}
 	// [SEXMACHINE] End Process gun trigger
 

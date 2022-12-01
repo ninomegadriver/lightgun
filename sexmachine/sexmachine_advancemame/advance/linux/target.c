@@ -94,6 +94,7 @@ int gunTriggered = 0;
 int gunX   = 0;
 int gunY   = 0;
 int gunShot = 0;
+int sexmachine_debug = 1;
 
 
 char serial_buffer[100];
@@ -102,11 +103,11 @@ int BOUDRATE = B115200;
 // Some dafult ports to try connecting to
 const char* serial_ports[6] = {
 	"/dev/ttyUSB0",
-	"/dev/ttyUSB1",
-	"/dev/ttyUSB2",
-	"/dev/ttyACM0",
-	"/dev/ttyACM1",
-	"/dev/ttyACM2",
+	"/dev/ttyUSB0",
+	"/dev/ttyUSB0",
+	"/dev/ttyUSB0",
+	"/dev/ttyUSB0",
+	"/dev/ttyUSB0",
 };
 int serial_port    = 0;
 int serial_error   = 0;
@@ -132,7 +133,7 @@ void serial_connect(){
     exit(1);
   }
 
-  printf("[SEXMACHINE] Serial:\t\t\tConnected to \"%s\"\n", serial_ports[retry-1]);
+  if(sexmachine_debug) printf("[SEXMACHINE] Serial:\t\t\tConnected to \"%s\"\n", serial_ports[retry-1]);
 
   struct termios tty;
   int i = tcgetattr(serial_connected, &tty);
@@ -157,9 +158,15 @@ void serial_connect(){
   if(k<0){ trigger_error("[SERIAL]:"); return;}
   int l = tcsetattr(serial_connected, TCSANOW, &tty);
   if(l<0) {trigger_error("[SERIAL]:"); return;}
-  printf("[SEXMACHINE] Serial:\t\t\tsync...\n");
+  if(sexmachine_debug) printf("[SEXMACHINE] Serial:\t\t\tsync...\n");
   sleep(1);
-  printf("[SEXMACHINE] Serial:\t\t\tready\n");
+  if(sexmachine_debug) printf("[SEXMACHINE] Serial:\t\t\tready\n");
+}
+
+int setSerialGun(const unsigned char num){
+	if(sexmachine_debug) printf("[SEXMACHINE] Setting active gun...\t\t%d\n",num);
+	int r = write(serial_connected, &num, 1);
+	if(sexmachine_debug) printf("[SEXMACHINE] Setting active gun...\t\tResult: %d\n",r);
 }
 
 int getSerialData(int verbose){
@@ -279,23 +286,26 @@ adv_error target_init(void)
 #endif
 
 	// [SEXMACHINE] Init
-	printf("*******************************************************************\n");
-	printf("[SEXMACHINE] Initializing mods...\n");
-	printf("[SEXMACHINE] Setting up wiringPI...\n");
+	if(sexmachine_debug) printf("*******************************************************************\n");
+	if(sexmachine_debug) printf("[SEXMACHINE] Initializing mods...\n");
+	if(sexmachine_debug) printf("[SEXMACHINE] Setting up wiringPI...\n");
 	target_system("set WIRINGPI_CODES=1");
 	target_system("/usr/bin/raspi-gpio set 27 pu");
+	target_system("/usr/bin/raspi-gpio set 22 pu");
 	int WRET = wiringPiSetupGpio();
 	if(WRET > 0){
 		printf("Unable to initialize wiringPi!\n");
 		exit(1);
 	}
 	pinMode(27, INPUT);
-	printf("[SEXMACHINE] Waiting for gun trigger event on GPIO27\n");
+	pinMode(22, INPUT);
+	if(sexmachine_debug) printf("[SEXMACHINE] Waiting for gun1 trigger event on GPIO27\n");
+	if(sexmachine_debug) printf("[SEXMACHINE] Waiting for gun2 trigger event on GPIO22\n");
 	serial_connect();
-	printf("[SEXMACHINE] Flushing serial...\n");
+	if(sexmachine_debug) printf("[SEXMACHINE] Flushing serial...\n");
 	int r = getSerialData(0);
 	while(r > 0) r = getSerialData(0);
-	printf("*******************************************************************\n");
+	if(sexmachine_debug) printf("*******************************************************************\n");
 	// [SEXMACHINE] Init End
 
 	TARGET.usleep_granularity = 0;

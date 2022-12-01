@@ -89,11 +89,11 @@ static const mame_game* select_game(const char* gamename)
 
 	for (i = 0; mame_game_at(i); ++i) {
 		if (strcmp(gamename, mame_game_name(mame_game_at(i))) == 0) {
-			printf("[SEXMACHINE] Selecting game %s...\n", gamename);
+			if(sexmachine_debug) printf("[SEXMACHINE] Selecting game %s...\n", gamename);
 			sprintf(game_name, "%s", gamename);
 			sexmachine_minmax();
 			if(game_max_x == 0){
-				printf("[SEXMACHINE] Error, %s is not a lightgun game...\n", game_name);
+				if(sexmachine_debug) printf("[SEXMACHINE] Error, %s is not a lightgun game...\n", game_name);
 				exit(1);
 			}
 			return mame_game_at(i);
@@ -990,7 +990,7 @@ void sexmachine_minmax(){
 			game_min_y = 0;
 			game_max_y = 0xff;
 		}
-		printf("[SEXMACHINE] %s MinMax:\t\t(%d,%d),(%d,%d)\n", game_name, game_min_x, game_max_x, game_min_y, game_max_y);
+		if(sexmachine_debug) printf("[SEXMACHINE] %s MinMax:\t\t(%d,%d),(%d,%d)\n", game_name, game_min_x, game_max_x, game_min_y, game_max_y);
 }
 // [SEXMACHINE] Custom Game Configurations END
 
@@ -1294,7 +1294,7 @@ int os_main(int argc, char* argv[])
 	char tmp[100];
 	sprintf(tmp, "%s", strdup(mame_game_resolution(option.game)));
 	sscanf(tmp, "%dx%d", &game_xres, &game_yres);
-	printf("[SEXMACHINE] Original Resolution:\t%dx%d\n", game_xres, game_yres);
+	if(sexmachine_debug) printf("[SEXMACHINE] Original Resolution:\t%dx%d\n", game_xres, game_yres);
 
 	if ((mame_game_orientation(option.game) & OSD_ORIENTATION_SWAP_XY) != 0)
 		section_map[section_mac++] = strdup("vertical");
