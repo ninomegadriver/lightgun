@@ -174,7 +174,7 @@ void setup(){
   // Video definitions
   DisplayController.setScanlinesPerCallBack(1);
   DisplayController.setDrawScanlineCallback(drawScanline);
-  DisplayController.setResolution("\"320x240_60.00\" 6.00 320 336 360 400 240 243 247 252 -hsync -vsync");
+  DisplayController.setResolution("\"320x240_122.00\"   12.50  320 336 360 400  240 243 247 261 -hsync +vsync");
   // Follow the wirings available at:
   // https://github.com/fdivitto/FabGL
   // This sketch is intended for arcade monitors, so just wire both HSync and VSync together and you'll be fine.

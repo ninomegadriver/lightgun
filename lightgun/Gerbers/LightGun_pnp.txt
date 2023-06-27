@@ -4,8 +4,8 @@
 *eMail=
 *
 *Project=LightGun
-*Date=17:38:31
-*CreatedBy=Fritzing 0.9.6b..0.9.6
+*Date=17:27:30
+*CreatedBy=Fritzing 0.9.9b.2021-09-22.0.9.6-35-gf0af53a9
 *
 *
 *Coordinates in mm, always center of component
@@ -13,42 +13,39 @@
 *Rotation in degree (0-360, math. pos.)
 *
 *No;Value;Package;X;Y;Rotation;Side;Name
-1;;;55.2766;-8.07156;-90;Bottom;TXT8
-2;47;THT;40.2802;-25.0321;0;Bottom;R5
-3;;;12.7472;-13.0212;0;Bottom;IMG2
-4;1k;THT;30.6003;-21.7121;-90;Bottom;R3
-5;;;52.4004;-26.7321;0;Bottom;Hole2
-6;1k;THT;40.2802;-28.2321;0;Bottom;R4
-7;;;52.3167;-19.2045;0;Bottom;IMG1
-8;;;4.20031;-17.9321;0;Bottom;Hole1
-9;100nF;100 mil [THT, multilayer];43.5004;-6.5021;-90;Bottom;C6
-10;10µF;100 mil [THT, electrolytic];40.2703;-19.1321;0;Bottom;C4
-11;4.6k;THT;46.5004;-8.3121;-90;Bottom;R6
-12;;;1.66618;-23.8304;0;Bottom;TXT1
-13;4.6k;THT;49.7002;-8.3121;-90;Bottom;R7
-14;0.030;5 mm [THT];4.30032;-24.9831;0;Bottom;S1
-15;10µF;100 mil [THT, electrolytic];45.9704;-19.2321;0;Bottom;C5
-16;;;25.069;-3.58496;0;Bottom;TXT2
-17;;;1.87355;-26.5087;0;Bottom;TXT1
-18;50k;THT;16.1003;-21.7121;-90;Bottom;R2
-19;68k;THT;9.30033;-21.8121;-90;Bottom;R1
-20;;;50.0745;-0.876107;0;Bottom;TXT6
-21;;;43.5899;-3.30121;0;Bottom;TXT7
-22;;;34.8173;-1.30945;0;Bottom;TXT11
-23;;;25.0338;-8.82202;0;Bottom;TXT2
-24;;;40.1144;-22.4117;0;Bottom;TXT4
-25;;;46.654;-0.8016;0;Bottom;TXT6
-26;;TO92 [THT];22.2114;-6.3826;90;Bottom;Q1
-27;50nF;200 mil [THT, multilayer];19.4003;-24.2721;-90;Bottom;C2
-28;;;19.9764;-28.7494;0;Bottom;TXT3
-29;;;47.4603;-28.0964;0;Bottom;TXT5
-30;;;4.40133;-28.7415;0;Bottom;TXT10
-31;5.8mH;400 mil [THT];27.0003;-21.7521;-90;Bottom;L1
-32;10µF;100 mil [THT, electrolytic];34.6702;-19.2321;0;Bottom;C3
-33;100nF;200 mil [THT, multilayer];12.8003;-24.3721;-90;Bottom;C1
-34;;;25.0338;-6.0182;0;Bottom;TXT2
-35;;THT;52.8004;-9.56212;0;Bottom;J1
-36;;;55.2766;-15.7888;-90;Bottom;TXT9
-37;;;47.4137;-24.8248;0;Bottom;TXT5
-38;;diode-1n4148;23.2003;-23.0421;-90;Bottom;CR1
-39;;DIP (Dual Inline) [THT];36.4902;-8.8221;90;Bottom;IC1
+1;4.6k;THT;46.5004;-8.3121;-90;Bottom;R6
+2;;;55.0644;-5.75121;-90;Bottom;TXT12
+3;100nF;200 mil [THT, multilayer];12.8003;-24.3721;-90;Bottom;C1
+4;;TO92 [THT];22.2114;-6.3826;90;Bottom;Q1
+5;;;6.84674;-24.3948;0;Bottom;TXT1
+6;;;54.9766;-13.2825;-90;Bottom;TXT12
+7;;THT;52.8004;-9.56212;0;Bottom;J1
+8;;;38.325;-1.30945;0;Bottom;TXT11
+9;10µF;100 mil [THT, electrolytic];45.9704;-19.2321;0;Bottom;C5
+10;;;25.0338;-8.82202;0;Bottom;TXT2
+11;5.8mH;400 mil [THT];27.0003;-21.7521;-90;Bottom;L1
+12;;;55.0635;-3.2116;-90;Bottom;TXT12
+13;;;55.2766;-15.7888;-90;Bottom;TXT9
+14;;;12.7472;-13.0212;0;Bottom;IMG2
+15;10µF;100 mil [THT, electrolytic];40.2703;-19.1321;0;Bottom;C4
+16;;TO-18;3.27925;-25.7822;-90;Bottom;L14F1
+17;4.6k;THT;49.7002;-8.3121;-90;Bottom;R7
+18;50nF;200 mil [THT, multilayer];19.4003;-24.2721;-90;Bottom;C2
+19;;diode-1n4148;23.2003;-23.0421;-90;Bottom;CR1
+20;;;6.88298;-26.7674;0;Bottom;TXT1
+21;;;25.069;-3.58496;0;Bottom;TXT2
+22;;;3.13133;-29.353;0;Bottom;TXT10
+23;;;4.20031;-17.9321;0;Bottom;Hole1
+24;10µF;100 mil [THT, electrolytic];34.6702;-19.2321;0;Bottom;C3
+25;;;52.4004;-26.7321;0;Bottom;Hole2
+26;47;THT;40.2802;-25.0321;0;Bottom;R5
+27;68k;THT;9.30033;-21.8121;-90;Bottom;R1
+28;;DIP (Dual Inline) [THT];36.4902;-8.8221;90;Bottom;IC1
+29;100nF;100 mil [THT, multilayer];43.5004;-6.5021;-90;Bottom;C6
+30;;;54.9766;-10.6553;-90;Bottom;TXT12
+31;50k;THT;16.1003;-21.7121;-90;Bottom;R2
+32;;;52.3167;-19.2045;0;Bottom;IMG1
+33;1k;THT;30.6003;-21.7121;-90;Bottom;R3
+34;;;55.0203;-8.24704;-90;Bottom;TXT12
+35;1k;THT;40.2802;-28.2321;0;Bottom;R4
+36;;;25.0338;-6.0182;0;Bottom;TXT2
