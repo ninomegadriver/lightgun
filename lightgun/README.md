@@ -19,6 +19,9 @@ Breakout and reproduction of the classic arcade lightgun board, manufactured by 
 - Gerbers for the reproduced board [Here](https://github.com/ninomegadriver/lightgun/tree/main/lightgun/Gerbers).  
 - [Extra pictures](https://github.com/ninomegadriver/lightgun/tree/main/Images) also provided.  
 
+## Schematic
+![Schematic](https://raw.githubusercontent.com/ninomegadriver/lightgun/main/Images/LightGun_schem.png)
+
 ## Bill Of Materials  
 
 | Part | Type               | Value        |
@@ -30,7 +33,7 @@ Breakout and reproduction of the classic arcade lightgun board, manufactured by 
 |  C5  | Capacitor          | 10uf 16v     |
 |  C6  | Capacitor          | 100nf        |
 |  IC1 | Voltage Comparator | LM311N       |
-|  S1  | Phototransistor    | L14F1        |
+|  S1  | Phototransistor    | L14G1        |
 |  L1  | Inductor           | 5.6mH 10%    |
 |  R1  | Resistor           | 68k 5%       |
 |  R2  | Resistor           | 50k 5%       |

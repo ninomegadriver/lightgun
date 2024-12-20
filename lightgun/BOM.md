@@ -8,7 +8,7 @@
 |  C5  | Capacitor          | 10uf 16v     |
 |  C6  | Capacitor          | 100nf        |
 |  IC1 | Voltage Comparator | LM311N       |
-|  S1  | Phototransistor    | L14F1        |
+|  S1  | Phototransistor    | L14G1        |
 |  L1  | Inductor           | 5.6mH 10%    |
 |  R1  | Resistor           | 68k 5%       |
 |  R2  | Resistor           | 50k 5%       |
